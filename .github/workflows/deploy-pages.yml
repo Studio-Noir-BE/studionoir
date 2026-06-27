@@ -26,6 +26,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Enables GitHub Pages for the repo (source: GitHub Actions) if it is not
+      # already enabled, so the deploy step doesn't 404 on first run.
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
