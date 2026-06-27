@@ -1,0 +1,101 @@
+{% extends 'figma/_layout.twig' %}
+
+{% block content %}
+
+    {% include 'figma/_partials/page-hero.twig' with {
+        title: 'Maatwerk website',
+        image: 'img/figma/hero-diensten.jpg',
+        kicker: 'Dienst in detail',
+        price: 'Vanaf €899',
+        theme: 'light'
+    } %}
+
+    <div class="shell max-w-4xl space-y-16 py-16 lg:py-24">
+
+        {# Waarom op maat #}
+        <section data-reveal>
+            <h2 class="h-section text-secondary">Waarom een website op maat?</h2>
+            <p class="mt-5 text-[17px] leading-relaxed text-muted">
+                Een maatwerk website is volledig op jouw maat gebouwd — geen kant-en-klare sjablonen,
+                maar een uniek ontwerp en structuur die perfect aansluiten bij jouw merk, doelen en doelgroep.
+            </p>
+            <ul class="mt-7 space-y-5">
+                {% for f in [
+                    { lead: 'Uniek design', text: 'geen enkel ander bedrijf heeft dezelfde website. Alles, van de lay-out tot de kleuren en typografie, wordt afgestemd op jouw huisstijl.' },
+                    { lead: 'Flexibele structuur', text: 'de pagina\'s, secties en inhoud worden opgebouwd zoals jij dat nodig hebt, niet zoals een template dat voorschrijft.' },
+                    { lead: 'Toekomstgericht', text: 'een maatwerk website groeit mee met je bedrijf. Extra pagina\'s, functionaliteiten of integraties toevoegen is altijd mogelijk.' },
+                    { lead: 'Betere prestaties', text: 'geen overbodige code of onnodige plugins. Enkel wat jouw website nodig heeft, wat de snelheid en veiligheid ten goede komt.' }
+                ] %}
+                    <li class="flex gap-4">
+                        <span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-primary"></span>
+                        <p class="text-[17px] leading-relaxed text-secondary">
+                            <strong class="font-display font-semibold">{{ f.lead }}</strong> — <span class="text-muted">{{ f.text }}</span>
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        {# Craft CMS #}
+        <section class="rounded-[28px] bg-secondary p-8 text-white sm:p-12" data-reveal>
+            <h2 class="h-section">Wat is Craft CMS?</h2>
+            <p class="mt-5 max-w-2xl text-[17px] leading-relaxed text-white/70">
+                Voor het beheer van de website maken we gebruik van Craft CMS — een krachtig en
+                professioneel contentbeheersysteem dat speciaal is ontworpen voor maatwerk projecten.
+            </p>
+            <a href="https://craftcms.com" target="_blank" rel="noopener" class="arrow-link mt-6 text-primary">
+                Meer over Craft CMS <span>→</span>
+            </a>
+        </section>
+
+        {# Waarom Craft #}
+        <section data-reveal>
+            <h2 class="h-section text-secondary">Waarom Craft CMS?</h2>
+            <ul class="mt-7 space-y-5">
+                {% for f in [
+                    { lead: 'Intuïtief beheerpaneel', text: 'je beheert zelf eenvoudig teksten, afbeeldingen en pagina\'s, zonder technische kennis. Het paneel is overzichtelijk en gebruiksvriendelijk.' },
+                    { lead: 'Volledig op maat', text: 'in tegenstelling tot generieke systemen zoals WordPress, laat Craft CMS toe om de content-structuur volledig aan te passen aan jouw website. Geen compromissen.' },
+                    { lead: 'Veilig en stabiel', text: 'Craft CMS staat bekend om zijn sterke beveiliging en stabiele werking. Minder kwetsbaarheden, minder zorgen.' },
+                    { lead: 'Hoge performantie', text: 'het systeem is lichtgewicht en geoptimaliseerd voor snelheid, wat zorgt voor een vlotte gebruikerservaring voor jouw bezoekers.' },
+                    { lead: 'Schaalbaar', text: 'of je nu een eenvoudige website of een complexe webapplicatie nodig hebt, Craft CMS kan het aan.' }
+                ] %}
+                    <li class="flex gap-4">
+                        <span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-primary"></span>
+                        <p class="text-[17px] leading-relaxed text-secondary">
+                            <strong class="font-display font-semibold">{{ f.lead }}</strong> — <span class="text-muted">{{ f.text }}</span>
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        {# Wat krijg je #}
+        <section data-reveal>
+            <h2 class="h-section text-secondary">Wat krijg je?</h2>
+            <ul class="mt-7 grid gap-4 sm:grid-cols-2">
+                {% for item in [
+                    'Een unieke, professioneel gebouwde website',
+                    'Beheerd via Craft CMS — eenvoudig zelf aan te passen',
+                    'Snelle en veilige hosting met SSL',
+                    'Maandelijks onderhoud en updates',
+                    'Persoonlijke ondersteuning'
+                ] %}
+                    <li class="flex items-center gap-3 rounded-2xl border border-secondary/10 bg-tertiary px-5 py-4">
+                        <span class="text-primary [-webkit-text-stroke:0.5px_#202020]">✓</span>
+                        <span class="text-[15px] font-medium text-secondary">{{ item }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+
+    {% include 'figma/_partials/services-cta.twig' with {
+        heading: 'Interesse in deze dienst?',
+        sub: 'Of heeft u een andere vraag?'
+    } %}
+
+    {% include 'figma/_partials/faq.twig' %}
+    {% include 'figma/_partials/cta-banner.twig' %}
+    {% include 'figma/_partials/contact-card.twig' %}
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{# FAQ — lime section with a white card holding the accordion. #}
+<section class="bg-primary py-16 lg:py-24">
+    <div class="shell">
+        <div class="rounded-[32px] bg-white p-7 sm:p-10 lg:p-14" data-reveal>
+            <p class="eyebrow text-secondary">Veelgestelde vragen</p>
+            <h2 class="h-section mt-3 text-secondary">FAQ</h2>
+            <p class="mt-4 max-w-xl text-muted">
+                Heb je een andere vraag? Stuur ons een berichtje — we antwoorden binnen 1 werkdag.
+            </p>
+
+            <div class="mt-8" data-faq>
+                {% for item in site.faq %}
+                    <div class="faq-item {{ loop.first ? 'is-open' : '' }}">
+                        <button type="button" class="faq-trigger" aria-expanded="{{ loop.first ? 'true' : 'false' }}">
+                            <span>{{ item.q }}</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-panel">
+                            <div>
+                                <p class="pb-1 pr-8 text-sm leading-relaxed text-[#444]">{{ item.a }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

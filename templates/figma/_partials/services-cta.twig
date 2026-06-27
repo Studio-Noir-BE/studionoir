@@ -1,0 +1,10 @@
+{# Compact "interested?" call-to-action strip. #}
+<section class="shell py-12 lg:py-16" data-reveal>
+    <div class="flex flex-col items-start justify-between gap-6 rounded-[28px] border border-secondary/12 bg-tertiary px-7 py-10 sm:px-10 lg:flex-row lg:items-center">
+        <div>
+            <h2 class="h-card text-secondary">{{ heading|default('Interesse in één van onze diensten?') }}</h2>
+            <p class="mt-2 text-lg text-muted">{{ sub|default('Of heeft u een andere vraag?') }}</p>
+        </div>
+        <a href="{{ assetBase }}contact.html" class="btn-dark shrink-0">Contacteer ons →</a>
+    </div>
+</section>

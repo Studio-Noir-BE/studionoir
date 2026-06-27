@@ -7,6 +7,11 @@ module.exports = {
             secondary: "#202020",
             tertiary: "#F5F5F5",
             background: "#FFFFFF",
+            // Studio Noir brand extras (pulled from the Figma design)
+            ink: "#0D0D0D",
+            cream: "#E5DFD5",
+            sand: "#C4B5A0",
+            muted: "#555555",
             typography: {
                 text: "#202020",
                 heading: "#202020",
@@ -73,8 +78,9 @@ module.exports = {
             line_h4_min: "115%",
         },
         fontFamily: {
-            body: ["Inter Variable", "Inter", "Arial", "sans-serif"],
-            heading: ["Inter Variable", "Inter", "Arial", "sans-serif"],
+            body: ["Onest", "Inter Variable", "Inter", "Arial", "sans-serif"],
+            heading: ["Space Grotesk", "Inter Variable", "Inter", "Arial", "sans-serif"],
+            display: ["Space Grotesk", "Inter Variable", "Inter", "Arial", "sans-serif"],
         },
         screens: {
             xs: "440px",

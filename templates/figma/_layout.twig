@@ -1,0 +1,52 @@
+{#
+   Studio Noir — base layout for the public website.
+   Pure Twig (no Craft-specific tags) so it can be rendered statically for the
+   GitHub Pages preview AND dropped into the Craft project later. Asset URLs are
+   injected from the Vite manifest via the `assets` variable.
+#}
+<!doctype html>
+<html lang="nl" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title is defined ? title ~ ' — Studio Noir' : 'Studio Noir — Websites met karakter' }}</title>
+    <meta name="description" content="{{ description|default('Studio Noir bouwt websites met karakter. Maatwerk websites en compacte infosites, gebouwd in Craft CMS. Gelegen in Brugge.') }}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title is defined ? title ~ ' — Studio Noir' : 'Studio Noir — Websites met karakter' }}">
+    <meta property="og:description" content="{{ description|default('Websites met karakter, gebouwd in Brugge.') }}">
+    <meta name="theme-color" content="#202020">
+
+    <link rel="icon" type="image/svg+xml" href="{{ assetBase }}img/favicon.svg">
+
+    {# Fonts: Space Grotesk (display) + Onest (body). Inter is bundled in the CSS. #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    {% for href in assets.css %}
+        <link rel="stylesheet" href="{{ assetBase }}{{ href }}">
+    {% endfor %}
+
+    <style>
+        /* Prevent FOUC — fade body in once JS marks it ready */
+        body { transition: opacity .5s ease; }
+        body:not(.is-ready) { opacity: 0; animation: snReveal 0s .8s forwards; }
+        @keyframes snReveal { to { opacity: 1; } }
+    </style>
+</head>
+<body class="min-h-screen bg-background text-secondary {{ bodyClass|default('') }}">
+
+    {% include 'figma/_partials/header.twig' %}
+
+    <main id="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'figma/_partials/footer.twig' %}
+
+    {% for src in assets.js %}
+        <script type="module" src="{{ assetBase }}{{ src }}"></script>
+    {% endfor %}
+</body>
+</html>

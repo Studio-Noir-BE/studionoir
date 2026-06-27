@@ -1,0 +1,17 @@
+{# Footer — lime credits strip (matches the design's bottom bar). #}
+<footer class="bg-primary text-secondary">
+    <div class="shell-wide flex flex-col gap-4 py-5 text-sm font-medium sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-wrap items-center gap-x-7 gap-y-2">
+            <span>© {{ "now"|date('Y') }} Studio Noir</span>
+            <a href="{{ assetBase }}privacy.html" class="transition-opacity hover:opacity-60">Privacy Policy</a>
+            <a href="{{ assetBase }}voorwaarden.html" class="transition-opacity hover:opacity-60">Algemene voorwaarden</a>
+        </div>
+        <div class="flex flex-wrap items-center gap-x-7 gap-y-2 sm:justify-end">
+            {% for s in site.socials %}
+                <a href="{{ s.url }}" target="_blank" rel="noopener" class="transition-opacity hover:opacity-60">{{ s.label }}</a>
+            {% endfor %}
+            <span class="opacity-80">BE 1038.747.561</span>
+        </div>
+    </div>
+    <div class="h-2.5 w-full bg-[#444444]"></div>
+</footer>
