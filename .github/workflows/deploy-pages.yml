@@ -26,13 +26,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Enables GitHub Pages for the repo (source: GitHub Actions) if it is not
-      # already enabled, so the deploy step doesn't 404 on first run.
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -75,6 +68,13 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    # Only deploy from main or a manual run. Pages must be enabled once in the
+    # repo (Settings → Pages → Source: GitHub Actions) — the workflow token
+    # cannot enable it automatically. On feature branches we only validate the
+    # build above, so the PR isn't blocked by a deploy that needs that one-time
+    # setting. The committed docs/ folder can also be served via
+    # Settings → Pages → Deploy from a branch → /docs.
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
