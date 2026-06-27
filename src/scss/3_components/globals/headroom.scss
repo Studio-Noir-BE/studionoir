@@ -1,0 +1,27 @@
+.headroom {
+    transition: transform .5s !important;
+    transition: all .5s;
+    background-color: transparent;
+
+    &--unpinned {
+        transform: translateY(-100%) !important;
+    }
+
+    &--not-top {
+        background-color: #ffffff;
+        box-shadow: 0px 12px 22px -16px rgba(0, 0, 0, 0.5);
+    }
+    
+    &--pinned {
+        transform: translateY(0%) !important;
+    }
+
+    &--top {
+    }
+
+    @media (max-width: (($viewport--lg - 1) + 'px')) {
+        &.show-nav {
+            transform: translateY(0%) !important;
+        }
+    }
+}

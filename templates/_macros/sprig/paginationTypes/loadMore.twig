@@ -1,0 +1,9 @@
+{% if baseQuery.count() > offset + elements|length %}
+    {# Increments `offset` by the value of `limit` #}
+    <button id="load-more-oob" class="btn btn-primary" sprig s-val:offset="{{ offset + limit }}" s-select="#elements div" s-target="#elements" s-swap="beforeend" {{ sprig.trigger == 'load-more-oob' ? 's-swap-oob="true"' }}>
+        {{ sprigSetting.loadMoreText }}
+    </button>
+{% else %}
+    {# Swaps the button out-of-band with a dummy button that is hidden #}
+    <button id="load-more-oob" s-swap-oob="true" style="display: none"></button>
+{% endif %}

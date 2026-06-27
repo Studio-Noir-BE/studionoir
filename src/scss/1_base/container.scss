@@ -1,0 +1,23 @@
+.container {
+    max-width: calc($container + ($container_padding * 2))  !important;
+    
+    &-xs{
+        max-width: calc($container-xs + ($container_padding * 2))  !important;
+    }
+
+    &-sm{
+        max-width: calc($container-sm + ($container_padding * 2))  !important;
+    }
+
+    &-lg{
+        max-width: calc($container-lg + ($container_padding * 2))  !important;
+    }
+
+    &-xl{
+        max-width: calc($container-xl + ($container_padding * 2))  !important;
+    }
+
+    &-2xl{
+        max-width: calc($container-2xl + ($container_padding * 2))  !important;
+    }
+}

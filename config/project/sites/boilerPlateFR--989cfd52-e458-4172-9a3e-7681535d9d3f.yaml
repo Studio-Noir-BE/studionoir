@@ -1,0 +1,9 @@
+baseUrl: $PRIMARY_SITE_URL_FR
+enabled: '1'
+handle: boilerPlateFR
+hasUrls: true
+language: fr
+name: '[FR] Boilerplate'
+primary: false
+siteGroup: 85ed2fef-6664-4c66-b14d-7f8ada75f8ba # $SITE_NAME
+sortOrder: 2

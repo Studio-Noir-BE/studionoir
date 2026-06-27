@@ -1,0 +1,63 @@
+color: null
+fieldLayouts:
+  7e501e86-c43f-4802-87c4-aae058cb68fc:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-09-02T15:45:50+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 60d5e92e-0f0f-4e8a-8020-e2d5e897680f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-09-02T15:47:55+00:00'
+            elementCondition: null
+            fieldUid: dd232a51-3394-407d-8c83-64f6ac1bb42b # Call to action
+            handle: null
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 72d58c2a-0900-4829-80e3-f9f6772e81cb
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: ccc67364-b471-4737-b175-6eff9df49ada
+        userCondition: null
+handle: blockCta
+hasTitleField: false
+icon: bolt
+name: 'Call to action'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: '{ fieldCTA.one().title }}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

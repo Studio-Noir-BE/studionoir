@@ -1,0 +1,169 @@
+/**
+ * Header settings
+*/
+:root {
+    // Header
+    --header-bg: transparent;
+    --header-height: 0;
+
+    // Header top
+    --header-top-bg: theme('colors.primary');
+    --header-top-padding: theme('size.4');
+
+    --topNav-link-size: 12px;
+    --topNav-link-weight: 500;
+    --topNav-gutter: theme('size.10');
+    --topNav-link-color: theme('colors.secondary');
+    --topNav-link-color--active: theme('colors.background');
+    
+    // Header primary
+    --header-primary-bg: theme('colors.primary');
+    --header-primary-padding: theme('size.4');
+
+    --MainNav-link-size: 14px;
+    --MainNav-link-weight: 500;
+    --MainNav-gutter: theme('size.8');
+    --MainNav-link-color: theme('colors.secondary');
+    --MainNav-link-color--active: theme('colors.secondary');
+}
+
+.Header {
+    background-color: var(--header-bg);
+    z-index: 999;
+    position: relative;
+
+    &-wrapper {
+        @apply flex items-center justify-between py-8;
+    }
+
+    // Top navigation wrapper
+    &-top {
+        @apply max-md:hidden;
+
+        background-color: var(--header-top-bg);
+        padding-top: var(--header-top-padding);
+        padding-bottom: var(--header-top-padding);
+    }
+
+    // Desktop navigaiton wrappers
+    &-content {
+        @apply flex items-center;
+        column-gap: var(--MainNav-gutter);
+    }
+
+    // Main navigation
+    &-main {
+        @apply max-md:hidden;
+    }
+}
+
+// Top nav 
+.TopNav {
+    &-list {
+        @apply flex justify-end;
+        column-gap: var(--topNav-gutter);
+    }
+
+    &-item {
+        @apply leading-none uppercase transition-colors duration-500;
+        color: var(--topNav-link-color) !important;
+        font-size: var(--topNav-link-size);
+        font-weight: var(--topNav-link-weight);
+
+        &.is-active,
+        &:hover {
+            color: var(--topNav-link-color--active) !important;
+
+            .Nav-link:before {
+                border-color: var(--topNav-link-color--active) !important;
+            }
+        }
+    }
+
+    &-link {}
+}
+
+// Primary nav
+.MainNav {
+    &-list {
+        @apply flex justify-end;
+        column-gap: var(--MainNav-gutter);
+    }
+
+    &-item {
+        @apply leading-none uppercase transition-colors duration-500;
+        color: var(--MainNav-link-color) !important;
+        font-size: var(--MainNav-link-size);
+        font-weight: var(--MainNav-link-weight);
+
+        &.is-active,
+        &:hover {
+            color: var(--MainNav-link-color--active) !important;
+
+            .Nav-link:before {
+                border-color: var(--MainNav-link-color--active) !important;
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+        }
+    }
+
+    &-link {}
+}
+
+// Toggle
+.Toggle {
+    @apply relative w-6 h-4 cursor-pointer; 
+    @apply transition-[opacity,transform,top] duration-300;
+
+    &.Toggle-primaryNavItems {
+        @apply md:hidden;
+    }
+
+    &-line {
+        @apply w-full h-px bg-secondary;
+        @apply transition-[opacity,transform,top] duration-300;
+        @apply absolute left-0;
+
+        &--1 {
+            @apply top-0;
+        }
+        &--2 {
+            @apply top-1/2;
+        }
+        &--3 {
+            @apply top-full;
+        }
+    }
+
+    &.is-active {
+        @apply rotate-90;
+
+        .Toggle-line--1 {
+            @apply rotate-45 top-1/2;
+        }
+        .Toggle-line--2 {
+            @apply opacity-0;
+        }
+        .Toggle-line--3 {
+            @apply -rotate-45 top-1/2;
+        }
+    }
+}
+
+// Let all nav links inherit the styles from the nav item
+.Nav-link {
+    color: inherit !important;
+
+    transition: none !important;
+
+    font-size: inherit !important;
+    line-height: inherit !important;
+    font-weight: inherit !important;
+
+    text-transform: inherit !important;
+
+    &:before {
+        border-color: var(--topNav-link-color) !important;
+    }
+}

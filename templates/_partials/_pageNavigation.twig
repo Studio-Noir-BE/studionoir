@@ -1,0 +1,25 @@
+{% set mainMenuItems = globalHeader.toggleNav.all() ??? globalHeader.primaryNav.all() ??? null %}
+
+{% if mainMenuItems or globalHeader.topNav.all() %}
+	<section class="js-siteNavigation PageNavigation-wrapper">
+		<div class="PageNavigation">
+			{% if mainMenuItems %}
+				{% include "_macros/navigation" with {
+					navName: 'toggleNav',
+					navItems: mainMenuItems,
+					navClasses: 'grid-p',
+					navLinkClasses: 'Is-link--reversed'
+				} %}
+			{% endif %}
+                  
+			{% if globalHeader.topNav %}
+				{% include "_macros/navigation" with {
+					navName: 'toggleNavSecondary',
+					navItems: globalHeader.topNav.all(),
+					navClasses: '',
+					navLinkClasses: 'Is-link--reversed'
+				} %}
+			{% endif %}
+		</div>
+	</section>
+{% endif %}

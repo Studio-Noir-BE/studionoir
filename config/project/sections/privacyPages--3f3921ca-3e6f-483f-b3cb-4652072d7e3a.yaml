@@ -1,0 +1,41 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: f1eea2be-0f15-44a2-8513-178574280183 # Privacy pagina
+handle: privacyPages
+maxAuthors: 1
+name: "Privacy pagina's"
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primaire invoer-pagina'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  989cfd52-e458-4172-9a3e-7681535d9d3f: # [FR] Boilerplate
+    enabledByDefault: true
+    hasUrls: true
+    template: _page/_privacy.twig
+    uriFormat: '{slug}'
+  c3ffcf57-ea2c-4a07-a6bd-3768cfb8b05d: # [NL] Boilerplate
+    enabledByDefault: true
+    hasUrls: true
+    template: _page/_privacy.twig
+    uriFormat: '{slug}'
+  dc638e81-e971-4ad9-8208-ad1a63716e91: # [EN] Boilerplate
+    enabledByDefault: true
+    hasUrls: true
+    template: _page/_privacy.twig
+    uriFormat: '{slug}'
+structure:
+  maxLevels: 1
+  uid: 917eec74-e484-460b-bd84-7c2d5cf9934f
+type: structure

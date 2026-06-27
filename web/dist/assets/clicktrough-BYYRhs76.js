@@ -1,0 +1,1 @@
+const c=()=>{const s=document.querySelectorAll(".clicktrough");s&&s.forEach(e=>{const t=e.querySelector(".btn");e.addEventListener("mouseenter",()=>{e.classList.add("clicktrough-active"),t&&t.classList.add("active")}),e.addEventListener("mouseleave",()=>{e.classList.remove("clicktrough-active"),t&&t.classList.remove("active")})})};export{c as clickTroughInit};

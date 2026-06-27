@@ -1,0 +1,70 @@
+fieldLayouts:
+  13dcfda3-eb64-4afb-8284-2479b286a61d:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-08T08:45:45+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: fbb2e2dc-fcd6-407b-b040-f4dc9b26e901 # Hoofd navigatie
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 21657426-0a3a-45b9-baf4-402e641d542d
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Hoofd navigatie'
+        uid: 7b737e50-b400-4f48-9ec3-556cb098bcf1
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-08T08:46:06+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 9b2af6f0-79e7-4b21-97bc-aa4b967fc289 # Top navigatie
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 151be51c-6fb0-49e2-85cc-81f68c28c512
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Top navigatie'
+        uid: 4c40e154-5338-4928-9688-b4a7e28b43a4
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-08T08:46:06+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: c344b2ce-ec0d-4029-80a8-171db1d39ada # Toggle navigatie
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 27438cea-0fab-495f-abbd-22e5869a0f1f
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Toggle navigatie'
+        uid: 68d09c91-ce05-4c81-b89e-ab17bcf1b8ab
+        userCondition: null
+handle: globalHeader
+name: Header
+sortOrder: 2

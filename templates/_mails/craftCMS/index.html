@@ -1,0 +1,32 @@
+{% extends '_mails/base-mail' %}
+
+{% block webversie %}{% endblock %}
+
+{% block main %}
+    <style type="text/css">
+        .em_defaultlink p {
+            margin-bottom: 10px !important;
+        }
+    </style>
+
+
+	<table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td align="center" valign="top">
+				<table width="700" border="0" cellspacing="0" cellpadding="0" align="center" class="em_wrapper" style="width:700px;" bgcolor="#ffffff">
+					<tr>
+						<td align="center" valign="top" style="padding:0px 112px 40px 112px;" class="em_aside15">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+								<tr>
+									<td align="left" valign="top" class="em_defaultlink" style="font-family:Arial, sans-serif; font-size:15px; line-height:25px; color:#000000;">
+										{{ body }}
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+{% endblock %}

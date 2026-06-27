@@ -1,0 +1,38 @@
+color: cyan
+description: null
+fieldLayouts:
+  571426fe-bf89-48e6-b41b-0da13817fdf9:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-08T08:38:14+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 8f0fdf6a-53fc-4df4-90ba-03b7ebb9c4d6 # Link
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 737e9c25-b3fc-48e8-89c6-120dc9a87424
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhoud
+        uid: cbbe9b8c-5c41-4fca-8674-a5226b2bf439
+        userCondition: null
+handle: link
+hasTitleField: false
+icon: link
+name: Link
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

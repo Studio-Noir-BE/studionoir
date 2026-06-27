@@ -1,0 +1,83 @@
+{% import "_macros/images/image.twig" as image %}
+
+{# Set content items #}
+{% set blockContentImageTitle = blockContentImageTitle ?? block.fieldTitle %}
+{% set blockContentImageIntro = blockContentImageIntro ?? block.fieldIntro %}
+{% set blockContentImageLink = blockContentImageLink ?? block.fieldLink %}
+
+{# Set media element #}
+{% set blockContentImageMedia = blockContentImageMedia ??? block.fieldImage.one() ??? null %}
+
+{# Only proceed if there is alteast a media & title #}
+{% if blockContentImageTitle and blockContentImageMedia %}
+
+	{# Set block settings #}
+	{% set blockContentImageMediaPosition = blockContentImageMediaPosition ??? block.fieldImagePosition.value ??? 'left' %}
+	{% set blockContentImageMediaSize = blockContentImageMediaSize ??? block.fieldImageSize.value ??? 'auto' %}
+	{% set blockContentImageContentPosition = blockContentImageContentPosition ??? block.fieldContentPosition.value ??? 'center' %}
+
+	{# Default wrapper classes #}
+	{% set blockContentImageWrapperClasses = '' %}
+
+	{# Media position, revert the grid if the media is on the left side #}
+	{% if blockContentImageMediaPosition == 'right' %}
+		{% set blockContentImageWrapperClasses = blockContentImageWrapperClasses ~ ' rtl blockContentImage-right' %}
+	{% else %}
+		{% set blockContentImageWrapperClasses = blockContentImageWrapperClasses ~ ' blockContentImage-left' %}	
+	{% endif %}
+
+	{# Content position #}
+	{% switch blockContentImageContentPosition %}
+		{% case "top" %}
+			{% set blockContentImageWrapperClasses = blockContentImageWrapperClasses ~ ' items-top' %}
+		{% case "center" %}
+			{% set blockContentImageWrapperClasses = blockContentImageWrapperClasses ~ ' items-center' %}
+		{% case "bottom" %}
+			{% set blockContentImageWrapperClasses = blockContentImageWrapperClasses ~ ' items-end' %}
+	{% endswitch %}
+
+	{# Override image size to 'small' of 'large' only if the current size is 'auto' #}
+	{% if blockContentImageMediaSize == 'auto' %}
+		{# Change the size depending if the image is landscape or portrait #}
+		{% set blockContentImageMediaSize = blockContentImageMedia.getWidth() > blockContentImageMedia.getHeight() ? 'large' : 'small' %}
+	{% endif %}
+
+	{# Media size #}
+	{% switch blockContentImageMediaSize %}
+		{% case "auto" %}
+			{% set blockContentImageWrapperClasses = blockContentImageWrapperClasses ~ ' blockContentImage-auto' %}
+		{% case "small" %}
+			{% set blockContentImageWrapperClasses = blockContentImageWrapperClasses ~ ' blockContentImage-small' %}
+		{% case "large" %}
+			{% set blockContentImageWrapperClasses = blockContentImageWrapperClasses ~ ' blockContentImage-large' %}
+		{% case "extraLarge" %}
+			{% set blockContentImageWrapperClasses = blockContentImageWrapperClasses ~ ' blockContentImage-extraLarge' %}
+	{% endswitch %}
+
+	<section class="blockContentImage u-block">
+		<div class="container MainGrid !gap-y-8 blockContentImage-wrapper{{ blockContentImageWrapperClasses|default(null) ? blockContentImageWrapperClasses }}">
+			<div class="blockContentImage-media">
+				{{ image.picture(blockContentImageMedia, {
+					wrapperClass: 'relative w-full h-full',
+					class: 'w-full h-full',
+					sizes: ['640w', '768w', '1024w', '1536w', '2048w'],
+					htmlSizes: '(max-width: 767px) 100vw, 50vw'
+				} )}}
+			</div>
+
+			<div class="blockContentImage-content">
+				<h2>{{ blockContentImageTitle }}</h2>
+
+				{% if blockContentImageIntro %}
+					<span class="RichText">{{ blockContentImageIntro }}</span>
+				{% endif %}
+
+				{% if blockContentImageLink %}
+					{% include "_macros/button/button" with { 
+						element: blockContentImageLink
+					} %}
+				{% endif %}
+			</div>
+		</div>
+	</section>
+{% endif %}

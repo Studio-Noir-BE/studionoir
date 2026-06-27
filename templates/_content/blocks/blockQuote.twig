@@ -1,0 +1,30 @@
+{% set blockQuote = blockQuote ??? block.fieldQuote ??? null %}
+{% set blockQuoteAuthor = blockQuoteAuthor ??? block.fieldAuthor ??? null %}
+{% set blockQuoteAuthorThumbnail = blockQuoteAuthorThumbnail ??? block.fieldAuthorThumbnail.one() ??? null %}
+
+{% if blockQuote %}
+	<section class="container MainGrid u-block">
+		<div class="col-span-full xs:col-span-10 xs:col-start-2 sm:col-span-8 sm:col-start-3">
+			<span class="h1">“</span>
+			<h2 class="h2 !font-medium">{{ blockQuote|nl2br }}</h2>
+			
+			{% if blockQuoteAuthor %}
+				<div class="flex flex-wrap items-center gap-4 mt-8">
+					{% if blockQuoteAuthorThumbnail %}
+						{% import "_macros/images/image.twig" as image %}
+						
+						{{ image.picture(blockQuoteAuthorThumbnail, {
+								width: 65,
+								height: 65,
+								wrapperClass: 'relative size-16',
+								class: 'w-full h-full rounded-full',
+								sizes: ['640w', '768w', '1024w', '2048w']
+						} )}}
+					{% endif %}
+
+					<p>{{ blockQuoteAuthor }}</p>
+				</div>
+			{% endif %}
+		</div>
+	</section>
+{% endif %}

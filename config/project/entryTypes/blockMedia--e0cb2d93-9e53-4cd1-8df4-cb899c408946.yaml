@@ -1,0 +1,83 @@
+color: null
+fieldLayouts:
+  ac2049d2-9958-4332-b32c-ded99583cb48:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-09-02T15:05:05+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 42169ee5-939c-41ed-94de-615e25031a2b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-09-02T15:08:36+00:00'
+            elementCondition: null
+            fieldUid: cf142f53-be7b-4dbf-974b-ab61ece6cbee # Media
+            handle: null
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4be481bf-e9b7-4122-bf39-5f4bad79a629
+            userCondition: null
+            warning: null
+            width: 100
+        name: Media
+        uid: 8dfb11f1-af2a-4ae3-a9c7-1ba86769a156
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-09-02T15:08:36+00:00'
+            elementCondition: null
+            fieldUid: d3bea4c2-5391-497a-8497-2b6f06b9e08f # Media size
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 13ac4683-70ea-414e-84c5-d4285a0b5c2e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Instellingen
+        uid: a14e107d-597f-41ba-aca6-6f9d9c85e0ce
+        userCondition: null
+handle: blockMedia
+hasTitleField: false
+icon: image
+name: Media
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: "{ fieldMedia.one().title|default('Media') }"
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

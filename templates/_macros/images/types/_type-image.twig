@@ -1,0 +1,112 @@
+{% set imgClass = picture.class %}
+
+{% set baseWidth  = picture.width  ?? asset.getWidth() %}
+{% set baseHeight = picture.height ?? asset.getHeight() %}
+
+{# Use focal point #}
+{% set focalPointCoords   = asset.hasFocalPoint ? asset.getFocalPoint() : picture.focalPoint %}
+{% set focalPointPosition = 'object-position: ' ~ focalPointCoords|first * 100 ~ '% ' ~ focalPointCoords|last * 100 ~ '%' %}
+{% set focalPointClass    = 'w-full h-full object-cover' %}
+
+{# Per-format quality: each codec has a different efficiency curve.
+   AVIF 60 ≈ WebP 80 ≈ JPEG 85 in perceived quality, but smaller file size. #}
+{% set avifQuality = picture.avifQuality ?? 65 %}
+{% set webpQuality = picture.webpQuality ?? 82 %}
+{% set origQuality = picture.quality     ?? 85 %}
+
+{% set transformBase = {
+    mode:   picture.mode,
+    width:  baseWidth,
+    height: baseHeight
+} %}
+
+{% set originalTransform = transformBase|merge({format: asset.extension, quality: origQuality}) %}
+{% set webpTransform     = transformBase|merge({format: 'webp',          quality: webpQuality}) %}
+{% set avifTransform     = transformBase|merge({format: 'avif',          quality: avifQuality}) %}
+
+{# Format support #}
+{% set supportsWebP = craft.app.images.supportsWebP %}
+{% set supportsAvif = craft.app.images.supportsAvif ?? false %}
+
+{# Auto-generate srcset breakpoints when none are provided.
+   We generate sensible steps up to the actual asset width so we never upscale. #}
+{% set srcsetWidths = picture.sizes %}
+{% if not srcsetWidths|length %}
+    {% set assetNativeWidth = asset.getWidth() %}
+    {% set allBreakpoints   = [320, 480, 640, 768, 1024, 1280, 1536, 1920, 2560] %}
+    {% set autoWidths = [] %}
+    {% for bp in allBreakpoints %}
+        {% if bp <= assetNativeWidth %}
+            {% set autoWidths = autoWidths|merge([bp ~ 'w']) %}
+        {% endif %}
+    {% endfor %}
+    {# Always include the native width as the largest step #}
+    {% if not (assetNativeWidth ~ 'w' in autoWidths) %}
+        {% set autoWidths = autoWidths|merge([assetNativeWidth ~ 'w']) %}
+    {% endif %}
+    {% set srcsetWidths = autoWidths %}
+{% endif %}
+
+{# Dimension attributes based on actual output size #}
+{% set outWidth  = asset.getWidth(originalTransform) %}
+{% set outHeight = asset.getHeight(originalTransform) %}
+
+{# fetchpriority: high for above-the-fold (lazy=false), auto otherwise #}
+{% set fetchPriority = picture.lazy ? 'auto' : 'high' %}
+
+<picture class="block{{ picture.wrapperClass ? ' ' ~ picture.wrapperClass }}">
+    {% if srcsetWidths|length %}
+
+        {# AVIF source — smallest files, modern browsers #}
+        {% if supportsAvif %}
+            {% do asset.setTransform(avifTransform) %}
+            <source type="image/avif" srcset="{{ asset.getSrcset(srcsetWidths) }}" sizes="{{ picture.htmlSizes }}">
+        {% endif %}
+
+        {# WebP source — wide browser support, good compression #}
+        {% if supportsWebP %}
+            {% do asset.setTransform(webpTransform) %}
+            <source type="image/webp" srcset="{{ asset.getSrcset(srcsetWidths) }}" sizes="{{ picture.htmlSizes }}">
+        {% endif %}
+
+        {# Original format — universal fallback #}
+        {% do asset.setTransform(originalTransform) %}
+
+        <img
+            src="{{ asset.getUrl(originalTransform) }}"
+            srcset="{{ asset.getSrcset(srcsetWidths) }}"
+            sizes="{{ picture.htmlSizes }}"
+            loading="{{ picture.lazy ? 'lazy' : 'eager' }}"
+            decoding="async"
+            fetchpriority="{{ fetchPriority }}"
+            width="{{ outWidth }}"
+            height="{{ outHeight }}"
+            alt="{{ picture.alt }}"
+            class="{{ imgClass ~ ' ' ~ focalPointClass }}{{ picture.blurHash ? ' Image-has-blurHash' }}"
+            style="{{ focalPointPosition }}"
+            {% if picture.id|length %}id="{{ picture.id }}"{% endif %}
+            {% if picture.blurHash %}onload="this.classList.add('Image-remove-blurhash');"{% endif %}
+        />
+
+    {% else %}
+
+        {# No srcset possible (e.g. very small image): single best-format image #}
+        {% set bestTransform = supportsAvif ? avifTransform : (supportsWebP ? webpTransform : originalTransform) %}
+        {% set bestUrl       = asset.getUrl(bestTransform) %}
+
+        <img
+            src="{{ bestUrl }}"
+            loading="{{ picture.lazy ? 'lazy' : 'eager' }}"
+            decoding="async"
+            fetchpriority="{{ fetchPriority }}"
+            width="{{ outWidth }}"
+            height="{{ outHeight }}"
+            alt="{{ picture.alt }}"
+            class="{{ imgClass ~ ' ' ~ focalPointClass }}{{ picture.blurHash ? ' Image-has-blurHash' }}"
+            style="{{ focalPointPosition }}"
+            {% if picture.id|length %}id="{{ picture.id }}"{% endif %}
+            {% if picture.blurHash %}onload="this.classList.add('Image-remove-blurhash');"{% endif %}
+        />
+
+    {% endif %}
+</picture>

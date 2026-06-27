@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: itemCookies
+instructions: null
+name: 'Cookie categories'
+searchable: false
+settings:
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 96ceeece-407e-4083-b85d-1e42caa6c260 # Cookie category
+  includeTableView: false
+  maxEntries: 2
+  minEntries: 2
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

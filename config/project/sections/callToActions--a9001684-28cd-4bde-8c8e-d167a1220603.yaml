@@ -1,0 +1,41 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 236ce098-c93d-4738-9807-bf03f206db0a # Call to action
+handle: callToActions
+maxAuthors: 1
+name: 'Call to action'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - refresh
+        - '1'
+      -
+        - urlFormat
+        - '{url}'
+propagationMethod: all
+siteSettings:
+  989cfd52-e458-4172-9a3e-7681535d9d3f: # [FR] Boilerplate
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+  c3ffcf57-ea2c-4a07-a6bd-3768cfb8b05d: # [NL] Boilerplate
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+  dc638e81-e971-4ad9-8208-ad1a63716e91: # [EN] Boilerplate
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: 1
+  uid: 026a4f61-7ccd-4020-9546-f115639d4000
+type: structure

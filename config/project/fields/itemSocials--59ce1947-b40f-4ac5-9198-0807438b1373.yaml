@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: itemSocials
+instructions: null
+name: 'Social Media'
+searchable: false
+settings:
+  createButtonLabel: 'Nieuwe link'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - ffb1f94b-84f8-4e82-a213-f58d3b1e18ba # Social link
+        -
+          - group
+          - Algemeen
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -1,0 +1,203 @@
+data:
+  dataRetention: forever
+  dataRetentionValue: ''
+  fileUploadsAction: retain
+  notifications:
+    -
+      attachFiles: true
+      attachPdf: null
+      bcc: null
+      cc: null
+      conditions: null
+      content: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+      enableConditions: false
+      enabled: true
+      from: '{systemEmail}'
+      fromName: '{systemName}'
+      handle: adminNotificatie
+      name: 'Admin notificatie'
+      pdfTemplateId: null
+      recipients: email
+      replyTo: null
+      replyToName: null
+      sender: null
+      subject: '[{formName}] {field:eMailadres}'
+      templateId: 2
+      to: '{systemEmail}'
+      toConditions: null
+  pages:
+    -
+      label: 'Pagina 1'
+      rows:
+        -
+          fields:
+            -
+              settings:
+                conditions: null
+                containerAttributes: null
+                cssClasses: null
+                defaultValue: null
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: eMailadres
+                includeInEmail: true
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: E-mailadres
+                labelPosition: null
+                matchField: null
+                placeholder: null
+                prePopulate: null
+                required: true
+                uniqueValue: false
+                validateDomain: false
+                visibility: null
+              type: verbb\formie\fields\Email
+        -
+          fields:
+            -
+              settings:
+                checkedValue: Ja
+                conditions: null
+                containerAttributes: null
+                cssClasses: null
+                defaultValue: false
+                description:
+                  -
+                    attrs:
+                      textAlign: start
+                    content:
+                      -
+                        text: 'Ik ga akkoord met de privacy policy'
+                        type: text
+                    type: paragraph
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: privacyPolicy
+                includeInEmail: true
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: 'Privacy policy'
+                labelPosition: verbb\formie\positions\Hidden
+                matchField: null
+                placeholder: null
+                prePopulate: null
+                required: false
+                uncheckedValue: Nee
+                visibility: null
+              type: verbb\formie\fields\Agree
+        -
+          fields:
+            -
+              settings:
+                conditions: null
+                containerAttributes: null
+                cssClasses: null
+                defaultValue: null
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: recaptcha
+                htmlContent: "<div class=\"RichText grep-text\">\n<p>Deze site wordt beschermd door reCAPTCHA en Google.\n<br/>\nEr gelden de <a href=\"https://policies.google.com/privacy\">Privacyvoorwaarden</a> en <a href=\"https://policies.google.com/terms\">Servicevoorwaarden</a>.</p>\n</div>"
+                includeInEmail: false
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: Recaptcha
+                labelPosition: verbb\formie\positions\Hidden
+                matchField: null
+                placeholder: null
+                prePopulate: null
+                purifyContent: true
+                required: false
+                visibility: null
+              type: verbb\formie\fields\Html
+      settings:
+        backButtonLabel: Terug
+        buttonsPosition: left
+        containerAttributes: null
+        cssClasses: null
+        enableJsEvents: false
+        enableNextButtonConditions: false
+        enablePageConditions: false
+        inputAttributes: null
+        saveButtonLabel: Opslaan
+        saveButtonStyle: link
+        showBackButton: false
+        showSaveButton: false
+        submitButtonLabel: Inschrijven
+  settings:
+    collectIp: false
+    collectUser: false
+    dataRetention: null
+    dataRetentionValue: null
+    defaultEmailTemplateId: '2'
+    defaultInstructionsPosition: verbb\formie\positions\AboveInput
+    defaultLabelPosition: verbb\formie\positions\AboveInput
+    disableCaptchas: false
+    displayCurrentPageTitle: false
+    displayFormTitle: false
+    displayPageProgress: false
+    displayPageTabs: false
+    errorMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"},"content":[{"type":"text","text":"Kijk alle velden na"}]}]'
+    errorMessagePosition: top-form
+    fileUploadsAction: null
+    integrations:
+      duplicate:
+        enabled: '1'
+        showAllPages: ''
+      honeypot:
+        enabled: '1'
+        showAllPages: ''
+      javascript:
+        enabled: '1'
+        showAllPages: ''
+    limitSubmissions: null
+    limitSubmissionsIpAddressMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+    limitSubmissionsIpAddressNumber: null
+    limitSubmissionsIpAddressType: total
+    limitSubmissionsMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+    limitSubmissionsNumber: null
+    limitSubmissionsType: total
+    loadingIndicator: spinner
+    loadingIndicatorText: null
+    pageRedirectUrl: null
+    progressPosition: end
+    progressValuePosition: inside-center
+    redirectUrl: null
+    requireUser: false
+    requireUserMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+    requiredIndicator: asterisk
+    scheduleForm: false
+    scheduleFormEnd: null
+    scheduleFormExpiredMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+    scheduleFormPendingMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+    scheduleFormStart: null
+    scrollToTop: true
+    submissionTitleFormat: '{timestamp}'
+    submitAction: message
+    submitActionFormHide: true
+    submitActionMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"},"content":[{"type":"text","text":"Bedankt voor uw inschrijving"}]}]'
+    submitActionMessagePosition: top-form
+    submitActionMessageTimeout: null
+    submitActionTab: null
+    submitActionUrl: null
+    submitMethod: ajax
+    validationOnFocus: false
+    validationOnSubmit: true
+  userDeletedAction: retain
+defaultStatus: 637669d1-7f10-434e-85d6-1793365ab794 # New
+handle: newsletter
+name: Nieuwsbrief
+submitActionEntry: null
+template: 50d9ef04-f68b-41aa-a8fa-82f6bcdb795b # Subscribe template

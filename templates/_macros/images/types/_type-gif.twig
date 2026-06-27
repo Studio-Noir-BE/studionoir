@@ -1,0 +1,3 @@
+<div class="block{{ picture.wrapperClass ? " " ~ picture.wrapperClass }}">
+    <img {% if picture.id|length %} id="{{ picture.id }}" {% endif %} src="{{asset.url}}" width="{{picture.width}}" height="{{picture.height}}" alt="{{ picture.alt }}" class="{{ picture.class }}" {% if picture.lazy %} loading="lazy" {% endif %}/>
+</div>

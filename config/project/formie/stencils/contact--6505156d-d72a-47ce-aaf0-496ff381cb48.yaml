@@ -1,0 +1,410 @@
+data:
+  dataRetention: forever
+  dataRetentionValue: ''
+  fileUploadsAction: retain
+  notifications:
+    -
+      attachAssets: null
+      attachFiles: true
+      attachPdf: null
+      bcc: null
+      cc: null
+      conditions: null
+      content: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+      enableConditions: false
+      enabled: true
+      from: '{systemEmail}'
+      fromName: '{systemName}'
+      handle: adminNotificatie
+      name: 'Admin notificatie'
+      pdfTemplateId: null
+      recipients: email
+      replyTo: null
+      replyToName: '{field:email}'
+      sender: null
+      subject: '[{formName}] {field:email}'
+      templateId: 2
+      to: '{systemEmail}'
+      toConditions: null
+    -
+      attachAssets: null
+      attachFiles: true
+      attachPdf: null
+      bcc: null
+      cc: null
+      conditions: null
+      content: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+      enableConditions: false
+      enabled: true
+      from: '{systemEmail}'
+      fromName: '{systemName}'
+      handle: userNotificatie
+      name: 'User notificatie'
+      pdfTemplateId: null
+      recipients: email
+      replyTo: null
+      replyToName: null
+      sender: null
+      subject: '{field:voornaam}, bedankt voor je interesse'
+      templateId: 1
+      to: '{field:email}'
+      toConditions: null
+  pages:
+    -
+      label: 'Page 1'
+      rows:
+        -
+          fields:
+            -
+              settings:
+                conditions: null
+                containerAttributes: null
+                cookieName: null
+                cssClasses: null
+                defaultOption: custom
+                defaultValue: null
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: hiddenPageTitle
+                includeInEmail: true
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: 'Pagina titel'
+                labelPosition: verbb\formie\positions\Hidden
+                matchField: null
+                placeholder: null
+                prePopulate: null
+                queryParameter: null
+                required: false
+                visibility: null
+              type: verbb\formie\fields\Hidden
+        -
+          fields:
+            -
+              settings:
+                conditions: null
+                containerAttributes: null
+                cookieName: null
+                cssClasses: null
+                defaultOption: custom
+                defaultValue: null
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: hiddenPageUrl
+                includeInEmail: true
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: 'Pagina URL'
+                labelPosition: verbb\formie\positions\Hidden
+                matchField: null
+                placeholder: null
+                prePopulate: null
+                queryParameter: null
+                required: false
+                visibility: null
+              type: verbb\formie\fields\Hidden
+        -
+          fields:
+            -
+              settings:
+                conditions: null
+                containerAttributes: null
+                cssClasses: null
+                defaultValue: null
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: naam
+                includeInEmail: true
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: Naam
+                labelPosition: null
+                limit: false
+                matchField: null
+                max: null
+                maxType: characters
+                min: null
+                minType: characters
+                placeholder: null
+                prePopulate: null
+                required: false
+                uniqueValue: false
+                visibility: null
+              type: verbb\formie\fields\SingleLineText
+            -
+              settings:
+                conditions: null
+                containerAttributes: null
+                cssClasses: null
+                defaultValue: null
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: voornaam
+                includeInEmail: true
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: Voornaam
+                labelPosition: null
+                limit: false
+                matchField: null
+                max: null
+                maxType: characters
+                min: null
+                minType: characters
+                placeholder: null
+                prePopulate: null
+                required: false
+                uniqueValue: false
+                visibility: null
+              type: verbb\formie\fields\SingleLineText
+        -
+          fields:
+            -
+              settings:
+                conditions: null
+                containerAttributes: null
+                countryDefaultValue: null
+                countryEnabled: false
+                countryLanguage: auto
+                cssClasses: null
+                defaultValue: null
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: telefoon
+                includeInEmail: true
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: Telefoon
+                labelPosition: null
+                matchField: null
+                placeholder: null
+                prePopulate: null
+                required: false
+                visibility: null
+              type: verbb\formie\fields\Phone
+        -
+          fields:
+            -
+              settings:
+                conditions: null
+                containerAttributes: null
+                cssClasses: null
+                defaultValue: null
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: email
+                includeInEmail: true
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: E-mailadres
+                labelPosition: null
+                matchField: null
+                placeholder: null
+                prePopulate: null
+                required: true
+                uniqueValue: false
+                validateDomain: false
+                visibility: null
+              type: verbb\formie\fields\Email
+        -
+          fields:
+            -
+              settings:
+                conditions: null
+                containerAttributes: null
+                cssClasses: null
+                defaultValue: null
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: bericht
+                includeInEmail: true
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: Bericht
+                labelPosition: null
+                limit: false
+                matchField: null
+                max: null
+                maxType: characters
+                min: null
+                minType: characters
+                placeholder: null
+                prePopulate: null
+                required: false
+                richTextButtons:
+                  - bold
+                  - italic
+                uniqueValue: false
+                useRichText: false
+                visibility: null
+              type: verbb\formie\fields\MultiLineText
+        -
+          fields:
+            -
+              settings:
+                checkedValue: Ja
+                conditions: null
+                containerAttributes: null
+                cssClasses: null
+                defaultValue: false
+                description:
+                  -
+                    attrs:
+                      textAlign: start
+                    content:
+                      -
+                        text: 'Ik ga akkoord met de privacy policy'
+                        type: text
+                    type: paragraph
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: privacyPolicy
+                includeInEmail: true
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: 'Privacy policy'
+                labelPosition: verbb\formie\positions\Hidden
+                matchField: null
+                placeholder: null
+                prePopulate: null
+                required: true
+                uncheckedValue: Nee
+                visibility: null
+              type: verbb\formie\fields\Agree
+            -
+              settings:
+                conditions: null
+                containerAttributes: null
+                cssClasses: null
+                defaultValue: null
+                emailValue: null
+                enableConditions: false
+                enableContentEncryption: false
+                enabled: true
+                errorMessage: null
+                handle: recaptcha
+                htmlContent: "<div class=\"RichText grep-text\">\n<p>Deze site wordt beschermd door reCAPTCHA en Google.\n<br/>\nEr gelden de <a href=\"https://policies.google.com/privacy\">Privacyvoorwaarden</a> en <a href=\"https://policies.google.com/terms\">Servicevoorwaarden</a>.</p>\n</div>"
+                includeInEmail: false
+                inputAttributes: null
+                instructions: null
+                instructionsPosition: null
+                label: Recaptcha
+                labelPosition: verbb\formie\positions\Hidden
+                matchField: null
+                placeholder: null
+                prePopulate: null
+                purifyContent: true
+                required: false
+                visibility: null
+              type: verbb\formie\fields\Html
+      settings:
+        backButtonLabel: Back
+        buttonsPosition: left
+        containerAttributes: null
+        cssClasses: null
+        enableJsEvents: false
+        enableNextButtonConditions: false
+        enablePageConditions: false
+        inputAttributes: null
+        saveButtonLabel: Save
+        saveButtonStyle: link
+        showBackButton: false
+        showSaveButton: false
+        submitButtonLabel: Verzenden
+  settings:
+    collectIp: false
+    collectUser: false
+    dataRetention: null
+    dataRetentionValue: null
+    defaultEmailTemplateId: '2'
+    defaultInstructionsPosition: verbb\formie\positions\AboveInput
+    defaultLabelPosition: verbb\formie\positions\AboveInput
+    disableCaptchas: false
+    displayCurrentPageTitle: false
+    displayFormTitle: false
+    displayPageProgress: false
+    displayPageTabs: false
+    errorMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"},"content":[{"type":"text","text":"Kijk alle velden na"}]}]'
+    errorMessagePosition: top-form
+    fileUploadsAction: null
+    integrations:
+      duplicate:
+        enabled: '1'
+        showAllPages: ''
+      honeypot:
+        enabled: '1'
+        showAllPages: ''
+      javascript:
+        enabled: '1'
+        showAllPages: ''
+    limitSubmissions: null
+    limitSubmissionsIpAddressMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+    limitSubmissionsIpAddressNumber: null
+    limitSubmissionsIpAddressType: total
+    limitSubmissionsMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+    limitSubmissionsNumber: null
+    limitSubmissionsType: total
+    loadingIndicator: spinner
+    loadingIndicatorText: null
+    pageRedirectUrl: null
+    progressPosition: end
+    progressValuePosition: inside-center
+    redirectUrl: null
+    requireUser: false
+    requireUserMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+    requiredIndicator: asterisk
+    scheduleForm: false
+    scheduleFormEnd: null
+    scheduleFormExpiredMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+    scheduleFormPendingMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
+    scheduleFormStart: null
+    scrollToTop: true
+    submissionTitleFormat: '[{formName}] {field:email}'
+    submitAction: message
+    submitActionFormHide: true
+    submitActionMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"},"content":[{"type":"text","text":"We hebben uw vraag goed ontvangen!"}]}]'
+    submitActionMessagePosition: top-form
+    submitActionMessageTimeout: null
+    submitActionTab: null
+    submitActionUrl: null
+    submitMethod: ajax
+    validationOnFocus: false
+    validationOnSubmit: true
+  userDeletedAction: retain
+defaultStatus: 637669d1-7f10-434e-85d6-1793365ab794 # New
+handle: contact
+name: Contact
+submitActionEntry: null
+template: f6952d7a-4c24-41c6-93c0-76e62be4575d # Default template

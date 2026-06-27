@@ -1,0 +1,22 @@
+// Tailwind components
+@tailwind components;
+
+// General
+@import "general";
+
+// Global components
+@import "globals/buttons";
+@import "globals/footer";
+@import "globals/header";
+@import "globals/pageNavigation";
+@import "globals/headroom";
+@import "globals/blurHashImage";
+@import "globals/cookieConsent";
+
+// Custom components
+@import "base/design-grid";
+@import "base/a11y-dialog";
+
+
+// Blocks
+@import 'blocks/blockContentImage';

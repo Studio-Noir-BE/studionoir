@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: textBlocks
+instructions: null
+name: Tekstblokken
+searchable: false
+settings:
+  createButtonLabel: 'Nieuwe tekstblok'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 2f85bdef-07fc-424a-8a99-d0e5551586b9 # Tekstblok
+        -
+          - group
+          - Algemeen
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

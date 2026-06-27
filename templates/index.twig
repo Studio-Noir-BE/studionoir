@@ -1,0 +1,15 @@
+{% extends '_layouts/site' %}
+
+{% block main %}
+	<div class="container space-y-6 u-block grid-p">		
+		<h1 class="">{{ systemName }}</h1>
+		<h2 class="h4">With Vite & Tailwind</h2>
+		{% include "_macros/button/button" with { 
+			url: '/stylesheet',
+			text: 'Stylesheet',
+		} %}
+	</div>
+
+	{% include "_content/index" %}
+
+{% endblock %}

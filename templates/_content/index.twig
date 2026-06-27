@@ -1,0 +1,9 @@
+{% set contentMatrix = contentMatrix ??? entry.fieldContent ??? null %}
+
+{% if contentMatrix and contentMatrix|length %}
+	{% for block in contentMatrix %}
+		{% include "_content/blocks/#{block.type.handle}" with {
+			contentIndex: loop.index
+		} %}
+	{% endfor %}
+{% endif %}

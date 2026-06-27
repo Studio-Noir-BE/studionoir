@@ -1,0 +1,33 @@
+columnSuffix: null
+handle: fieldImagePosition
+instructions: null
+name: 'Afbeelding positie'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Links
+        -
+          - value
+          - left
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Rechts
+        -
+          - value
+          - right
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

@@ -1,0 +1,97 @@
+{
+  "node_modules/@fontsource-variable/inter/files/inter-cyrillic-ext-wght-normal.woff2": {
+    "file": "assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-cyrillic-ext-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-cyrillic-wght-normal.woff2": {
+    "file": "assets/inter-cyrillic-wght-normal-DqGufNeO.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-cyrillic-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-greek-ext-wght-normal.woff2": {
+    "file": "assets/inter-greek-ext-wght-normal-DlzME5K_.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-greek-ext-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-greek-wght-normal.woff2": {
+    "file": "assets/inter-greek-wght-normal-CkhJZR-_.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-greek-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2": {
+    "file": "assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2": {
+    "file": "assets/inter-latin-wght-normal-Dx4kXJAl.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2"
+  },
+  "node_modules/@fontsource-variable/inter/files/inter-vietnamese-wght-normal.woff2": {
+    "file": "assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2",
+    "src": "node_modules/@fontsource-variable/inter/files/inter-vietnamese-wght-normal.woff2"
+  },
+  "src/js/app.js": {
+    "file": "assets/app-CWbNU13e.js",
+    "name": "app",
+    "src": "src/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/js/base/cookie-banner.js",
+      "src/js/base/a11y-dialog.js",
+      "src/js/base/forms.js",
+      "src/js/base/accordion.js",
+      "src/js/base/clicktrough.js"
+    ],
+    "css": [
+      "assets/app-DenA1ghW.css"
+    ],
+    "assets": [
+      "assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2",
+      "assets/inter-cyrillic-wght-normal-DqGufNeO.woff2",
+      "assets/inter-greek-ext-wght-normal-DlzME5K_.woff2",
+      "assets/inter-greek-wght-normal-CkhJZR-_.woff2",
+      "assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2",
+      "assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2",
+      "assets/inter-latin-wght-normal-Dx4kXJAl.woff2"
+    ]
+  },
+  "src/js/base/a11y-dialog.js": {
+    "file": "assets/a11y-dialog-YKuE5OIg.js",
+    "name": "a11y-dialog",
+    "src": "src/js/base/a11y-dialog.js",
+    "isDynamicEntry": true
+  },
+  "src/js/base/accordion.js": {
+    "file": "assets/accordion-DKVS7JvQ.js",
+    "name": "accordion",
+    "src": "src/js/base/accordion.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/js/app.js"
+    ]
+  },
+  "src/js/base/clicktrough.js": {
+    "file": "assets/clicktrough-BYYRhs76.js",
+    "name": "clicktrough",
+    "src": "src/js/base/clicktrough.js",
+    "isDynamicEntry": true
+  },
+  "src/js/base/cookie-banner.js": {
+    "file": "assets/cookie-banner-DKSpmfa_.js",
+    "name": "cookie-banner",
+    "src": "src/js/base/cookie-banner.js",
+    "isDynamicEntry": true,
+    "css": [
+      "assets/cookie-banner-Bro3eUle.css"
+    ]
+  },
+  "src/js/base/forms.js": {
+    "file": "assets/forms-CVWS17e0.js",
+    "name": "forms",
+    "src": "src/js/base/forms.js",
+    "isDynamicEntry": true
+  },
+  "src/js/sprig.js": {
+    "file": "assets/sprig-l0sNRNKZ.js",
+    "name": "sprig",
+    "src": "src/js/sprig.js",
+    "isEntry": true
+  }
+}

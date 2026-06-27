@@ -1,0 +1,105 @@
+description: null
+handle: team
+name: Team
+permissions:
+  - accesscpwhensystemisoff
+  - accessplugin-formie
+  - accessplugin-seomatic
+  - accesssitewhensystemisoff
+  - 'createentries:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+  - 'createfolders:83d697dd-de45-4fcd-8469-d5cb439003d2' # Iconen
+  - 'createfolders:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  - 'deleteassets:83d697dd-de45-4fcd-8469-d5cb439003d2' # Iconen
+  - 'deleteassets:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  - 'deleteentries:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+  - 'deletepeerassets:83d697dd-de45-4fcd-8469-d5cb439003d2' # Iconen
+  - 'deletepeerassets:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  - 'deletepeerentries:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+  - 'deletepeerentrydrafts:84394f9d-b082-46f3-87fc-d4d1e49711b4' # Homepage
+  - 'deletepeerentrydrafts:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+  - 'editglobalset:850441d2-1ad9-4535-885a-47e946cd51a6' # Header
+  - 'editglobalset:8eb199ce-746a-41ab-a708-0547f9e2e4fa' # Algemeen
+  - 'editglobalset:e725c712-f724-42e7-9fe1-a33d5c0042fa' # Cookie Consent
+  - 'editimages:83d697dd-de45-4fcd-8469-d5cb439003d2' # Iconen
+  - 'editimages:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  - 'editpeerimages:83d697dd-de45-4fcd-8469-d5cb439003d2' # Iconen
+  - 'editpeerimages:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  - 'editsite:989cfd52-e458-4172-9a3e-7681535d9d3f' # [FR] Boilerplate
+  - 'editsite:c3ffcf57-ea2c-4a07-a6bd-3768cfb8b05d' # [NL] Boilerplate
+  - 'editsite:dc638e81-e971-4ad9-8208-ad1a63716e91' # [EN] Boilerplate
+  - formie-accessforms
+  - formie-accesssentnotifications
+  - formie-accesssubmissions
+  - formie-createforms
+  - formie-createsubmissions
+  - formie-deleteforms
+  - formie-deletesentnotifications
+  - formie-deletesubmissions
+  - formie-manageforms
+  - formie-resendsentnotifications
+  - formie-savesubmissions
+  - formie-showformappearance
+  - formie-showformbehavior
+  - formie-showformintegrations
+  - formie-showformsettings
+  - formie-showformusage
+  - formie-shownotifications
+  - formie-shownotificationsadvanced
+  - formie-shownotificationstemplates
+  - formie-viewsentnotifications
+  - formie-viewsubmissions
+  - 'replacefiles:83d697dd-de45-4fcd-8469-d5cb439003d2' # Iconen
+  - 'replacefiles:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  - 'replacepeerfiles:83d697dd-de45-4fcd-8469-d5cb439003d2' # Iconen
+  - 'replacepeerfiles:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  - 'saveassets:83d697dd-de45-4fcd-8469-d5cb439003d2' # Iconen
+  - 'saveassets:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  - 'saveentries:84394f9d-b082-46f3-87fc-d4d1e49711b4' # Homepage
+  - 'saveentries:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+  - 'savepeerassets:83d697dd-de45-4fcd-8469-d5cb439003d2' # Iconen
+  - 'savepeerassets:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  - 'savepeerentries:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+  - 'savepeerentrydrafts:84394f9d-b082-46f3-87fc-d4d1e49711b4' # Homepage
+  - 'savepeerentrydrafts:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+  - 'seomatic:content-meta'
+  - 'seomatic:content-meta:facebook'
+  - 'seomatic:content-meta:general'
+  - 'seomatic:content-meta:sitemap'
+  - 'seomatic:content-meta:twitter'
+  - 'seomatic:dashboard'
+  - 'seomatic:global-meta'
+  - 'seomatic:global-meta:ads'
+  - 'seomatic:global-meta:facebook'
+  - 'seomatic:global-meta:general'
+  - 'seomatic:global-meta:humans'
+  - 'seomatic:global-meta:robots'
+  - 'seomatic:global-meta:security'
+  - 'seomatic:global-meta:twitter'
+  - 'seomatic:site-settings'
+  - 'seomatic:site-settings:creator'
+  - 'seomatic:site-settings:identity'
+  - 'seomatic:site-settings:miscellaneous'
+  - 'seomatic:site-settings:sitemap'
+  - 'seomatic:site-settings:social'
+  - 'seomatic:tracking-scripts'
+  - 'seomatic:tracking-scripts:facebookpixel'
+  - 'seomatic:tracking-scripts:fathom'
+  - 'seomatic:tracking-scripts:googleanalytics'
+  - 'seomatic:tracking-scripts:googletagmanager'
+  - 'seomatic:tracking-scripts:gtag'
+  - 'seomatic:tracking-scripts:hubspot'
+  - 'seomatic:tracking-scripts:linkedininsight'
+  - 'seomatic:tracking-scripts:matomo'
+  - 'seomatic:tracking-scripts:pinteresttag'
+  - 'seomatic:tracking-scripts:plausible'
+  - 'utility:clear-caches'
+  - 'viewassets:83d697dd-de45-4fcd-8469-d5cb439003d2' # Iconen
+  - 'viewassets:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  - 'viewentries:84394f9d-b082-46f3-87fc-d4d1e49711b4' # Homepage
+  - 'viewentries:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+  - 'viewpeerassets:83d697dd-de45-4fcd-8469-d5cb439003d2' # Iconen
+  - 'viewpeerassets:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  - 'viewpeerentries:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+  - 'viewpeerentrydrafts:84394f9d-b082-46f3-87fc-d4d1e49711b4' # Homepage
+  - 'viewpeerentrydrafts:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+  - 'changeauthorforpeerentries:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action

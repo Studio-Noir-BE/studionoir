@@ -1,0 +1,19 @@
+{% set accordionName = 'accordion' %}
+
+<div class="flex flex-col accordion col-start-2 col-span-10">
+    {% for item in loopTroughItems %}
+        {% set itemTitle = item.title ?? null %}
+
+        <div class="w-full accordion-container" data-parent-id="{{accordionName}}" data-id="{{ item.id }}">
+            <input type="checkbox" id="{{item.id}}" name="dropdown-{{accordionName}}" value="{{ item.id }}" class="hidden accordion-toggle"/>
+            <label for="{{item.id}}" class="py-6">
+                {{svg('dist/svgs/arrow-down.svg')|attr({'class':'min-w-3 max-w-3 h-3'})}} 
+                <p class="font-bold">{{ itemTitle }}</p>                        
+            </label>
+
+            <div class="overflow-hidden h-0 accordion-content">
+                <div class="py-8"></div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

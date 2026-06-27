@@ -1,0 +1,83 @@
+{% set baseUrl = alias('@web') ~ '/' %}
+{% set notchColor = '#000000' %}
+
+<!doctype html>
+<html lang="{{ craft.app.language }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+	<head>
+		{%- minify -%}
+		<meta charset="utf-8"/>
+		<meta content="IE=edge" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{# <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> #}
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="{{ notchColor }}">
+		<meta name="msapplication-navbutton-color" content="{{ notchColor }}">
+
+		<meta name="format-detection" content="telephone=no">
+
+		{# Favicons #}
+		{{ craft.vite.inline("@webroot/dist/assets/favicons/webapp.html") }}
+
+		{% include "_partials/cookies/_scripts" %}
+		
+		{%- endminify -%}		
+
+		{%- minify -%}
+		{# Site fonts #}
+		{% include "_inlinecss/_site_fonts.twig" ignore missing %}
+		{%- endminify -%}
+
+		{%- minify -%}
+		{# Inline JS #}
+			<script type="text/javascript">
+        		var baseUrl = "{{ baseUrl }}";
+			</script>
+		{# </head> JS #}
+		{% block _head_js %}{% endblock %}
+
+		{# Inlince css #}
+
+		{# Prevent FOUC — body hidden until JS sets .is-ready on <body> #}
+		{# CSS animation fallback: always visible after 0.8s even if JS fails #}
+		<style>
+			body { transition: opacity 0.8s ease; }
+			body:not(.is-ready) {
+				opacity: 0;
+				animation: page-reveal 0s 0.8s forwards;
+			}
+			@keyframes page-reveal { to { opacity: 1; } }
+		</style>
+
+
+		{# Child templates can inject <link rel="preload"> for the LCP image here #}
+		{% block preload %}{% endblock %}
+
+		{% include "_partials/_css.twig" %}
+
+		{# Load critical css when not in dev mode #}
+		{% if getenv('CRAFT_ENVIRONMENT') != "dev" %}
+			{{ craft.vite.includeCriticalCssTags() }}
+		{% endif %}
+
+		{# Load in our main app.js (this includes our app.css) #}
+		{{ craft.vite.script('src/js/app.js', true) }}
+	</head>
+
+	{# HTML Body #}
+	<body {% if bodyClass is defined %} class="{{ bodyClass }}" {% endif %}>
+	
+		{% block body %}{% endblock %}
+
+		{# Page naviation #}
+		{% include "_partials/_pageNavigation" %}	
+		
+		{# Scripts #}
+		{% include "_partials/_scripts.twig" %}
+
+		{# Inline JS #}
+		{% block _inline_js %}{% endblock %}
+		
+		{%- endminify -%}
+	</body>
+</html>

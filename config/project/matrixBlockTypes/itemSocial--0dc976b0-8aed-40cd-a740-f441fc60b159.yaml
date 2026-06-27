@@ -1,0 +1,100 @@
+field: 59ce1947-b40f-4ac5-9198-0807438b1373 # Social Media
+fieldLayouts:
+  cb7792da-b4be-454c-a155-de183b4b7461:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 9df311bc-5296-40f6-8e02-bd5828667ae6 # Social link
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 08353536-ad9d-4c4a-980d-b10bf5cb2fc6
+            userCondition: null
+            warning: null
+            width: 75
+          -
+            elementCondition: null
+            fieldUid: ad2b34dd-2423-42c8-a705-8a2b7bcee440 # Type
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 14c1aa81-2b3b-400f-82a0-cc3a7991bae3
+            userCondition: null
+            warning: null
+            width: 25
+        name: Content
+        uid: 97e5ee61-a4f2-4cd3-8253-beb28cbce013
+        userCondition: null
+fields:
+  9df311bc-5296-40f6-8e02-bd5828667ae6: # Social link
+    columnSuffix: biuekomi
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: fieldLink
+    instructions: null
+    name: 'Social link'
+    searchable: false
+    settings:
+      maxLength: 255
+      types:
+        - url
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  ad2b34dd-2423-42c8-a705-8a2b7bcee440: # Type
+    columnSuffix: hjlfqlys
+    contentColumnType: string
+    fieldGroup: null
+    handle: fieldType
+    instructions: null
+    name: Type
+    searchable: false
+    settings:
+      columnType: string
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Facebook
+            -
+              - value
+              - facebook
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Instagram
+            -
+              - value
+              - instagram
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - LinkedIn
+            -
+              - value
+              - linkedin
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: itemSocial
+name: 'Social Media'
+sortOrder: 1

@@ -1,0 +1,63 @@
+{
+    "name": "studionoir/boilerplate",
+    "description": "Template voor Studio Noir websites",
+    "version": "1.0.0",
+    "type": "boilerplate",
+    "require": {
+        "craftcms/aws-s3": "^2.3.0",
+        "craftcms/ckeditor": "^5.5.0",
+        "craftcms/cms": "^5.9.22",
+        "craftcms/element-api": "4.2.0",
+        "craftcms/mailgun": "^3.1.0",
+        "nystudio107/craft-cookies": "5.0.0",
+        "nystudio107/craft-minify": "5.0.0",
+        "nystudio107/craft-seomatic": "^5.1.21",
+        "nystudio107/craft-vite": "5.0.1",
+        "putyourlightson/craft-sherlock": "^5.2.1",
+        "putyourlightson/craft-sprig": "^3.7.2",
+        "statikbe/craft-translate": "^5.1",
+        "symfony/var-dumper": "^5.3",
+        "verbb/bugsnag": "^5.0.2",
+        "verbb/expanded-singles": "3.0.3",
+        "verbb/formie": "^3.1.23",
+        "verbb/knock-knock": "^3.0.5",
+        "verbb/smith": "3.1.1",
+        "vlucas/phpdotenv": "^5.4.0"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "modules\\": "modules/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "8.2.0"
+        },
+        "allow-plugins": {
+            "craftcms/plugin-installer": true,
+            "yiisoft/yii2-composer": true,
+            "treeware/plant": true
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example.dev', '.env');\""
+        ]
+    },
+    "require-dev": {
+        "craftcms/generator": "^2.0",
+        "deployer/deployer": "^7.1",
+        "yiisoft/yii2-shell": "^2.0.3"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://composer.craftcms.com",
+            "canonical": false
+        }
+    ]
+}

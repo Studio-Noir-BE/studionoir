@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: fieldCta
+instructions: null
+name: 'Call to action'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  selectionLabel: 'Kies CTA'
+  showCardsInGrid: false
+  showSiteMenu: false
+  sources:
+    - 'section:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

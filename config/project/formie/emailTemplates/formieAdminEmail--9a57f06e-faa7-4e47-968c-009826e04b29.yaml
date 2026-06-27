@@ -1,0 +1,4 @@
+handle: formieAdminEmail
+name: 'Admin Email'
+sortOrder: null
+template: _formie/emails/adminEmail

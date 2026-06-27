@@ -1,0 +1,10 @@
+{# COPY THIS TO EVERY SPRIG COMPONENT FILE - needed for reloading js after sprig has reloaded #}
+{% if sprig.isRequest %}
+	{% set randomNumber = random(1, 9999999) %}
+	{% if craft.vite.devServerRunning() %}
+		{% set jsUrl = craft.vite.asset("src/js/sprig.js?v=" ~ randomNumber) %}
+		<script src="{{ jsUrl }}" type="module"></script>
+	{% else %}
+		<script src="{{ craft.vite.entry("sprig.js") }}?v={{ randomNumber }}" type="module"></script>
+	{% endif %}
+{% endif %}

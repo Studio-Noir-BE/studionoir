@@ -1,0 +1,16 @@
+columnSuffix: plwijzad
+handle: ccChangeCookies
+instructions: "Tekst die onderaan in de footer zal staan om de banner opnieuw te tonen en je cookie voorkeur aan te passen.\r\nLaat dit veld leeg om deze optie niet te tonen in de footer."
+name: 'Wijzig cookies button'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,11 @@
+<div class="Bullets">
+	<ul class="flex gap-2 list-none Bullets-items">
+		{% for i in 1..pageInfo.totalPages %}
+			{% if i == page %}
+				<li class="Bullets-item Bullets-item--active w-[15px] h-[15px] border border-primary bg-primary rounded-full"></li>
+			{% else %}
+				<li sprig s-val:page="{{ i }}" onclick="toTop()" class="cursor-pointer Bullets-item w-[15px] h-[15px] border border-primary bg-white rounded-full hover:bg-primary"></li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+</div>

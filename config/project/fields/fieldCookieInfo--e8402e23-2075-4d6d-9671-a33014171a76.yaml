@@ -1,0 +1,37 @@
+columnSuffix: ikbwiasn
+handle: fieldCookieInfo
+instructions: null
+name: 'Cookie categories - Cookie category - Info'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: '*'
+  css: null
+  cssFile: null
+  defaultTransform: null
+  fullGraphqlData: false
+  headingLevels:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+  js: null
+  jsFile: Cookie-Editor.json
+  options: null
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  toolbar:
+    - bold
+    - italic
+    - link
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field

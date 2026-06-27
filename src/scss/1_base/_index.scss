@@ -1,0 +1,8 @@
+// Tailwind base
+@tailwind base;
+
+// Custom base settings
+@import 'sizes';
+@import 'container';
+@import 'typography';
+@import 'formie';

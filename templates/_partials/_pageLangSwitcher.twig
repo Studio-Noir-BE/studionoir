@@ -1,0 +1,43 @@
+{# logic #}
+{% set currentElement = craft.app.urlManager.matchedElement %}
+{% set sites = craft.app.getSites().getGroupById(currentSite.groupId).getSites() %}
+
+{% set switcherLinks = [] %}
+
+{% for site in sites %}
+	{% if site.baseUrl is not empty %}
+		{% set url = site.getBaseUrl() %}
+		{% if currentElement %}
+			{% set otherLocaleElement = craft.app.getElements().getElementById(currentElement.id, currentElement.className(), site.id) %}
+			{% if otherLocaleElement and otherLocaleElement.enabledForSite %}
+				{% set url = otherLocaleElement.url %}
+			{% endif %}
+		{% endif %}
+
+		{% set switcherLinks = switcherLinks|merge([{
+			url: url, 
+			current: site.id == currentSite.id ? true : false,
+			language: site.language,
+		}]) %}
+	{% endif %}
+{% endfor %}
+
+
+{# outputting html #}
+{% if switcherLinks|length >= 1 %}
+	<nav aria-label="{{'Switch language'|t}}" class="LangNav">
+		<ul class="LangNav-list">
+			{% for switcherLink in switcherLinks %}
+				<li class="LangNav-item{{ currentSite.language == switcherLink.language ? ' is-active' }}">
+					<a class="LangNav-link Link Footer-item" href="{{ switcherLink.url }}" hreflang="{{ switcherLink.language }}" lang="{{ switcherLink.language }}">
+						{{ switcherLink.language|slice(0, 2) }}
+					</a>
+				</li>
+
+				{% if not loop.last %}
+						<li class="LangNav-item LangNav-item--splitter"></li>
+				{% endif %}                        
+			{% endfor %}
+		</ul>
+	</nav>
+{% endif %}

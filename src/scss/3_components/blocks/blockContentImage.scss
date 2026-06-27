@@ -1,0 +1,75 @@
+.blockContentImage {
+    &-content {
+        @apply space-y-6;
+        @apply sm:py-10;
+        @apply col-span-full;
+        @apply sm:col-span-6 sm:col-start-7;
+        @apply md:col-span-4 md:col-start-8;
+        @apply lg:col-span-3 lg:col-start-8;
+    }
+
+    &-media {
+        @apply w-full h-full;
+        @apply col-span-full;
+        @apply sm:col-span-5;
+        max-height: 85vh;
+    }
+
+    &-small {
+        .blockContentImage-content {
+            @apply md:col-span-4 md:col-start-8;
+        }
+
+        .blockContentImage-media {
+            @apply md:col-span-5 md:col-start-2;
+        }
+    }
+
+    &-large {
+        .blockContentImage-content {}
+
+        .blockContentImage-media {
+            @apply md:col-span-6;
+        }
+    }
+
+    &-extraLarge {
+        .blockContentImage-content {}
+
+        .blockContentImage-media {
+            @apply md:col-span-6;
+        }
+        
+        &.blockContentImage-left {
+            .blockContentImage-media {
+                margin-left: calc(#{$container_padding} * -1) ;
+                width: calc(100% + (#{$container_padding} * 2));
+                
+                @media (min-width: theme("screens.sm")) {
+                        width: calc(100% + (#{$container_padding} * 1));
+                }
+
+                @media (min-width: ($container + ($container_padding) * 2)) {
+                        margin-left: calc(((100vw - #{$container}) / 2) * -1) ;
+                        width: calc(100% + ((100vw - #{$container}) / 2));
+                }
+            }
+        }
+
+        &.blockContentImage-right {
+            .blockContentImage-media {
+                margin-right: calc(#{$container_padding} * -1) ;
+                width: calc(100% + (#{$container_padding} * 2));
+                
+                @media (min-width: theme("screens.sm")) {
+                        width: calc(100% + (#{$container_padding} * 1));
+                }
+
+                @media (min-width: ($container + ($container_padding) * 2)) {
+                        margin-right: calc(((100vw - #{$container}) / 2) * -1) ;
+                        width: calc(100% + ((100vw - #{$container}) / 2));
+                }
+            }
+        }
+    }
+}

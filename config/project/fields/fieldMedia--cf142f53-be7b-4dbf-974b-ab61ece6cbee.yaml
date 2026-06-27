@@ -1,0 +1,38 @@
+columnSuffix: null
+handle: fieldMedia
+instructions: null
+name: Media
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds:
+    - image
+    - json
+    - video
+  branchLimit: null
+  defaultUploadLocationSource: 'volume:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  defaultUploadLocationSubpath: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  previewMode: full
+  restrictFiles: true
+  restrictLocation: false
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  restrictedLocationSubpath: null
+  selectionLabel: 'Kies media'
+  showCardsInGrid: false
+  showSiteMenu: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources:
+    - 'volume:c15dbece-2f4f-40cb-8596-286db615cefc' # Bestanden
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: large
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Assets

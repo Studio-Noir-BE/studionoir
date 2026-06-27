@@ -1,0 +1,44 @@
+columnSuffix: null
+handle: fieldMediaSize
+instructions: null
+name: 'Media size'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Large
+        -
+          - value
+          - large
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Medium
+        -
+          - value
+          - medium
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Small
+        -
+          - value
+          - small
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

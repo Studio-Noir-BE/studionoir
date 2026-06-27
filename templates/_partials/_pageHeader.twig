@@ -1,0 +1,44 @@
+{% set primaryNav = globalHeader.primaryNav.all() ?? null %}
+{% set toggleNav = globalHeader.toggleNav.all() ?? null %}
+{% set topNav = globalHeader.topNav.all() ?? null %}
+
+{% if primaryNav or toggleNav or topNav %}
+	<header id="Header" class="js-header Header">
+		{% if topNav %}
+			<div class="js-header--top Header-top">
+				{% include "_macros/navigation" with {
+					navName: 'TopNav',
+					navItems: topNav,
+					navClasses: 'grid-p container',
+					navLinkClasses: 'Is-link--reversed'
+				} %}
+			</div>
+		{% endif %}
+
+		<div class="container Header-wrapper grid-p">
+			<a class="Link" href="{{ siteUrl }}" title="{{ siteName ~ ' ' ~ 'homepage'|t }}">
+				{{ svg(include('_partials/icons/logo.svg'))|attr({class: 'w-full h-auto max-w-[150px] pointer-events-all'}) }}
+			</a>
+
+			<div class="Header-content">
+				{% if primaryNav %}
+					<div class="js-header--primary Header-main">
+						{% include "_macros/navigation" with {
+							navName: 'MainNav',
+							navItems: primaryNav,
+							navLinkClasses: 'Is-link--reversed'
+						} %}
+					</div>
+				{% endif %}
+
+				{% if primaryNav or toggleNav %}
+					<div class="js-toggle Toggle resp:hidden Toggle-{{ toggleNav ? 'toggleNavItems' :  'primaryNavItems' }}">
+						<span class="Toggle-line Toggle-line--1"></span>
+						<span class="Toggle-line Toggle-line--2"></span>
+						<span class="Toggle-line Toggle-line--3"></span>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</header>
+{% endif %}

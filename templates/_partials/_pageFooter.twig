@@ -1,0 +1,129 @@
+{% set sitename = globalGeneral.fieldSiteName %}
+{% set address = globalGeneral.fieldAddress %}
+{% set phone = globalGeneral.fieldPhone %}
+{% set email = globalGeneral.fieldEmail %}
+{% set sitemap = globalFooter.fieldSitemapNav.all() ?? null %}
+{% set socials = globalGeneral.itemSocials.all() ?? null %}
+{% set newsletter = globalGeneral.fieldForm.one() ?? null %}
+{% set footerUtils = globalFooter.fieldUtilsNav.all() ?? null %}
+
+<footer class="Footer">
+	<div class="container">
+		<div class="Footer-top MainGrid !gap-y-10">
+			<a class="col-span-full lg:col-span-2 Footer-logo Link" href="{{ siteUrl }}" title="{{ siteName ~ ' ' ~ 'homepage'|t }}">
+				{{ svg(include('_partials/icons/logo.svg'))|attr({class: 'Footer-logo--icon max-w-[240px] ml:max-w-[300px]'}) }}
+			</a>
+
+			<div class="col-span-full lg:col-span-4 lg:!col-start-4 xl:col-span-2 2xl:!col-start-5 container:!col-start-4 Footer-info childAll:!text-primary">
+				<h4>{{ 'Contact'|t }}</h4>
+
+				<div class="mt-8">
+					{% if sitename %}
+						<p>{{ sitename }}</p>
+					{% endif %}
+
+					{% if address %}
+						<a class="inline-block mb-4 font-light Link" href="https://www.google.com/maps/search/?api=1&query={{ globalGeneral.fieldAddress|url_encode }}" target="_blank">
+							{{ address|nl2br }}
+						</a>
+					{% endif %}
+
+					{% if phone or email %}
+						<div class="flex flex-col items-start mt-8">
+							{% if phone %}
+								<a href="{{ phone.url }}" class="Is-link--reversed">{{ phone.label }}</a>
+							{% endif %}
+							{% if email %}
+								<a href="{{ email.url }}" class="Is-link--reversed">{{ email.label }}</a>
+							{% endif %}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+
+			{% if sitemap %}
+				<div class="col-span-full md:col-span-6 SiteMap lg:col-span-4 lg:col-start-8 container:col-start-6 xl:col-span-3 2xl:col-start-7 childAll:!text-primary">
+					<h4>{{ 'Sitemap'|t }}</h4>
+				
+					<div class="grid grid-cols-2 mt-8 grid-gap">
+						<div class="flex flex-col items-start">
+							{% for sitemapItem in sitemap %}
+								{% set sitemapLink = sitemapItem.fieldLink ?? null %}
+								<a href="{{ sitemapLink.url }}" class="Is-link--reversed">{{ sitemapLink.label }}</a>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			{% endif %}
+
+			{% if newsletter or socials %}				
+				{% if newsletter %}
+					{% set fieldSubscribeTitle = globalGeneral.fieldSubscribeTitle %}
+					<div class="flex relative flex-col col-span-full col-start-1 items-start Footer-subscribe md:col-span-6 lg:col-span-4 lg:col-start-4 xl:col-span-3 xl:!col-start-10 2xl:col-span-2 container:col-span-3">
+						{% if fieldSubscribeTitle %}
+							<h4 class="mb-8 leading-[var(--footer-line-height)]">{{ fieldSubscribeTitle }}</h4>
+						{% endif %}
+
+						{% include "_macros/formie" with {
+							formieElement: newsletter
+						} %}
+					</div>
+				{% endif %}
+
+				{% if socials %}
+					<nav class="col-span-full md:col-span-6 lg:col-span-2 lg:!col-start-4 2xl:!col-start-5 container:!col-start-4 SocialNav childAll:!text-primary pt-8 xl:pt-0">						
+						<div class="flex gap-2 items-center">
+							{% for social in socials %}
+								{% set socialLink = social.fieldSocialLink ?? null %}
+								{% set socialIcon = social.fieldIcon.one() ?? null %}
+
+								<a href="{{ socialLink.url }}" target="_blank" class="{% if socialIcon %}Link{% else %}Is-link--reversed{% endif %}">
+									{% if socialIcon %}									
+										{{ svg(socialIcon) }}
+									{% else %}
+										{{ socialLink.label }}	
+									{% endif %}
+								</a>
+							{% endfor %}
+						</div>
+					</nav>
+				{% endif %}
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="container Footer-bottom MainGrid ml:!gap-y-3 childAll:!text-primary">
+		<div class="flex flex-col col-span-full gap-4 justify-between items-start sm:flex-row sm:items-end ml:items-center">
+			<div class="flex flex-col gap-y-4 gap-x-8 ml:flex-row ml:items-center">
+				<p class="whitespace-nowrap text-secondary">&copy; Copyright {{sitename}}</p>
+				
+				{% if footerUtils or cookieConsent.ccChangeCookies%}
+					<nav class="col-span-10 col-start-1 md:col-span-5 md:col-start-6 UtilsNav">
+						<div class="flex gap-8 items-center">
+							{% if footerUtils %}
+								{% for navItem in footerUtils %}
+									{% set navItemLink = navItem.fieldLink %}
+									<a href="{{ navItemLink.url }}" target="_blank" class="Is-link--reversed">{{ navItemLink.label }}</a>
+								{% endfor %}
+							{% endif %}
+
+							{% if cookieConsent.ccChangeCookies %}
+								<p class="cursor-pointer Is-link--reversed" data-cc="show-preferencesModal">{{ cookieConsent.ccChangeCookies }}</p>
+							{% endif %}
+						</div>
+					</nav>
+				{% endif %}
+			</div>
+			<p class="flex col-span-full justify-start items-center whitespace-nowrap xs:col-span-2 xs:justify-end">
+				<span class="whitespace-nowrap">
+					Site by
+				</span>
+				&nbsp;
+				<a href="https://studionoir.be" target="_blank" class="Is-link--reversed">Studio Noir</a>
+			</p>
+		</div>
+
+				
+	</div>
+</footer>
+{% block _inline_js %}{% endblock %}

@@ -1,0 +1,11 @@
+<div class="Pagination">
+	<ul class="flex gap-5 list-none Pagination-items">
+		{% for i in 1..pageInfo.totalPages %}
+			{% if i == page %}
+				<li class="text-primary Pagination-item Pagination-item--active">{{ i }}</li>
+			{% else %}
+				<li sprig s-val:page="{{ i }}" onclick="toTop()" class="cursor-pointer Pagination-item hover:text-primary">{{ i }}</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+</div>

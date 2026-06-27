@@ -1,0 +1,14 @@
+{% extends '_layouts/site' %}
+
+{% set fieldTitle = entry.fieldTitle %}
+
+{% block main %}
+    <section class="MainGrid u-block">
+        {% if fieldTitle %}
+            <h1 class="col-span-full sm:col-span-10 sm:col-start-2">{{ fieldTitle }}</h1>
+        {% endif %}
+    </section>
+	
+	{% include "_partials/_blocks/_text-blocks" %}
+
+{% endblock %}

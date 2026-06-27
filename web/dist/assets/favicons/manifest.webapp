@@ -1,0 +1,14 @@
+{
+  "version": "2.3.3",
+  "name": "boilerplate",
+  "description": "Boilerplate",
+  "icons": {
+    "60": "/dist/assets/favicons/firefox_app_60x60.png",
+    "128": "/dist/assets/favicons/firefox_app_128x128.png",
+    "512": "/dist/assets/favicons/firefox_app_512x512.png"
+  },
+  "developer": {
+    "name": "lennonpuype <info@studionoir.be>",
+    "url": "https://studionoir.be"
+  }
+}

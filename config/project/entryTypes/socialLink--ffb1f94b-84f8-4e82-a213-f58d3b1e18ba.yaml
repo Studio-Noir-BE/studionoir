@@ -1,0 +1,53 @@
+color: null
+description: null
+fieldLayouts:
+  3e8a13c8-f064-4452-9328-66c7344ffd49:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-08T08:42:14+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 6667d527-957b-47c1-9a03-236627048797 # Social link
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e7ddd4ef-a1dd-4c73-9ab5-f8855dc094af
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-16T12:25:08+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: bf3647cf-4af7-43c0-b4a8-15d036a26e4b # Icoon
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 57ce425a-3482-4682-a86f-ff62e88a8be8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhoud
+        uid: ee038e5d-ee94-4c56-8ce2-0fc0b94c52de
+        userCondition: null
+handle: socialLink
+hasTitleField: false
+icon: null
+name: 'Social link'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

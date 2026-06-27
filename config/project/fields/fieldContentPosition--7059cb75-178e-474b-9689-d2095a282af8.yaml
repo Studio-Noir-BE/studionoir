@@ -1,0 +1,44 @@
+columnSuffix: null
+handle: fieldContentPosition
+instructions: null
+name: 'Inhoud positie'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Top
+        -
+          - value
+          - top
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Center
+        -
+          - value
+          - center
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Bottom
+        -
+          - value
+          - bottom
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

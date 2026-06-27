@@ -1,0 +1,822 @@
+dateModified: 1778147949
+elementSources:
+  craft\elements\Entry:
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: '*'
+      tableAttributes:
+        - section
+        - postDate
+        - expiryDate
+        - link
+      type: native
+    -
+      heading: "Pagina's"
+      key: 'heading:4fb53556-3706-4f57-928d-1332615e4532'
+      type: heading
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: 'single:84394f9d-b082-46f3-87fc-d4d1e49711b4' # Homepage
+      tableAttributes:
+        - dateUpdated
+        - revisionCreator
+        - link
+      type: native
+    -
+      key: 'section:3f3921ca-3e6f-483f-b3cb-4652072d7e3a' # Privacy pagina's
+      type: native
+    -
+      heading: Andere
+      key: 'heading:bcfcb9f3-abaf-4338-a8ad-667c5a52ae9c'
+      type: heading
+    -
+      defaultSort:
+        - structure
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:a9001684-28cd-4bde-8c8e-d167a1220603' # Call to action
+      tableAttributes:
+        - status
+        - postDate
+        - expiryDate
+        - link
+      type: native
+email:
+  fromEmail: $FROM_EMAIL
+  fromName: $SITE_NAME
+  replyToEmail: $FROM_EMAIL
+  template: null
+  transportSettings:
+    apiKey: $MAILGUN_API_KEY
+    domain: $MAILGUN_DOMAIN
+    endpoint: $MAILGUN_ENDPOINT
+  transportType: craft\mailgun\MailgunAdapter
+fs:
+  files:
+    hasUrls: true
+    name: Bestanden
+    settings:
+      path: '@webroot/uploads/files'
+    type: craft\fs\Local
+    url: '@web/uploads/files'
+  filesAWS:
+    hasUrls: true
+    name: 'Bestanden (AWS)'
+    settings:
+      addSubfolderToRootUrl: true
+      autoFocalPoint: false
+      bucket: $S3_BUCKET
+      bucketSelectionMode: manual
+      cfDistributionId: $CLOUDFRONT_DISTRIBUTION_ID
+      cfPrefix: $CLOUDFRONT_PATH_PREFIX
+      expires: '3 months'
+      keyId: $S3_KEY_ID
+      makeUploadsPublic: false
+      region: $S3_REGION
+      secret: $S3_SECRET
+      storageClass: ''
+      subfolder: $CLOUDFRONT_PATH_PREFIX
+    type: craft\awss3\Fs
+    url: $CLOUDFRONT_URL
+  icons:
+    hasUrls: true
+    name: Iconen
+    settings:
+      path: '@webroot/uploads/icons'
+    type: craft\fs\Local
+    url: '@web/uploads/icons'
+meta:
+  __names__:
+    0d701d88-05bb-4666-ab9b-6912e07de9b4: Tekstblokken # Tekstblokken
+    0dc976b0-8aed-40cd-a740-f441fc60b159: 'Social Media' # Social Media
+    01de395c-cf08-472b-a0a6-5b4887d0dd4e: 'Call to action' # Call to action
+    2c2fef9c-9f3d-4d65-8130-5a8fdfe9a8d7: 'Afbeelding grootte' # Afbeelding grootte
+    2e6ed7ec-713f-407b-883e-ef678e8ca5d1: 'Cookie banner info' # Cookie banner info
+    2f85bdef-07fc-424a-8a99-d0e5551586b9: Tekstblok # Tekstblok
+    3f3921ca-3e6f-483f-b3cb-4652072d7e3a: "Privacy pagina's" # Privacy pagina's
+    4b05088d-fbfc-42bd-9022-209ba1864f4c: 'Meer info' # Meer info
+    4ecc4f27-ace6-45fd-b1bd-d567af5a1a73: 'Alles aanvaarden button' # Alles aanvaarden button
+    6dcc0268-6d7a-42e3-8215-d498873cf8e0: Email # Email
+    6f4d32bc-d419-4d1e-bc41-2a9eb4830b0d: Tekst # Tekst
+    8a61e928-0305-4d8c-a622-f299bda42831: Afbeelding # Afbeelding
+    8eb199ce-746a-41ab-a708-0547f9e2e4fa: Algemeen # Algemeen
+    8f0fdf6a-53fc-4df4-90ba-03b7ebb9c4d6: Link # Link
+    9a57f06e-faa7-4e47-968c-009826e04b29: 'Admin Email' # Admin Email
+    9b2af6f0-79e7-4b21-97bc-aa4b967fc289: 'Top navigatie' # Top navigatie
+    9df311bc-5296-40f6-8e02-bd5828667ae6: 'Social link' # Social link
+    31dbc7ea-c535-4ce6-b418-87bf1787132b: Nieuwsbrief # Nieuwsbrief
+    45d0dd35-c50c-45ae-914d-b9eb90e05312: Links # Links
+    50d9ef04-f68b-41aa-a8fa-82f6bcdb795b: 'Subscribe template' # Subscribe template
+    59ce1947-b40f-4ac5-9198-0807438b1373: 'Social Media' # Social Media
+    73a7a1bf-bcef-4bc3-bdb4-6a947c3d1688: SEO # SEO
+    83d697dd-de45-4fcd-8469-d5cb439003d2: Iconen # Iconen
+    85ed2fef-6664-4c66-b14d-7f8ada75f8ba: $SITE_NAME # $SITE_NAME
+    96ceeece-407e-4083-b85d-1e42caa6c260: 'Cookie category' # Cookie category
+    99ea6ab0-a49b-43a6-960a-faf066ed7a8c: Address # Address
+    167bdbc8-40d6-4ef7-b699-79d4c4892032: Formulier # Formulier
+    236ce098-c93d-4738-9807-bf03f206db0a: 'Call to action' # Call to action
+    395a26e7-da38-4831-bd81-cf24b0965f3d: Inhoud # Inhoud
+    582bc6d2-40e6-414c-b7b8-881c520c6944: 'Meer info titel' # Meer info titel
+    989cfd52-e458-4172-9a3e-7681535d9d3f: '[FR] Boilerplate' # [FR] Boilerplate
+    6667d527-957b-47c1-9a03-236627048797: 'Social link' # Social link
+    7059cb75-178e-474b-9689-d2095a282af8: 'Inhoud positie' # Inhoud positie
+    84394f9d-b082-46f3-87fc-d4d1e49711b4: Homepage # Homepage
+    89087def-1f89-42c4-922f-14e6561ec88c: Intro # Intro
+    90327df5-f89a-4777-9b54-be40a932831d: Link # Link
+    637669d1-7f10-434e-85d6-1793365ab794: New # New
+    850441d2-1ad9-4535-885a-47e946cd51a6: Header # Header
+    2642300a-70d8-4baa-bf0c-94684b81d15e: 'Save settings buttons' # Save settings buttons
+    6505156d-d72a-47ce-aaf0-496ff381cb48: Contact # Contact
+    31490647-dc00-4fe3-ad1d-297dc9e66d5f: Footer # Footer
+    a0eb4443-cbcb-4e4c-8944-d6024992e8de: 'Inhoud + afbeelding' # Inhoud + afbeelding
+    a6c13632-1943-407f-9388-4a3c6c8036c7: 'Cookie banner titel' # Cookie banner titel
+    a9001684-28cd-4bde-8c8e-d167a1220603: 'Call to action' # Call to action
+    aac7c47f-9fca-45a1-b355-337b5bae8db2: 'Wijzig cookies button' # Wijzig cookies button
+    ad2b34dd-2423-42c8-a705-8a2b7bcee440: Type # Type
+    b6dc7bfe-0f5d-4a9a-9824-50e32c566b0d: 'User Email' # User Email
+    b65858dc-8e20-4ea3-b83e-c8b094cc8d49: 'Cookie categories' # Cookie categories
+    bf3647cf-4af7-43c0-b4a8-15d036a26e4b: Icoon # Icoon
+    c3ffcf57-ea2c-4a07-a6bd-3768cfb8b05d: '[NL] Boilerplate' # [NL] Boilerplate
+    c15dbece-2f4f-40cb-8596-286db615cefc: Bestanden # Bestanden
+    c55ca0a9-4bd6-409b-afd8-c1884dafecd0: Team # Team
+    c60fcd61-dc12-4e34-9175-b7a526cbce99: Telefoon # Telefoon
+    c344b2ce-ec0d-4029-80a8-171db1d39ada: 'Toggle navigatie' # Toggle navigatie
+    c9815038-f9b6-4165-855c-fd6eafc65bd5: 'Afbeelding positie' # Afbeelding positie
+    cb69b11f-a715-49f1-b4ae-1fec1d2f2c96: Toggle # Toggle
+    ce712af1-fa17-4c35-85bc-069cefdc1e16: Titel # Titel
+    cf142f53-be7b-4dbf-974b-ab61ece6cbee: Media # Media
+    d3bea4c2-5391-497a-8497-2b6f06b9e08f: 'Media size' # Media size
+    d5f2e66c-6d67-4976-b6b2-165f381d6911: Quote # Quote
+    d485a71a-6ed4-4ddf-a513-4a22abc7c2ee: 'Public Schema' # Public Schema
+    d27162eb-c2a8-4fa8-a52f-5d39bf983ee6: 'Wijzig cookies button' # Wijzig cookies button
+    dc638e81-e971-4ad9-8208-ad1a63716e91: '[EN] Boilerplate' # [EN] Boilerplate
+    dd232a51-3394-407d-8c83-64f6ac1bb42b: 'Call to action' # Call to action
+    df2d2c37-2570-43fc-a637-a66bceae9955: Titel # Titel
+    e0cb2d93-9e53-4cd1-8df4-cb899c408946: Media # Media
+    e6f3446d-1022-4a42-8c21-06a818b31fb2: Homepage # Homepage
+    e725c712-f724-42e7-9fe1-a33d5c0042fa: 'Cookie Consent' # Cookie Consent
+    e8402e23-2075-4d6d-9671-a33014171a76: Info # Info
+    f1eea2be-0f15-44a2-8513-178574280183: 'Privacy pagina' # Privacy pagina
+    f5815bc3-9203-426c-a1ff-cc771538e4aa: Afbeeldingen # Afbeeldingen
+    f6952d7a-4c24-41c6-93c0-76e62be4575d: 'Default template' # Default template
+    fbb2e2dc-fcd6-407b-b040-f4dc9b26e901: 'Hoofd navigatie' # Hoofd navigatie
+    ffb1f94b-84f8-4e82-a213-f58d3b1e18ba: 'Social link' # Social link
+plugins:
+  aws-s3:
+    edition: standard
+    enabled: true
+    schemaVersion: '2.0'
+  bugsnag:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  ckeditor:
+    edition: standard
+    enabled: true
+    schemaVersion: 5.6.0.0
+  cookies:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  element-api:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  expanded-singles:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+    settings:
+      expandSingles: true
+      redirectToEntry: true
+  formie:
+    edition: standard
+    enabled: true
+    licenseKey: Y1H3IFMGJZFV12G3EETTAMBO
+    schemaVersion: 3.4.12
+    settings:
+      ajaxTimeout: 10
+      alertEmails:
+        -
+          - DEV
+          - info@studionoir.be
+      captchas:
+        __assoc__:
+          -
+            - recaptcha
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Recaptcha
+                -
+                  - enabled
+                  - $RECAPTCHA_ENABLED
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - recaptcha
+                      -
+                        - secretKey
+                        - $RECAPTCHA_SECRET_KEY
+                      -
+                        - siteKey
+                        - $RECAPTCHA_SITE_KEY
+                      -
+                        - type
+                        - v3
+                      -
+                        - size
+                        - normal
+                      -
+                        - theme
+                        - light
+                      -
+                        - badge
+                        - bottomright
+                      -
+                        - language
+                        - auto
+                      -
+                        - minScore
+                        - 0.5
+                      -
+                        - scriptLoadingMethod
+                        - asyncDefer
+          -
+            - hcaptcha
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Hcaptcha
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - hcaptcha
+                      -
+                        - size
+                        - normal
+                      -
+                        - theme
+                        - light
+                      -
+                        - language
+                        - en
+                      -
+                        - minScore
+                        - 0.5
+                      -
+                        - scriptLoadingMethod
+                        - asyncDefer
+          -
+            - duplicate
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Duplicate
+                -
+                  - enabled
+                  - '1'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - duplicate
+          -
+            - honeypot
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Honeypot
+                -
+                  - enabled
+                  - '1'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - honeypot
+          -
+            - javascript
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Javascript
+                -
+                  - enabled
+                  - '1'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - javascript
+          -
+            - friendlyCaptcha
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\FriendlyCaptcha
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - friendlyCaptcha
+          -
+            - turnstile
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Turnstile
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - turnstile
+                      -
+                        - scriptLoadingMethod
+                        - asyncDefer
+      defaultDateDisplayType: calendar
+      defaultDateTime: null
+      defaultDateValueOption: ''
+      defaultEmailTemplate: formieAdminEmail
+      defaultFileUploadVolume: ''
+      defaultFormTemplate: formieDefault
+      defaultInstructionsPosition: verbb\formie\positions\AboveInput
+      defaultLabelPosition: verbb\formie\positions\AboveInput
+      defaultPage: forms
+      emptyValuePlaceholder: 'No response.'
+      enableBackSubmission: true
+      enableCsrfValidationForGuests: true
+      enableLargeFieldStorage: false
+      enableUnloadWarning: true
+      includeDraftElementUsage: false
+      includeRevisionElementUsage: false
+      maxIncompleteSubmissionAge: 30
+      maxSentNotificationsAge: 30
+      pdfPaperOrientation: portrait
+      pdfPaperSize: letter
+      pluginName: Formie
+      queuePriority: null
+      saveSpam: true
+      sendEmailAlerts: true
+      sentNotifications: true
+      setOnlyCurrentPagePayload: false
+      spamBehaviour: showSuccess
+      spamBehaviourMessage: ''
+      spamEmailNotifications: false
+      spamKeywords: ''
+      spamLimit: 500
+      useQueueForIntegrations: true
+      useQueueForNotifications: true
+      validateCustomTemplates: true
+  knock-knock:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.1.1
+  mailgun:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  minify:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: KZMPV0D5W45XSJBL4R2G9BRP
+    schemaVersion: 3.0.13
+    settings:
+      addHrefLang: true
+      addPaginatedHreflang: true
+      addXDefaultHrefLang: true
+      alwaysIncludeCanonicalUrls: false
+      cpTitlePrefix: '⚙ '
+      cspNonce: ''
+      cspScriptSrcPolicies:
+        -
+          __assoc__:
+            -
+              - policy
+              - "'self'"
+      devModeCpTitlePrefix: '&#x1f6a7;⚙ '
+      devModeTitlePrefix: '&#x1f6a7; '
+      displayAnalysisSidebar: true
+      displayPreviewSidebar: true
+      enableJsonLdEndpoint: false
+      enableMetaContainerEndpoint: false
+      enableSeoFileLinkEndpoint: false
+      environment: live
+      excludeNonCanonicalUrls: false
+      generatorEnabled: true
+      headersEnabled: true
+      includeHomepageInBreadcrumbs: true
+      lowercaseCanonicalUrl: true
+      manuallySetEnvironment: false
+      maxDescriptionLength: 155
+      maxTitleLength: 70
+      metaCacheDuration: 0
+      pluginName: SEOmatic
+      regenerateSitemapsAutomatically: true
+      renderEnabled: true
+      separatorChar: '|'
+      sidebarDisplayPreviewTypes:
+        - google
+        - twitter
+        - facebook
+        - linkedin
+      siteGroupsSeparate: true
+      siteUrlOverride: ''
+      sitemapsEnabled: true
+      socialMediaPreviewTarget: true
+      submitSitemaps: true
+      truncateDescriptionTags: true
+      truncateTitleTags: true
+  sherlock:
+    edition: lite
+    enabled: true
+    schemaVersion: 5.1.0
+    settings:
+      apiKey: uyhqyfsxicagoijpomuswlghgyeaqest
+      basicAuthEnabled: false
+      basicAuthPassword: ''
+      basicAuthUsername: ''
+      blowfishHashCost:
+        __assoc__:
+          -
+            - threshold
+            - 13
+      contentSecurityPolicy:
+        __assoc__:
+          -
+            - canFail
+            - true
+      contentSecurityPolicySettings:
+        __assoc__:
+          -
+            - enabled
+            - ''
+          -
+            - enforce
+            - ''
+          -
+            - header
+            - '1'
+          -
+            - directives
+            -
+              -
+                - '1'
+                - default-src
+                - "'self'"
+      cooldownDuration:
+        __assoc__:
+          -
+            - threshold
+            - 300
+      cors:
+        __assoc__:
+          -
+            - forceFail
+            - true
+      craftFilePermissions:
+        __assoc__:
+          -
+            - canFail
+            - true
+      craftFolderPermissions:
+        __assoc__:
+          -
+            - canFail
+            - true
+      craftFoldersAboveWebRoot:
+        __assoc__:
+          -
+            - canFail
+            - true
+      criticalCraftUpdates:
+        __assoc__:
+          -
+            - forceFail
+            - true
+      criticalPluginUpdates:
+        __assoc__:
+          -
+            - forceFail
+            - true
+      defaultDirMode:
+        __assoc__:
+          -
+            - canFail
+            - true
+          -
+            - threshold
+            - 509
+      defaultFileMode:
+        __assoc__:
+          -
+            - canFail
+            - true
+          -
+            - threshold
+            - 436
+      defaultTokenDuration:
+        __assoc__:
+          -
+            - canFail
+            - true
+          -
+            - threshold
+            - 86400
+      devMode:
+        __assoc__:
+          -
+            - forceFail
+            - true
+      disabledTests: null
+      elevatedSessionDuration:
+        __assoc__:
+          -
+            - canFail
+            - true
+          -
+            - threshold
+            - 300
+      enableCsrfProtection:
+        __assoc__:
+          -
+            - canFail
+            - true
+      headerProtectionSettings:
+        __assoc__:
+          -
+            - enabled
+            - '1'
+          -
+            - headers
+            -
+              -
+                - '1'
+                - Referrer-Policy
+                - no-referrer-when-downgrade
+              -
+                - '1'
+                - Strict-Transport-Security
+                - max-age=15552000
+              -
+                - '1'
+                - X-Content-Type-Options
+                - nosniff
+              -
+                - '1'
+                - X-Frame-Options
+                - SAMEORIGIN
+              -
+                - '1'
+                - X-Xss-Protection
+                - '1; mode=block'
+      highSecurityLevel: false
+      httpsControlPanel:
+        __assoc__:
+          -
+            - forceFail
+            - true
+      httpsFrontEnd:
+        __assoc__:
+          -
+            - forceFail
+            - true
+      integrationSettings:
+        __assoc__:
+          -
+            - putyourlightson\sherlock\integrations\BugsnagIntegration
+            -
+              __assoc__:
+                -
+                  - apiKey
+                  - ''
+          -
+            - putyourlightson\sherlock\integrations\RollbarIntegration
+            -
+              __assoc__:
+                -
+                  - accessToken
+                  - ''
+          -
+            - putyourlightson\sherlock\integrations\SentryIntegration
+            -
+              __assoc__:
+                -
+                  - dsn
+                  - ''
+                -
+                  - tracesSampleRate
+                  - ''
+      invalidLoginWindowDuration:
+        __assoc__:
+          -
+            - threshold
+            - 3600
+      maxInvalidLogins:
+        __assoc__:
+          -
+            - canFail
+            - true
+          -
+            - threshold
+            - 5
+      maxScans: 100
+      monitor: false
+      notificationEmailAddresses: $FROM_EMAIL
+      phpComposerVersion:
+        __assoc__:
+          -
+            - canFail
+            - true
+      phpVersion:
+        __assoc__:
+          -
+            - canFail
+            - true
+          -
+            - thresholds
+            -
+              __assoc__:
+                -
+                  - '8.2'
+                  - '2027-01-01'
+                -
+                  - '8.3'
+                  - '2028-01-01'
+      preventUserEnumeration:
+        __assoc__:
+          -
+            - canFail
+            - true
+      referrerPolicy:
+        __assoc__:
+          -
+            - canFail
+            - true
+      rememberedUserSessionDuration:
+        __assoc__:
+          -
+            - threshold
+            - 12096004
+      requireEmailVerification:
+        __assoc__:
+          -
+            - canFail
+            - true
+      sanitizeSvgUploads:
+        __assoc__:
+          -
+            - canFail
+            - true
+      sendPoweredByHeader:
+        __assoc__:
+          -
+            - canFail
+            - false
+      strictTransportSecurity:
+        __assoc__:
+          -
+            - canFail
+            - true
+          -
+            - threshold
+            - 15552000
+      testToEmailAddress:
+        __assoc__:
+          -
+            - canFail
+            - true
+      translationDebugOutput:
+        __assoc__:
+          -
+            - canFail
+            - true
+      useSecureCookies:
+        __assoc__:
+          -
+            - canFail
+            - true
+      userSessionDuration:
+        __assoc__:
+          -
+            - canFail
+            - true
+          -
+            - threshold
+            - 3600
+      verificationCodeDuration:
+        __assoc__:
+          -
+            - canFail
+            - true
+          -
+            - threshold
+            - 86400
+      webAliasInSiteBaseUrl:
+        __assoc__:
+          -
+            - forceFail
+            - true
+      webAliasInVolumeBaseUrl:
+        __assoc__:
+          -
+            - forceFail
+            - true
+      xContentTypeOptions:
+        __assoc__:
+          -
+            - canFail
+            - true
+      xFrameOptions:
+        __assoc__:
+          -
+            - canFail
+            - true
+  smith:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  sprig:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+  translate:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: team
+  live: $SITE_STATUS
+  name: $SITE_NAME
+  retryDuration: null
+  schemaVersion: 5.10.0.0
+  timeZone: Europe/Brussels

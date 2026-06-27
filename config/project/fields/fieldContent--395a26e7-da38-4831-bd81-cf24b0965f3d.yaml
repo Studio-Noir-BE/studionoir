@@ -1,0 +1,40 @@
+columnSuffix: null
+handle: fieldContent
+instructions: null
+name: Inhoud
+searchable: false
+settings:
+  createButtonLabel: 'Nieuwe inhoud'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - e0cb2d93-9e53-4cd1-8df4-cb899c408946 # Media
+    -
+      __assoc__:
+        -
+          - uid
+          - d5f2e66c-6d67-4976-b6b2-165f381d6911 # Quote
+    -
+      __assoc__:
+        -
+          - uid
+          - 01de395c-cf08-472b-a0a6-5b4887d0dd4e # Call to action
+    -
+      __assoc__:
+        -
+          - uid
+          - a0eb4443-cbcb-4e4c-8944-d6024992e8de # Inhoud + afbeelding
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -1,0 +1,53 @@
+color: null
+description: null
+fieldLayouts:
+  eb294635-b7f0-4d29-a8b2-c17aacd36673:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-10T08:25:33+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: df2d2c37-2570-43fc-a637-a66bceae9955 # Titel
+            handle: null
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 62aa5880-7308-4de7-ab45-ae2df67b6eaf
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-10T08:25:33+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 0d701d88-05bb-4666-ab9b-6912e07de9b4 # Tekstblokken
+            handle: null
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 623077d1-0fee-4712-806c-e5af0a58c04a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhoud
+        uid: 1f0f2884-a38d-4611-9603-aa346b74961f
+        userCondition: null
+handle: privacyPage
+hasTitleField: false
+icon: null
+name: 'Privacy pagina'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: '{fieldTitle}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

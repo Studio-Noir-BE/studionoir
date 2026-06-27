@@ -1,0 +1,14 @@
+// Blurhash
+.Image-blurHash {
+    @apply size-full inset-0 absolute scale-105;
+    transition: opacity .4s .2s ease;
+}
+
+.Image-has-blurHash {
+    &.Image-remove-blurhash {
+        &~.Image-blurHash {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+}

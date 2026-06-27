@@ -1,0 +1,79 @@
+color: null
+fieldLayouts:
+  973832e3-d27b-4893-bdf4-99317878ed8e:
+    cardView:
+      - 'layoutElement:f554901d-cad6-4866-985e-46ce49cdaae6'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-08-19T07:15:57+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 948d5ca6-444a-45e9-86ee-a6c19a1bf06d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-19T07:15:57+00:00'
+            elementCondition: null
+            fieldUid: ce712af1-fa17-4c35-85bc-069cefdc1e16 # Titel
+            handle: null
+            instructions: null
+            label: Titel
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f554901d-cad6-4866-985e-46ce49cdaae6
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-19T07:15:57+00:00'
+            elementCondition: null
+            fieldUid: e8402e23-2075-4d6d-9671-a33014171a76 # Info
+            handle: null
+            instructions: null
+            label: Info
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 79dce4ae-e6e4-425f-856d-23d44327bbb2
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2b7eb446-e1af-4e1d-b342-19a33248498e
+        userCondition: null
+handle: blockCookieCategory
+hasTitleField: false
+icon: cookie-bite
+name: 'Cookie category'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

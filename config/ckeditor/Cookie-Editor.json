@@ -1,0 +1,15 @@
+{
+  "link": {
+    "addTargetToExternalLinks": false,
+    "decorators": {
+      "openInNewTab": {
+        "attributes": {
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        "label": "Open in a new tab",
+        "mode": "manual"
+      }
+    }
+  }
+}

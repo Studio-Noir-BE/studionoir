@@ -1,0 +1,32 @@
+{%- macro isActive(link, class) -%}
+    {# If there's no link value, nothing can be active #}
+    {%- if not link -%}{%- endif -%}
+
+    {%- set active = false -%}
+    {%- set matchedElement = craft.app.urlManager.matchedElement ?? null -%}
+
+    {# Normalise: get element (if any) and URL from the Link field #}
+    {%- set linkElement = link.getElement() ?? null -%}
+    {%- set url = link.getUrl() ?? null -%}
+
+    {# 1. Element-based links (Entry, Category, etc.) #}
+    {%- if matchedElement and linkElement -%}
+        {# Exact element match #}
+        {%- set active = (matchedElement.id == linkElement.id) -%}
+
+        {# Fallback: compare first URI segment if not already matched #}
+        {%- if not active and (linkElement.uri ?? null) -%}
+            {%- set linkFirstSegment = linkElement.uri|trim('/')|split('/')[0] -%}
+            {%- set currentFirstSegment = (craft.app.request.getSegment(1) ?? '') -%}
+            {%- set active = (linkFirstSegment == currentFirstSegment) -%}
+        {%- endif -%}
+
+    {# 2. Custom URL links starting with "/" #}
+    {%- elseif url and (url starts with '/') -%}
+        {%- set linkFirstSegment = url|trim('/')|split('/')[0] -%}
+        {%- set currentFirstSegment = (craft.app.request.getSegment(1) ?? '') -%}
+        {%- set active = (linkFirstSegment == currentFirstSegment) -%}
+    {%- endif -%}
+
+    {%- if active %} {{ class }}{%- endif -%}
+{%- endmacro -%}

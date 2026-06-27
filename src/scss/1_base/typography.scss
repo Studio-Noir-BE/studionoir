@@ -1,0 +1,210 @@
+/**
+ * Typography settings
+*/
+
+// General
+*:not(svg *) {
+  @apply font-body text-typography-text;
+  font-size: clamp(
+    theme("fontSize.text_default_min"),
+    theme("fontSize.text_default"),
+    theme("fontSize.text_default_max")
+  );
+  line-height: clamp(
+    theme("lineHeight.line_default_min"),
+    theme("lineHeight.line_default"),
+    theme("lineHeight.line_default_max")
+  );
+}
+
+// Links
+a:not(.Link),
+.Is-link {
+    // Mobile (default)
+    @apply relative cursor-pointer font-medium text-typography-link transition duration-500;
+    // Hover
+    @apply hover:text-typography-link_hover hover:before:border-typography-link_hover;
+
+    &:before {
+        content: "";
+        @apply absolute left-0 bottom-px w-full h-px border-t border-typography-link;
+        transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    &:hover:before {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+
+    &.Is-link--reversed {
+        &:before {
+        transform: scaleX(0);
+        transform-origin: right;
+        }
+
+        &:hover:before {
+        transform: scaleX(1);
+        transform-origin: left;
+        }
+    }
+}
+
+// RichText margin
+.RichText {
+    @apply block space-y-5;
+
+    strong *,
+    strong {
+        @apply font-bold text-primary;
+    }
+
+    p,
+    li,
+    ul,
+    ol {
+        font-weight: inherit;
+        font-size: inherit;
+        line-height: inherit;
+    }
+
+    a {
+        @apply inline-block;
+    }
+}
+
+// Text
+p,
+ol,
+li {
+    font-size: clamp(
+        theme("fontSize.text_default_min"),
+        theme("fontSize.text_default"),
+        theme("fontSize.text_default_max")
+    );
+    line-height: clamp(
+        theme("lineHeight.line_default_min"),
+        theme("lineHeight.line_default"),
+        theme("lineHeight.line_default_max")
+    );
+
+    b,
+    strong {
+        @apply font-bold;
+    }
+
+    i {
+        @apply italic;
+    }
+}
+
+ul {
+    @apply list-disc pl-5;
+}
+
+ol {
+    @apply list-decimal pl-5;
+}
+
+// Headings and hero
+h1,
+h2,
+h3,
+h4,
+.Hero-title {
+    &,
+    * {
+        @apply font-heading text-typography-heading;
+    }
+}
+
+.Hero-title {
+    &,
+    * {
+        font-size: clamp(
+        theme("fontSize.text_hero_min"),
+        theme("fontSize.text_hero"),
+        theme("fontSize.text_hero_max")
+        );
+        line-height: clamp(
+        theme("lineHeight.line_hero_min"),
+        theme("lineHeight.line_hero"),
+        theme("lineHeight.line_hero_max")
+        );
+    }
+}
+
+h1,
+.h1 {
+    @apply font-semibold;
+
+    &,
+    * {
+        font-size: clamp(
+        theme("fontSize.text_h1_min"),
+        theme("fontSize.text_h1"),
+        theme("fontSize.text_h1_max")
+        );
+
+        line-height: clamp(
+        theme("lineHeight.line_h1_min"),
+        theme("lineHeight.line_h1"),
+        theme("lineHeight.line_h1_max")
+        );
+    }
+}
+
+h2,
+.h2 {
+    &,
+    * {
+        font-size: clamp(
+        theme("fontSize.text_h2_min"),
+        theme("fontSize.text_h2"),
+        theme("fontSize.text_h2_max")
+        );
+
+        line-height: clamp(
+        theme("lineHeight.line_h2_min"),
+        theme("lineHeight.line_h2"),
+        theme("lineHeight.line_h2_max")
+        );
+    }
+}
+
+h3,
+.h3 {
+    &,
+    * {
+        font-size: clamp(
+        theme("fontSize.text_h3_min"),
+        theme("fontSize.text_h3"),
+        theme("fontSize.text_h3_max")
+        );
+
+        line-height: clamp(
+        theme("lineHeight.line_h3_min"),
+        theme("lineHeight.line_h3"),
+        theme("lineHeight.line_h3_max")
+        );
+    }
+}
+
+h4,
+.h4 {
+    &,
+    * {
+        font-size: clamp(
+        theme("fontSize.text_h4_min"),
+        theme("fontSize.text_h4"),
+        theme("fontSize.text_h4_max")
+        );
+
+        line-height: clamp(
+        theme("lineHeight.line_h4_min"),
+        theme("lineHeight.line_h4"),
+        theme("lineHeight.line_h4_max")
+        );
+    }
+}

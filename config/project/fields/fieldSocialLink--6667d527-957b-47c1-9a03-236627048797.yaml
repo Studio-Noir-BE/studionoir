@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: fieldSocialLink
+instructions: null
+name: 'Social link'
+searchable: false
+settings:
+  fullGraphqlData: false
+  maxLength: 255
+  showLabelField: true
+  typeSettings:
+    __assoc__:
+      -
+        - url
+        -
+          __assoc__:
+            -
+              - allowRootRelativeUrls
+              - ''
+            -
+              - allowAnchors
+              - ''
+            -
+              - allowCustomSchemes
+              - ''
+  types:
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Link

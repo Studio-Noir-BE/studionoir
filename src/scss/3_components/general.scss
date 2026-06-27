@@ -1,0 +1,41 @@
+html,
+body {
+    @apply scroll-smooth bg-background;
+}
+
+// No scroling classs
+.no-scrolling {
+    @apply max-lg:overflow-hidden;
+}
+
+// Default iframe styling
+.HyperIframe {
+    iframe {
+        @apply w-full h-full;
+    }
+}
+
+.star-rating {    
+    --star-background: theme('colors.secondary');
+    --star-color: transparent;
+
+    &:before {
+        content: "★★★★★"; 
+        font-size: clamp(
+            theme("fontSize.text_h3_min"),
+            theme("fontSize.text_h3"),
+            theme("fontSize.text_h3_max")
+        );
+        background: linear-gradient(90deg, var(--star-background) var(--star-percent), var(--star-color) var(--star-percent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.grecaptcha-badge {
+    z-index: 100;
+}
+
+.pointer-events-all {
+    pointer-events: all;
+}

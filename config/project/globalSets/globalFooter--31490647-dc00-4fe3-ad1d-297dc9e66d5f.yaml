@@ -1,0 +1,49 @@
+fieldLayouts:
+  b55767a5-5151-4fb2-8d98-11aa8b0b335d:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-10T07:50:44+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: fbb2e2dc-fcd6-407b-b040-f4dc9b26e901 # Hoofd navigatie
+            handle: fieldSitemapNav
+            instructions: null
+            label: Nav
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fc124a8d-ec4e-49e8-83fb-b662e4c68059
+            userCondition: null
+            warning: null
+            width: 100
+        name: Sitemap
+        uid: 02c4e7cf-e1d1-4613-be2d-e37fb4d9343f
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-10T07:50:44+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 9b2af6f0-79e7-4b21-97bc-aa4b967fc289 # Top navigatie
+            handle: fieldUtilsNav
+            instructions: null
+            label: Nav
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bd816e18-3f71-4ed1-9efd-2ed975adaa1f
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Utilities navigatie'
+        uid: 132c03e6-bfbb-42c1-a511-44df9c414f76
+        userCondition: null
+handle: globalFooter
+name: Footer
+sortOrder: 3

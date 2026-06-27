@@ -1,0 +1,107 @@
+{% extends '_mails/base-mail' %}
+
+{# Only for webversion #}
+{% if submission is not defined %}
+	{# Get the query string value for `submissionid` #}
+	{% set submissionId = craft.app.request.getParam('submissionid') %}
+
+	{# Ditch any requests that don't supply this #}
+	{% if not submissionId %}
+		{% exit 404 %}
+	{% endif %}
+
+	{# Fetch the submission #}
+	{% set submission = craft.formie.submissions.uid(submissionId).one() ?? null %}
+
+	{# Ditch any requests that have supplied an invalid submission #}
+	{% if not submission %}
+		{% exit 404 %}
+	{% endif %}
+
+	{#  Fetch the related form #}
+	{% set form = craft.formie.forms.id(submission.formId).one() %}
+{% endif %}
+
+
+{% block webversie %}
+	<a href="{{ siteUrl }}formie/mails/user?submissionid={{ submission.uid }}" target="_blank" class="em_full_img" style="display:block;font-family:Arial, sans-serif; font-size:10px; line-height:20px; color:#000;">{{ "Webversie openen"|t }}</a>
+{% endblock %}
+
+{% block main %}
+
+	<table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td align="center" valign="top">
+				<table width="700" border="0" cellspacing="0" cellpadding="0" align="center" class="em_wrapper" style="width:700px;" bgcolor="#ffffff">
+					<tr>
+						<td align="center" valign="top" style="padding:0px 25px;" class="em_aside15">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+								<tr>
+									<td align="left" valign="top" class="em_defaultlink" style="font-family:Arial, sans-serif; font-size:20px; line-height:31px; text-align: center; font-weight: 700;">
+										{{ "Bedankt voor jouw interesse in {siteName}"|t(params={siteName:systemName}) }}
+									</td>
+								</tr>
+								<tr>
+									<td bgcolor="#ffffff" height="1" width="48px" class="em_h30" style="font-size:1px; line-height:1px;">
+										<div style="background-color: #000; height: 1px; width: 48px; margin: 20px auto 20px;"></div>
+									</td>
+								</tr>
+								<tr>
+									<td align="left" valign="top" class="em_defaultlink" style="font-family:Arial, sans-serif; font-size:15px; line-height:25px; color:#000000;">
+										{{ "Wij nemen zo snel mogelijk contact met je op."|t }}
+										
+									</td>
+								</tr>
+								<tr>
+									<td height="28" class="em_h30" style="font-size:1px; line-height:1px;"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+
+	<table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td align="center" valign="top">
+				<table width="700" border="0" cellspacing="0" cellpadding="0" align="center" class="em_wrapper" style="width:700px;" bgcolor="#ffffff">
+					<tr>
+						<td align="center" valign="top" style="padding:0px 25px;" class="em_aside15">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+								{% for field in submission.getFields() %}
+									{% if 'Hidden' not in field.type %}
+										
+										{# Get the value for the field, from the submission #}
+										{% set value = submission.getFieldValue(field.handle) %}
+										
+										<tr>
+											<td style="font-family:Arial, sans-serif; font-size:15px; line-height:25px; color:#000000;padding:2px 0;">
+												<strong>{{ field.label }}:</strong>
+												<br>
+												{{ field.getValueAsString(value, submission) }}
+											</td>
+										</tr>
+
+									{% endif %}
+								{% endfor %}
+							</table>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+								<tr>
+									<td align="left" valign="top" class="em_defaultlink" style="font-family:Arial, sans-serif; font-size:15px; line-height:25px; color:#000000;">
+										<br/>
+										{{ "Tot binnenkort"|t }},<br/>{{ systemName }}
+									</td>
+								</tr>
+							</td>
+						</td>
+					</tr>
+					<tr>
+						<td height="60" class="em_h30" style="font-size:1px; line-height:1px;"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</td></tr></table>{% endblock %}

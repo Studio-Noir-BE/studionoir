@@ -1,0 +1,156 @@
+fieldLayouts:
+  2f7fa701-fa65-46a5-be09-ae7afb402903:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            fieldUid: a6c13632-1943-407f-9388-4a3c6c8036c7 # Cookie banner titel
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: abff6a7e-104b-464c-9b9c-59a711b13712
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            fieldUid: 2e6ed7ec-713f-407b-883e-ef678e8ca5d1 # Cookie banner info
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dd92bd5a-5a1d-4e32-afe9-3b9d74f8a291
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            fieldUid: 4ecc4f27-ace6-45fd-b1bd-d567af5a1a73 # Alles aanvaarden button
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 56b10dbe-1b0e-445b-8cc6-7fe952485018
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            fieldUid: d27162eb-c2a8-4fa8-a52f-5d39bf983ee6 # Wijzig cookies button
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c08dafb6-33c7-422f-ba56-b841679b19b0
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            fieldUid: 2642300a-70d8-4baa-bf0c-94684b81d15e # Save settings buttons
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 99b35331-d4dc-4d98-8472-515cb247c15c
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 74e8aa4d-2ac8-46cb-aabd-5eb7fddf9905
+            userCondition: null
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            fieldUid: 582bc6d2-40e6-414c-b7b8-881c520c6944 # Meer info titel
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8671ee40-5b43-4651-be3b-001f33e47fcd
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            fieldUid: 4b05088d-fbfc-42bd-9022-209ba1864f4c # Meer info
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 02b245d6-7db9-4f2b-964c-d2edb0830459
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: bb2587a1-64db-4745-931c-0353f23afaa9
+            userCondition: null
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            fieldUid: b65858dc-8e20-4ea3-b83e-c8b094cc8d49 # Cookie categories
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b10eaf09-d3fe-4e97-8dc9-476313d3b75f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: cadb9fde-b678-4503-ae1f-0b915f1b3b40
+            userCondition: null
+          -
+            dateAdded: '2024-08-07T14:42:37+00:00'
+            elementCondition: null
+            fieldUid: aac7c47f-9fca-45a1-b355-337b5bae8db2 # Wijzig cookies button
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 14c6e04d-5cef-435c-808d-0009a93209dd
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Cookie Consent'
+        uid: aa526256-55c7-4fac-afd0-0fe74980b8a0
+        userCondition: null
+handle: cookieConsent
+name: 'Cookie Consent'
+sortOrder: 4

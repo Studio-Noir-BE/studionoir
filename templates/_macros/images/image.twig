@@ -1,0 +1,83 @@
+{#
+	Override the default values in your template if needed:
+	* Width & height:
+		Set the width and height of the image. The image will be scaled to this ratio. Leave blank if you don't want to scale the image
+	* sizes:
+		The image widths to generate transforms for (width descriptors).
+		example: sizes: ['640w', '768w', '1024w', '1920w']
+	* htmlSizes:
+		The HTML sizes attribute — tells the browser how wide the image renders.
+		example: htmlSizes: '(max-width: 768px) 100vw, 800px'
+		default: '100vw'
+	* alt:
+		The alt tag on the image
+	* mode:
+		The image mode, this can be: Crop, Fit or Stretch
+	* position:
+		Position of the image
+	* wrapperClass:
+		The classes on the picture tag
+	* class:
+		The classes on the img tag
+	* id:
+		Add an ID tag
+	* quality:
+		Fallback (original format) quality. Default: 92
+	* avifQuality:
+		AVIF quality. Default: 90
+	* webpQuality:
+		WebP quality. Default: 92
+	* lazy:
+		lazy loading property, should be disabled for image above the fold
+	* blurHash:
+		If the image should be pre-loaded with a blurhash
+	* videoAttr:
+		Set the video attributes
+
+	Example: Use this in the template where you want to include an image:
+
+	{% import "_macros/images/image.twig" as image %}
+	{% if entry.fieldImage.one() %}
+		{{ image.picture(entry.fieldImage.one(), {
+			width: 1100,
+			height: 500,
+			wrapperClass: 'relative',
+			class: 'w-full h-full',
+			sizes: ['640w', '768w', '1024w', '2048w'],
+			htmlSizes: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 1100px'
+		} )}}
+	{% endif %}
+#}
+
+{% macro picture(asset, options) %}
+	{# Setting all the default values #}
+	{% set asset = asset ?? null %}
+
+	{% set defaults = {
+        width: width ?? null,
+        height: height ?? null,
+        sizes: sizes ?? [],
+        htmlSizes: htmlSizes ?? '100vw',
+        alt: alt ?? (asset ? asset.title : null),
+        mode: mode ?? 'crop',
+        wrapperClass: wrapperClass ?? '',
+        class: class ?? '',
+        id: id ?? '',
+        quality: quality ?? 92,
+		avifQuality: avifQuality ?? 90,
+		webpQuality: webpQuality ?? 92,
+		lazy: lazy ?? true,
+		blurHash: blurHash ?? false,
+		focalPoint: focalPoint ?? [0.5, 0.5],
+		videoAttr: videoAttr ?? 'controls'
+    } %}
+
+	{% set picture = options ? defaults|merge(options) : defaults %}
+
+	{% if asset %}
+		{% include [
+			"_macros/images/types/_type-#{asset.extension}.twig",
+			"_macros/images/types/_type-image.twig"
+		] %}
+	{% endif %}
+{% endmacro %}

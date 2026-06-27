@@ -1,0 +1,7 @@
+<span class="block{{ picture.wrapperClass ? " " ~ picture.wrapperClass }}">
+    <video class="{{ picture.class }}" width="{{ picture.width }}px" height="{{ picture.height }}px" preload="metadata" {{ picture.videoAttr }} playsinline>
+        <source src="{{ asset.url }}" type="{{ asset.getMimeType() }}">
+        <!-- Fallback image for browser without <video> support -->
+        Your browser does not support the video tag.
+    </video>
+</span>

@@ -1,0 +1,133 @@
+{# 
+ #  Adds sprig pagination to an element. Params and how to use:
+
+    {{ sprig('_macros/sprig/sprig_main', {
+        entryId: entry.id,
+        sectionHandle: 'sectionHandle',
+        eagerElements: ['categoryHandle', 'mediaHandle'],
+        elementTemplate: 'blog/blogItem',
+        limit: 3,
+        pagination: 'bullets',
+        loadMoreText: 'Load more'
+    }) }}
+
+
+ ########################################################################
+ #  @param string       entryId 
+ #                      Entry id, needed to navigate backt to overview
+ #
+ #  @param string       entryHandle
+ #                      Handle of the main entry type we want to filter
+ #
+ #  @param array[]      eagerElements ['categoryHandle', 'mediaHandle']
+ #                      Eagerloading elemens
+ #
+ #  @param string       elementTemplate
+ #                      Path to the element you want to render
+ #
+ #  @param int          limit
+ #                      Entries allowed per page
+ #
+ #  @param string       paginationType ('pagination', 'bullets', 'loadMore')
+ #                      Pagination type, can be pagination, loadMore or bullets
+ #
+ #  @param string       loadMoreText
+ #                      Text used on the load more button
+ #
+ #}
+
+{# Setting default values #}
+{% set sprigSetting = {
+    entryId: entryId ?? entry.id ?? null,
+    sectionHandle: sectionHandle ?? null,
+    eagerElements: eagerElements ?? null,
+    elementTemplate: elementTemplate ?? null,
+    limit: limit ?? null,
+    paginationType: paginationType ?? 'pagination',
+    loadMoreText: loadMoreText ?? 'Laad meer'
+ } %}
+
+{# Entry slug to return to when selecting 'show all' #}
+{% set entrySlug = sprigSetting.entryId ? craft.entries.id(sprigSetting.entryId).one().slug : craft.app.request.getSegment(1)|default('/') %}
+
+{# Sets a default value if not defined by the `s-val:*` attribute on the button #}
+{% set offset = offset ?? 0 %}
+
+{# set variable for sprig to hook into with default for first page load #}
+{% set page = page ?? craft.app.request.getQueryParam('page')|default(1) %}
+
+{# need above values in hidden inputs for persistent state  #}
+{{ hiddenInput('page', page) }}
+
+{# Base query to start from #}
+{% set baseQueryNoLimit = craft.entries.section(sprigSetting.sectionHandle) %}
+{% set baseQuery = clone(baseQueryNoLimit).orderBy('dateCreated ASC').limit(sprigSetting.limit) %}
+
+{# If we have eagerloading elements, include it to the query #}
+{% if sprigSetting.eagerElements|length %}
+    {% set baseQuery = clone(baseQuery).with(sprigSetting.eagerElements) %}
+{% endif %}
+
+{# Default push url #}
+{% set pushUrl = null %}
+
+{# Add the page to the 'pushUrl' if its higher than 1 #}
+{% if page >= 2 %}
+	{% set pushUrl = pushUrl ? pushUrl ~ '&page=' ~ page : '?page=' ~ page %}
+{% endif %}
+
+{# If we have a pushUrl, push it #}
+{% if pushUrl %}
+	{% do sprig.pushUrl(pushUrl) %}
+{% else %}
+	{% do sprig.pushUrl(entrySlug) %}
+{% endif %}
+
+{# If we use load more type #}
+{% if sprigSetting.paginationType == 'loadMore' %}
+    {% set baseQuery = clone(baseQuery).offset(offset) %}
+    {% set elements = baseQuery.all() %}
+{% else %}    
+    {% set pageInfo = sprig.paginate(baseQuery, page) %}
+    {% set elements = pageInfo.pageResults %}
+{% endif %}
+
+{# Render al elements #}
+{% if elements|length %}
+    <div id="topTarget" class="absolute top-0"></div>
+    <section id="elements" class="u-block">
+        {% for element in elements %}
+            {% include sprigSetting.elementTemplate with {
+                entry: element
+            } %}
+        {% endfor %}
+    </section>
+
+
+    {# Pagination #}
+    {% include ('_macros/sprig/paginationTypes/' ~ sprigSetting.paginationType) with {
+        pageInfo: pageInfo ?? null,
+        offset: offset,
+        limit: limit
+    } %}
+{% endif %}
+
+{# Inline JS since js does not work efter triggering spig #}
+<script>
+	// Scroll back to top
+	function toTop() {
+		document.querySelector('#topTarget').scrollIntoView({
+			behavior: 'smooth'
+		});
+	}
+</script>
+
+{% if sprig.isRequest %}
+	{% set randomNumber = random(1, 9999999) %}
+	{% if craft.vite.devServerRunning() %}
+		{% set jsUrl = craft.vite.asset("src/js/sprig.js?v=" ~ randomNumber) %}
+		<script src="{{ jsUrl }}" type="module"></script>
+	{% else %}
+		<script src="{{ craft.vite.entry("sprig.js") }}?v={{ randomNumber }}" type="module"></script>
+	{% endif %}
+{% endif %}

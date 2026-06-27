@@ -1,0 +1,30 @@
+columnSuffix: null
+handle: fieldIntro
+instructions: null
+name: Intro
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: '*'
+  css: null
+  cssFile: null
+  defaultTransform: null
+  fullGraphqlData: false
+  headingLevels: false
+  js: null
+  jsFile: null
+  options: null
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  toolbar:
+    - bold
+    - italic
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field

@@ -1,0 +1,36 @@
+{
+    "name": "boilerplate",
+    "description": "Boilerplate",
+    "author": "lennonpuype <info@studionoir.be>",
+    "version": "2.3.3",
+    "homepage": "https://studionoir.be",
+    "favicon": "src/img/favicon.svg",
+    "copyright": "Studio Noir",
+    "background": "#ffffff",
+    "theme_color": "#000000",
+    "scripts": {
+        "watch": "NODE_ENV=dev vite",
+        "serve": "NODE_ENV=dev vite",
+        "build": "NODE_ENV=production vite build"
+    },
+    "devDependencies": {
+        "rollup-plugin-critical": "^1.0.12",
+        "stylelint-config-standard": "^36.0.0",
+        "tailwindcss": "^3.4.1",
+        "vite": "^5.0.0",
+        "vite-plugin-full-reload": "^1.0.5"
+    },
+    "dependencies": {
+        "@fontsource-variable/inter": "^5.2.8",
+        "a11y-dialog": "^8.0.1",
+        "autoprefixer": "^10.4.16",
+        "glightbox": "^3.2.0",
+        "gsap": "npm:@gsap/business@^3.12.5",
+        "headroom.js": "^0.12.0",
+        "postcss-import": "^16.0.0",
+        "sass": "^1.68.0",
+        "vanilla-cookieconsent": "^3.0.0",
+        "vite-plugin-banner": "^0.7.1",
+        "vite-plugin-favicon2": "^1.1.5"
+    }
+}

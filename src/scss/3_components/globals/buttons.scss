@@ -1,0 +1,75 @@
+/**
+    Button settings
+    All classed need to have '!important' so Formie does not override them!
+*/
+
+.btn {
+    font-size: clamp(
+        theme("fontSize.text_btn_min"),
+        theme("fontSize.text_btn"),
+        theme("fontSize.text_btn_max")
+    ) !important;
+
+    line-height: clamp(
+        theme("lineHeight.line_btn_min"),
+        theme("lineHeight.line_btn"),
+        theme("lineHeight.line_btn_max")
+    ) !important;
+
+    position: relative !important;
+    display: inline-block !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    cursor: pointer !important;
+
+    &-primary,
+    &-secondary,
+    &-white {
+        padding: theme("padding.2") theme("padding.5") !important;
+        transition: border .5s, background-color .5s, color .5s !important;
+
+        //Tablet and up
+        @media (min-width: theme("screens.md")) {
+            padding: theme("padding.3") theme("padding.6") !important;
+        }
+    }
+
+    &-primary {
+        // mobile (default)
+        border: 1px solid theme("colors.primary") !important;
+        color: theme("colors.primary") !important;
+
+        // Hover
+        &.fui-loading,
+        &:hover {
+            background-color: theme("colors.primary") !important;
+            color: theme("colors.white") !important;
+        }
+    }
+
+    &-secondary {
+        // mobile (default)
+        border: 1px solid theme("colors.secondary") !important;
+        color: theme("colors.secondary") !important;
+            
+        // Hover
+        &.fui-loading,
+        &:hover {
+            background-color: theme("colors.secondary") !important;
+            color: theme("colors.white") !important;
+        }
+    }
+
+    &-white {
+        // mobile (default)
+        border: 1px solid white !important;
+        color: white !important;
+            
+        // Hover
+        &.fui-loading,
+        &:hover {
+            background-color: white !important;
+            color: theme("colors.black") !important;
+        }
+    }
+}

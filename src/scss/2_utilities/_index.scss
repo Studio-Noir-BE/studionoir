@@ -1,0 +1,16 @@
+// Tailwind utilities
+@tailwind utilities;
+
+@layer utilities {
+    // Change directions
+    .rtl {
+        direction: rtl;
+    
+        * {
+            direction: ltr;
+        }
+    }
+}
+
+// Custom utilities settings
+@import 'utilities';

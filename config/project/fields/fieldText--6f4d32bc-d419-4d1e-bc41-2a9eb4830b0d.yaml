@@ -1,0 +1,81 @@
+columnSuffix: null
+handle: fieldText
+instructions: null
+name: Tekst
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: '*'
+  css: ".ck.ck-content h2 {\r\n  font-size: 24px;\r\n}\r\n.ck.ck-content h3 {\r\n  font-size: 20px;\r\n}\r\n.ck.ck-content h4 {\r\n  font-size: 16px;\r\n}\r\n.ck.ck-content ul {\r\n  padding-left: 40px;\r\n}"
+  cssFile: null
+  defaultTransform: null
+  fullGraphqlData: false
+  headingLevels:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+  js: null
+  jsFile: null
+  options:
+    heading:
+      options:
+        -
+          class: ck-heading_paragraph
+          model: paragraph
+          title: Paragraph
+        -
+          class: ck-heading_heading2
+          model: heading2
+          title: 'Heading 2'
+          view: h2
+        -
+          class: ck-heading_heading2
+          model: heading3
+          title: 'Heading 3'
+          view: h3
+        -
+          class: ck-heading_heading3
+          model: heading4
+          title: 'Heading 4'
+          view: h4
+    link:
+      addTargetToExternalLinks: false
+      decorators:
+        openInNewTab:
+          attributes:
+            rel: 'noopener noreferrer'
+            target: _blank
+          label: 'Open in a new tab'
+          mode: manual
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  toolbar:
+    - undo
+    - redo
+    - '|'
+    - heading
+    - '|'
+    - bold
+    - underline
+    - italic
+    - horizontalLine
+    - '|'
+    - link
+    - '|'
+    - bulletedList
+    - numberedList
+    - '|'
+    - superscript
+    - subscript
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field

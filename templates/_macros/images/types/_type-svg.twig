@@ -1,0 +1,3 @@
+<div class="flex {{ picture.wrapperClass|length ? picture.wrapperClass : "w-full h-auto" }}">
+    <span {{ picture.id ? 'id=' ~ picture.id }} class="inline-block mx-auto">{{ svg(asset)|attr({width: picture.width ?? asset.getWidth, height: 'auto', class: picture.class }) }}</span>
+</div>

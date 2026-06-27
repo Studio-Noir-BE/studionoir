@@ -1,0 +1,11 @@
+{% if button.url %}
+    <a href="{{ button.url }}" class="btn btn-{{ button.style }}{{button.style != 'link' ? ' Link ' }}{{ button.classes }}" {% if button.target %}target="{{button.target}}"{% endif %} title="{{ button.text is not empty ? button.text : button.url }}" {% if button.download %}download{% if button.filename %}={{ button.filename }}{% endif %}{% endif %}>
+        {{ button.text is not empty ? button.text|raw|t : button.url }}
+    </a>
+{% else %}
+    {% if button.fake %}
+        <div class="btn btn-{{ button.style }}{{button.style != 'link' ? ' Link ' }}{{ button.classes }}">
+            {{ button.text }}
+        </div>
+    {% endif %}
+{% endif %}

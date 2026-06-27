@@ -1,0 +1,9 @@
+baseUrl: $PRIMARY_SITE_URL_NL
+enabled: true
+handle: boilerPlateNL
+hasUrls: true
+language: nl
+name: '[NL] Boilerplate'
+primary: true
+siteGroup: 85ed2fef-6664-4c66-b14d-7f8ada75f8ba # $SITE_NAME
+sortOrder: 1

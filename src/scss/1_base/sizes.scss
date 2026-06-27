@@ -1,0 +1,18 @@
+// Container paddings
+$container_padding: 30px !default;
+
+// Container sizes
+$container-xs: 1100px !default;
+$container-sm: 1325px !default;
+$container: theme('screens.container') !default;
+$container-lg: 2180px !default;
+$container-xl: 2447px !default;
+$container-2xl: 2674px !default;
+
+// Breakpoints
+$viewport--xs:                         320px !default;
+$viewport--sm:                         640px !default;
+$viewport--md:                         768px !default;
+$viewport--lg:                         1024px !default;
+$viewport--xl:                         1280px !default;
+$viewport--2xl:                        1536px !default;

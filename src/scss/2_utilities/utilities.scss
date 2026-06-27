@@ -1,0 +1,129 @@
+// Main body styling (sets footer always to bottom)
+body {
+    @apply relative flex flex-col min-h-screen antialiased;
+  
+    footer {
+      @apply mt-auto;
+    }
+  }
+  
+  // default margins on blocks
+  .u-block {
+      @apply my-20 md:my-32 lg:my-44;
+  
+      &--padding {
+          @apply py-20 md:py-32 lg:py-44;
+  
+          &__top {
+              @apply pt-20 md:pt-32 lg:pt-44;
+          }
+          &__bottom {
+              @apply pb-20 md:pb-32 lg:pb-44;
+          }
+      }
+  
+      &--extraSmall {
+          @apply my-16;
+  
+          &__padding {
+              @apply py-16;
+  
+              &__top {
+                  @apply pt-16;
+              }
+              &__bottom {
+                  @apply pb-16;
+              }
+          }
+  
+          &__top {
+              @apply mt-16 md:mt-24;
+          }
+  
+          &__bottom {
+              @apply mb-16 md:mb-24;
+          }
+      }
+  
+      &--small {
+          @apply my-16 md:my-24;
+  
+          &__padding {
+              @apply py-16 md:py-24;
+  
+              &__top {
+                  @apply pt-16 md:pt-24;
+              }
+              &__bottom {
+                  @apply pb-16 md:pb-24;
+              }
+          }
+  
+          &__top {
+              @apply mt-16 md:mt-24;
+          }
+  
+          &__bottom {
+              @apply mb-16 md:mb-24;
+          }
+      }
+  
+      &__top {
+          @apply mt-20 md:mt-32 lg:mt-44;
+      }
+  
+      &__bottom {
+          @apply mb-20 md:mb-32 lg:mb-44;
+      }
+  }
+  
+  // MainGrid
+  .MainGrid {
+      @apply grid grid-cols-12 gap-x-2 w-full;
+      @apply sm:gap-x-4;
+      @apply md:gap-x-6;
+  
+      &:not(.pn) {
+          @apply px-6 sm:px-8;
+      }
+  }
+  
+  .grid-p {
+      @apply px-6 sm:px-8;
+  }
+  
+  .grid-gap {
+      @apply gap-x-2 sm:gap-x-4 md:gap-x-6;
+  }
+  
+  .z-1 {
+      z-index: 1;
+  }
+  
+  .z-11 {
+      z-index: 11;
+  }
+  
+  .z-21 {
+      z-index: 21;
+  }
+  
+  .z-31 {
+      z-index: 31;
+  }
+  
+  .z-101 {
+      z-index: 101;
+  }
+  
+  .z-201 {
+      z-index: 201;
+  }
+  
+  .t-header {
+      top: var(--header-height);
+  }
+  
+  .h-screenMinusHeight {
+      height: calc(100vh - var(--header-height));
+  }
