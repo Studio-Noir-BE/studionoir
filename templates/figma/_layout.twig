@@ -34,6 +34,27 @@
         body:not(.is-ready) { opacity: 0; animation: snReveal 0s .8s forwards; }
         @keyframes snReveal { to { opacity: 1; } }
     </style>
+
+    {# Failsafe: if JS is disabled or the main bundle fails to load, never leave
+       scroll-reveal sections hidden. #}
+    <noscript>
+        <style>
+            body { opacity: 1 !important; }
+            [data-reveal] { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
+    <script>
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                if (!window.__snReady) {
+                    document.body.classList.add('is-ready');
+                    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+                        el.classList.add('is-visible');
+                    });
+                }
+            }, 2000);
+        });
+    </script>
 </head>
 <body class="min-h-screen bg-background text-secondary {{ bodyClass|default('') }}">
 

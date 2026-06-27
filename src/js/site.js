@@ -90,10 +90,15 @@ function initForms() {
 /* ----------------------------------------------------------------------------
  * Reveal on scroll (subtle fade/translate)
  * ------------------------------------------------------------------------- */
+function revealAll() {
+    document.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("is-visible"));
+}
+
 function initReveal() {
     const els = document.querySelectorAll("[data-reveal]");
-    if (!els.length || !("IntersectionObserver" in window)) {
-        els.forEach((el) => el.classList.add("is-visible"));
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window)) {
+        revealAll();
         return;
     }
     const io = new IntersectionObserver(
@@ -105,12 +110,19 @@ function initReveal() {
                 }
             });
         },
-        { threshold: 0.12 }
+        // threshold 0 so even sections taller than the viewport reveal as soon
+        // as their edge appears (the old 0.12 threshold never fired for tall
+        // sections on small screens, leaving them blank).
+        { rootMargin: "0px 0px -8% 0px", threshold: 0 }
     );
     els.forEach((el) => io.observe(el));
+
+    // Safety net: never leave content hidden if the observer misses anything.
+    window.addEventListener("load", () => setTimeout(revealAll, 1200));
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    window.__snReady = true;
     initFaq();
     initNav();
     initHeaderScroll();
