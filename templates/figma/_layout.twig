@@ -59,7 +59,11 @@
 <body class="min-h-screen bg-background text-secondary {{ bodyClass|default('') }}">
 
     {# Global glow blob — follows mouse, snaps to fixed positions via ScrollTrigger #}
-    <div id="sn-blob" aria-hidden="true"></div>
+    <div id="sn-blob" aria-hidden="true">
+        <div class="sn-blob-layer sn-blob-l1"></div>
+        <div class="sn-blob-layer sn-blob-l2"></div>
+        <div class="sn-blob-layer sn-blob-l3"></div>
+    </div>
 
     {% include 'figma/_partials/header.twig' %}
 
