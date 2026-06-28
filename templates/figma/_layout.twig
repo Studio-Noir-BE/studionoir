@@ -91,7 +91,10 @@
         (function(){var d=document,s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
         window.$crisp.push(["do","chat:hide"]);
         document.getElementById("sn-chat-btn").addEventListener("click",function(){
-            if(window.$crisp){window.$crisp.push(["do","chat:open"]);}
+            if(window.$crisp){
+                window.$crisp.push(["do","chat:show"]);
+                window.$crisp.push(["do","chat:open"]);
+            }
         });
     </script>
 </body>

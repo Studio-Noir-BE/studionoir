@@ -172,22 +172,34 @@ function initFeatures() {
     const cards = section.querySelectorAll(".feature-card");
     if (!cards.length) return;
 
+    const viewport = document.getElementById("feature-viewport");
+    const track    = document.getElementById("feature-track");
+
     const activateCard = (index) => {
         cards.forEach((card, i) => {
             const dist = Math.abs(i - index);
             card.classList.toggle("is-active", dist === 0);
             card.style.opacity = Math.pow(0.5, dist);
-            card.style.filter = dist === 0 ? "blur(0px)" : `blur(${4 + dist * 5}px)`;
+            card.style.filter  = dist === 0 ? "blur(0px)" : `blur(${dist * 6}px)`;
         });
+
+        // Translate track so the active card is vertically centred in the viewport
+        if (track && viewport) {
+            const viewportH  = viewport.offsetHeight;
+            const activeCard = cards[index];
+            const cardTop    = activeCard.offsetTop;
+            const cardH      = activeCard.offsetHeight;
+            track.style.transform = `translateY(${viewportH / 2 - cardTop - cardH / 2}px)`;
+        }
     };
     activateCard(0);
 
     // Drive card state from scroll progress through the tall sticky section
     const onScroll = () => {
         const rect = section.getBoundingClientRect();
-        const scrolled  = -rect.top;                          // px scrolled past section top
-        const scrollable = rect.height - window.innerHeight;  // total scrollable distance
-        const progress  = Math.max(0, Math.min(1, scrolled / scrollable));
+        const scrolled   = -rect.top;
+        const scrollable = rect.height - window.innerHeight;
+        const progress   = Math.max(0, Math.min(1, scrolled / scrollable));
         activateCard(Math.min(Math.floor(progress * cards.length), cards.length - 1));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
