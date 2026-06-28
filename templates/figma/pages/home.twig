@@ -24,29 +24,33 @@
     </section>
 
     {# ===== Features scroll section ===== #}
-    <section id="features-section" class="relative bg-secondary" data-features>
+    <section id="features-section" class="relative bg-background" data-features>
         <div class="sticky top-0 flex h-screen">
 
-            {# Left half — the global blob drifts here via ScrollTrigger; intentionally empty #}
+            {# Left half — global blob drifts here when section is in view #}
             <div class="hidden w-1/2 lg:block" aria-hidden="true"></div>
 
             {# Right half — cards activate one by one as the user scrolls #}
             <div class="flex w-full flex-col items-start justify-center gap-5 px-6 py-16 sm:px-10 lg:w-1/2 lg:px-16">
                 <div class="feature-card is-active" data-fi="0">
-                    <span class="feature-num">01.</span>
-                    <span class="feature-title">Op maat of compact</span>
+                    <p class="feature-card-num">01</p>
+                    <h3 class="feature-card-title">Op maat of compact</h3>
+                    <p class="feature-card-desc">Of je nu een volledige maatwerk website of een compacte infosite nodig hebt — we bouwen wat bij jou past, niet wat bij ons past.</p>
                 </div>
                 <div class="feature-card" data-fi="1">
-                    <span class="feature-num">02.</span>
-                    <span class="feature-title">SEO &amp; GEO inbegrepen</span>
+                    <p class="feature-card-num">02</p>
+                    <h3 class="feature-card-title">SEO &amp; GEO inbegrepen</h3>
+                    <p class="feature-card-desc">Elke website die we bouwen is geoptimaliseerd voor zoekmachines én voor de nieuwste AI-zoekresultaten. Gevonden worden zit standaard inbakken.</p>
                 </div>
                 <div class="feature-card" data-fi="2">
-                    <span class="feature-num">03.</span>
-                    <span class="feature-title">Van A tot Z</span>
+                    <p class="feature-card-num">03</p>
+                    <h3 class="feature-card-title">Van A tot Z</h3>
+                    <p class="feature-card-desc">Design, development, hosting, onderhoud — wij nemen alles uit handen. Jij focust op je zaak, wij zorgen voor je digitale aanwezigheid.</p>
                 </div>
                 <div class="feature-card" data-fi="3">
-                    <span class="feature-num">04.</span>
-                    <span class="feature-title">Eerlijke prijzen</span>
+                    <p class="feature-card-num">04</p>
+                    <h3 class="feature-card-title">Eerlijke prijzen</h3>
+                    <p class="feature-card-desc">Geen verborgen kosten, geen verrassingen. Transparante prijzen die kloppen bij het geleverde werk — punt.</p>
                 </div>
             </div>
         </div>
