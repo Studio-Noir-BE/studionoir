@@ -227,19 +227,6 @@
     .sn-avail-pill:hover {
         @apply bg-secondary;
     }
-    .sn-chat-btn {
-        @apply h-14 w-14 overflow-hidden rounded-full shadow-xl cursor-pointer;
-        border: none;
-        background: none;
-        padding: 0;
-        transition: transform 0.3s ease;
-    }
-    .sn-chat-btn:hover {
-        transform: scale(1.08);
-    }
-    .sn-chat-btn img {
-        @apply h-full w-full object-cover block;
-    }
 }
 
 @layer utilities {
