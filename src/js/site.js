@@ -6,6 +6,7 @@
  */
 
 import "@css/site.scss";
+import Lenis from "lenis";
 
 /* ----------------------------------------------------------------------------
  * FAQ accordion
@@ -55,14 +56,56 @@ function initNav() {
 }
 
 /* ----------------------------------------------------------------------------
- * Header scroll state (compact + backdrop after scrolling)
+ * Header scroll state — hide on scroll down, reveal on scroll up
  * ------------------------------------------------------------------------- */
 function initHeaderScroll() {
     const header = document.querySelector("[data-header]");
     if (!header) return;
-    const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 24);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+        const y = window.scrollY;
+        header.classList.toggle("is-scrolled", y > 24);
+        // Hide when scrolling down past 80px, reveal on any upward movement
+        if (y > 80) {
+            header.classList.toggle("is-hidden", y > lastY);
+        } else {
+            header.classList.remove("is-hidden");
+        }
+        lastY = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+}
+
+/* ----------------------------------------------------------------------------
+ * Header logo hides when contact-card logo enters full view
+ * ------------------------------------------------------------------------- */
+function initContactLogoObserver() {
+    const contactLogo = document.querySelector("[data-contact-logo]");
+    const headerLogo  = document.querySelector("[data-header-logo]");
+    if (!contactLogo || !headerLogo) return;
+    const io = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                headerLogo.classList.toggle("logo-hidden", entry.isIntersecting);
+            });
+        },
+        { threshold: 0.85 }
+    );
+    io.observe(contactLogo);
+}
+
+/* ----------------------------------------------------------------------------
+ * Lenis smooth scroll
+ * ------------------------------------------------------------------------- */
+function initLenis() {
+    const lenis = new Lenis({
+        duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    return lenis;
 }
 
 /* ----------------------------------------------------------------------------
@@ -223,9 +266,11 @@ function initFeatures() {
 
 document.addEventListener("DOMContentLoaded", () => {
     window.__snReady = true;
+    initLenis();
     initFaq();
     initNav();
     initHeaderScroll();
+    initContactLogoObserver();
     initForms();
     initReveal();
     initBlob();

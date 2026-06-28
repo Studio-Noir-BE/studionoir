@@ -85,10 +85,20 @@
         <script type="module" src="{{ assetBase }}{{ src }}"></script>
     {% endfor %}
 
-    {# Crisp Chat — default launcher hidden; custom avatar button triggers chat:open #}
+    {# Crisp Chat — default launcher permanently hidden; avatar photo is the trigger #}
+    <style>
+        /* Hide Crisp's own launcher button at all times */
+        #crisp-chatbox [data-id="launcher"],
+        .crisp-client .cc-tlyw .cc-kxkl .cc-nsge { display: none !important; }
+        /* Restyle Crisp close button to lime brand colour */
+        .crisp-client .cc-tlyw .cc-kxkl .cc-1xry .cc-unoo,
+        .crisp-client [data-id="close"] { background-color: #EFFF10 !important; }
+        .crisp-client [data-id="close"] svg path { fill: #202020 !important; }
+    </style>
     <script type="text/javascript">
         window.$crisp=[];window.CRISP_WEBSITE_ID="37df2615-0b0e-4e66-9bf3-8e41c9d3b028";
         (function(){var d=document,s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+        window.$crisp.push(["safe", true]);
         window.$crisp.push(["do","chat:hide"]);
         document.getElementById("sn-chat-btn").addEventListener("click",function(){
             if(window.$crisp){
