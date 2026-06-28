@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - claude/figma-website-build-z740ee
+      - claude/studionoir-site-feedback-27hnlz
       - main
   workflow_dispatch:
 
@@ -74,7 +75,7 @@ jobs:
     # build above, so the PR isn't blocked by a deploy that needs that one-time
     # setting. The committed docs/ folder can also be served via
     # Settings → Pages → Deploy from a branch → /docs.
-    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/claude/studionoir-site-feedback-27hnlz'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
