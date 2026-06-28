@@ -184,10 +184,11 @@
 
     /* Feature cards — lime card boxes, scroll-activated with blur */
     .feature-card {
-        @apply w-full max-w-lg rounded-3xl bg-primary p-7 sm:p-9;
+        @apply w-full rounded-3xl bg-primary p-7 sm:p-9;
+        grid-area: 1 / 1;
         cursor: default;
-        filter: blur(8px);
-        opacity: 0.22;
+        filter: blur(22px);
+        opacity: 0.08;
         transition: filter 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.7s cubic-bezier(0.4,0,0.2,1);
     }
     .feature-card.is-active {
@@ -239,12 +240,15 @@
         text-wrap: balance;
     }
 
-    /* Reveal-on-scroll */
+    /* Reveal-on-scroll — subtle 3D Y-axis tilt, no upward translate */
     [data-reveal] {
-        @apply translate-y-6 opacity-0 transition-all duration-700 ease-out;
+        opacity: 0;
+        transform: perspective(900px) rotateY(8deg);
+        transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.75s ease-out;
     }
     [data-reveal].is-visible {
-        @apply translate-y-0 opacity-100;
+        opacity: 1;
+        transform: perspective(900px) rotateY(0deg);
     }
 }
 
@@ -274,13 +278,15 @@
 
 #sn-blob {
     position: fixed;
-    z-index: 9999;
+    /* -1 puts blob above the white canvas (body background) but below all
+       non-positioned page content and all positive-z-index UI elements */
+    z-index: -1;
     left: 50%;
     top: 40%;
     width: 0;
     height: 0;
     pointer-events: none;
-    /* multiply = visible on white, invisible on dark */
+    /* multiply = visible on white canvas, invisible on dark sections */
     mix-blend-mode: multiply;
 }
 
