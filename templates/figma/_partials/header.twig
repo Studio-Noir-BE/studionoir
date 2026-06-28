@@ -1,0 +1,57 @@
+{#
+   Site header — fixed, transparent over the hero, solid dark once scrolled.
+   `headerTheme` ('light'|'dark') controls the resting text colour:
+     - light  → white text (used on pages with a dark hero image)
+     - dark   → near-black text (used on pages with a light hero)
+   `navActive` highlights the current section.
+#}
+{% set theme = headerTheme|default('light') %}
+{% set restText = theme == 'light' ? 'text-white' : 'text-secondary' %}
+
+<header data-header class="site-header {{ restText }}">
+    {% if theme == 'light' %}
+        {# Subtle scrim so white nav stays legible over lighter parts of the hero #}
+        <div class="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/55 to-transparent [.is-scrolled_&]:opacity-0 transition-opacity duration-300"></div>
+    {% endif %}
+    <div class="shell-wide relative flex items-center justify-between py-5 lg:py-7">
+
+        {# Logo #}
+        <a href="{{ assetBase }}index.html" class="block h-11 sm:h-12 lg:h-14 shrink-0" aria-label="Studio Noir — home" data-header-logo>
+            {% include 'figma/_partials/logo.twig' with { wordmark: theme == 'light' ? '#0D0D0D' : '#0D0D0D' } %}
+        </a>
+
+        {# Desktop nav #}
+        <nav class="hidden items-center gap-8 lg:gap-10 md:flex">
+            {% for item in site.nav %}
+                <a href="{{ assetBase }}{{ item.url }}"
+                   class="nav-link {{ navActive == item.key ? 'is-active text-primary' : '' }}">
+                    {{ item.label }}
+                </a>
+            {% endfor %}
+            <a href="{{ assetBase }}contact.html" class="btn-primary !px-5 !py-2.5 !text-sm">
+                Offerte aanvragen
+            </a>
+        </nav>
+
+        {# Mobile toggle #}
+        <button data-nav-toggle type="button"
+                class="nav-burger relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden {{ restText }}"
+                aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+{# Mobile menu panel #}
+<div data-nav-menu class="nav-panel">
+    <a href="{{ assetBase }}index.html" class="mb-6 h-12 w-max" aria-label="Studio Noir — home">
+        {% include 'figma/_partials/logo.twig' %}
+    </a>
+    {% for item in site.nav %}
+        <a href="{{ assetBase }}{{ item.url }}"
+           class="font-display text-3xl font-medium {{ navActive == item.key ? 'text-primary' : 'text-white' }}">
+            {{ item.label }}
+        </a>
+    {% endfor %}
+    <a href="{{ assetBase }}contact.html" class="btn-primary mt-6 w-max">Offerte aanvragen</a>
+</div>

@@ -1,0 +1,51 @@
+{#
+   Contact / quote request form.
+   Front-end only for now (handled by src/js/site.js). Wire up to Formie / Craft
+   later by pointing the action at the form endpoint and adding the CSRF field.
+#}
+<form data-contact-form class="grid grid-cols-1 gap-5 sm:grid-cols-2" novalidate>
+    <div>
+        <label class="field-label text-primary" for="cf-voornaam">Voornaam*</label>
+        <input class="field border-white/25 text-white focus:border-primary" type="text" id="cf-voornaam" name="voornaam" required autocomplete="given-name">
+    </div>
+    <div>
+        <label class="field-label text-primary" for="cf-naam">Naam*</label>
+        <input class="field border-white/25 text-white focus:border-primary" type="text" id="cf-naam" name="naam" required autocomplete="family-name">
+    </div>
+    <div>
+        <label class="field-label text-primary" for="cf-email">E-mailadres*</label>
+        <input class="field border-white/25 text-white focus:border-primary" type="email" id="cf-email" name="email" required autocomplete="email">
+    </div>
+    <div>
+        <label class="field-label text-primary" for="cf-tel">Telefoonnummer*</label>
+        <input class="field border-white/25 text-white focus:border-primary" type="tel" id="cf-tel" name="telefoon" required autocomplete="tel">
+    </div>
+    <div class="sm:col-span-2">
+        <label class="field-label text-primary" for="cf-interesse">Ik heb interesse in</label>
+        <select class="field border-white/25 text-white focus:border-primary [&>option]:text-secondary" id="cf-interesse" name="interesse">
+            <option value="">Maak een keuze…</option>
+            {% for s in site.services %}
+                <option value="{{ s.title }}">{{ s.title }}</option>
+            {% endfor %}
+            <option value="Iets anders">Iets anders</option>
+        </select>
+    </div>
+    <div class="sm:col-span-2">
+        <label class="field-label text-primary" for="cf-vraag">Jouw vraag</label>
+        <textarea class="field min-h-[120px] resize-y border-white/25 text-white focus:border-primary" id="cf-vraag" name="vraag" rows="4"></textarea>
+    </div>
+    <div class="sm:col-span-2 flex items-start gap-3">
+        <input class="mt-1 h-4 w-4 shrink-0 accent-primary" type="checkbox" id="cf-privacy" name="privacy" required>
+        <label class="text-sm text-white/80" for="cf-privacy">
+            Ik ga akkoord met de <a href="{{ assetBase }}privacy.html" class="text-primary underline underline-offset-2">privacy policy</a>
+        </label>
+    </div>
+    <div class="sm:col-span-2 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <button type="submit" class="btn-primary">{{ submitLabel|default('Verstuur bericht') }} →</button>
+        <p class="max-w-sm text-xs text-white/45">
+            Deze site wordt beschermd door reCAPTCHA en Google. Er gelden de
+            Privacyvoorwaarden en Servicevoorwaarden.
+        </p>
+    </div>
+    <p data-form-note class="sm:col-span-2 hidden rounded-xl bg-primary/15 px-4 py-3 text-sm text-primary"></p>
+</form>

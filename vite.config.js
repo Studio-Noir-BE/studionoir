@@ -66,7 +66,8 @@ export default defineConfig(({ command, mode }) => {
             rollupOptions: {
                 input: {
                     app: path.resolve(__dirname, "src/js/app.js"),
-                    sprig: path.resolve(__dirname, "src/js/sprig.js")
+                    sprig: path.resolve(__dirname, "src/js/sprig.js"),
+                    site: path.resolve(__dirname, "src/js/site.js")
                 },
             },
         },

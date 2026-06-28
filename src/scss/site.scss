@@ -1,0 +1,325 @@
+/**
+ * Studio Noir — public website styles
+ * A clean Tailwind entry (separate from the boilerplate app.scss) built from
+ * the Figma "FINAL" design. Display font: Space Grotesk (substitute for
+ * "Stack Sans Notch"), body font: Onest — both loaded via the document <head>.
+ * Inter is bundled locally as a fallback.
+ */
+
+@import "@fontsource-variable/inter";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply font-body text-secondary antialiased;
+        -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+    }
+
+    /* Decorative glow blobs intentionally bleed off-canvas — never let them
+       create a horizontal scrollbar. */
+    html, body {
+        overflow-x: clip;
+        max-width: 100%;
+    }
+
+    body {
+        @apply bg-background;
+    }
+
+    h1, h2, h3, h4, h5 {
+        @apply font-display;
+    }
+
+    ::selection {
+        @apply bg-primary text-secondary;
+    }
+}
+
+@layer components {
+    /* Centered content width that mirrors the design's inner column */
+    .shell {
+        @apply mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-12;
+    }
+    .shell-wide {
+        @apply mx-auto w-full max-w-[1820px] px-6 sm:px-8 lg:px-12;
+    }
+
+    /* Eyebrow / kicker label */
+    .eyebrow {
+        @apply font-display text-[13px] sm:text-sm font-light uppercase tracking-[0.18em];
+    }
+
+    /* Display + section headings */
+    .h-hero {
+        @apply font-display font-medium leading-[0.92] tracking-[-0.03em];
+        font-size: clamp(2.75rem, 8.2vw, 7.5rem);
+    }
+    .h-section {
+        @apply font-display font-bold leading-[1.02] tracking-[-0.01em];
+        font-size: clamp(2rem, 4.6vw, 3.6rem);
+    }
+    .h-card {
+        @apply font-display font-bold leading-[1.05] tracking-[-0.01em];
+        font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    }
+
+    /* Buttons — pill shaped with hover slide */
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5
+               font-display text-[15px] font-medium leading-none transition-all duration-300
+               whitespace-nowrap;
+    }
+    .btn-primary {
+        @apply btn bg-primary text-secondary hover:bg-secondary hover:text-primary;
+    }
+    .btn-dark {
+        @apply btn bg-secondary text-white hover:bg-primary hover:text-secondary;
+    }
+    .btn-outline {
+        @apply btn border border-secondary/25 text-secondary hover:bg-secondary hover:text-white;
+    }
+    .btn-ghost-light {
+        @apply btn bg-white text-secondary hover:bg-primary;
+    }
+
+    /* Inline arrow link */
+    .arrow-link {
+        @apply inline-flex items-center gap-1.5 font-display font-medium transition-colors duration-300;
+    }
+
+    /* Form fields used in the contact card */
+    .field-label {
+        @apply mb-1.5 block font-display text-sm font-medium;
+    }
+    .field {
+        @apply w-full rounded-xl border bg-transparent px-4 py-3 text-[15px] font-body
+               outline-none transition-colors duration-200;
+    }
+
+    /* Header (fixed) + scroll state */
+    .site-header {
+        @apply fixed inset-x-0 top-0 z-50 transition-all duration-300;
+    }
+    .site-header.is-scrolled {
+        @apply bg-secondary/90 backdrop-blur-md shadow-lg shadow-black/10;
+    }
+    .site-header.is-hidden {
+        transform: translateY(-100%);
+    }
+
+    /* Header logo — fades when contact-card logo is fully visible */
+    [data-header-logo] {
+        transition: opacity 0.4s ease;
+    }
+    [data-header-logo].logo-hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+    /* On light pages the header text is dark until scrolled */
+    .site-header.is-scrolled .nav-link,
+    .site-header.is-scrolled .nav-logo-word {
+        @apply text-white;
+    }
+
+    .nav-link {
+        @apply relative font-display text-[15px] font-medium tracking-tight transition-colors duration-300;
+    }
+    .nav-link::after {
+        content: "";
+        @apply absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-300;
+    }
+    .nav-link:hover::after,
+    .nav-link.is-active::after {
+        @apply origin-left scale-x-100;
+    }
+
+    /* Mobile menu panel */
+    .nav-panel {
+        @apply pointer-events-none fixed inset-0 z-40 flex translate-y-[-100%] flex-col
+               justify-center gap-2 bg-secondary px-8 text-white opacity-0
+               transition-all duration-500 ease-out;
+    }
+    .nav-panel.is-open {
+        @apply pointer-events-auto translate-y-0 opacity-100;
+    }
+
+    /* Hamburger */
+    .nav-burger span {
+        @apply block h-0.5 w-7 bg-current transition-all duration-300;
+    }
+    .nav-burger.is-open span:nth-child(1) { @apply translate-y-[7px] rotate-45; }
+    .nav-burger.is-open span:nth-child(2) { @apply opacity-0; }
+    .nav-burger.is-open span:nth-child(3) { @apply -translate-y-[7px] -rotate-45; }
+
+    /* FAQ accordion */
+    .faq-item {
+        @apply border-t border-secondary/15;
+    }
+    .faq-trigger {
+        @apply flex w-full items-center justify-between gap-6 py-5 text-left
+               font-display text-base font-bold text-ink;
+    }
+    .faq-icon {
+        @apply relative shrink-0 h-[18px] w-[18px] text-sand;
+    }
+    .faq-icon span {
+        position: absolute;
+        inset-inline: 0;
+        top: 50%;
+        height: 2px;
+        border-radius: 9999px;
+        background: currentColor;
+        transform: translateY(-50%);
+        transform-origin: center;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .faq-icon span:nth-child(2) {
+        transform: translateY(-50%) rotate(90deg);
+    }
+    .faq-item.is-open .faq-icon span:nth-child(2) {
+        opacity: 0;
+        transform: translateY(-50%) rotate(0deg) scaleX(0);
+    }
+    .faq-panel {
+        @apply grid grid-rows-[0fr] transition-all duration-300 ease-out;
+    }
+    .faq-item.is-open .faq-panel {
+        @apply grid-rows-[1fr] pb-5;
+    }
+    .faq-panel > div {
+        @apply overflow-hidden;
+    }
+
+    /* Feature cards — lime card boxes, vertical scroll-track */
+    .feature-card {
+        @apply w-full rounded-3xl bg-primary p-7 sm:p-9;
+        flex-shrink: 0;
+        cursor: default;
+        transition: filter 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* Service cards — transition base (hover handled in utilities layer) */
+    .service-card {
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .feature-card-num {
+        @apply font-display text-sm font-medium text-secondary/50;
+    }
+    .feature-card-title {
+        @apply mt-2 font-display font-bold text-secondary;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        line-height: 1.05;
+    }
+    .feature-card-desc {
+        @apply mt-3 text-sm leading-relaxed text-secondary/65;
+    }
+
+    /* Fixed UI — availability pill + chat button */
+    .sn-avail-pill {
+        @apply flex items-center gap-2.5 rounded-full bg-secondary/90 px-4 py-2.5 backdrop-blur-md shadow-lg;
+        @apply font-display text-sm font-medium text-white no-underline;
+        transition: background-color 0.3s;
+    }
+    .sn-avail-pill:hover {
+        @apply bg-secondary;
+    }
+}
+
+@layer utilities {
+    /* Radial lime glow blobs used as background decoration */
+    .glow-lime {
+        background: radial-gradient(circle, rgba(239, 255, 16, 0.85) 0%, rgba(239, 255, 16, 0) 70%);
+    }
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    /* Reveal-on-scroll — slide up from below */
+    [data-reveal] {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.75s ease-out;
+    }
+    [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 3D tilt on hover — declared after data-reveal so source-order wins */
+    .service-card:hover {
+        transform: perspective(900px) rotateY(-4deg) translateY(-8px);
+    }
+}
+
+/* ── Global glow blob — multi-layer orbiting, visible only on white ── */
+
+/* Layer 1: large base circle, slow clockwise drift */
+@keyframes sn-orbit-1 {
+    0%   { transform: translate(-50%, -50%) translate(0px,    0px)   scale(1);    }
+    25%  { transform: translate(-50%, -50%) translate(-90px, -80px)  scale(1.1);  }
+    50%  { transform: translate(-50%, -50%) translate(70px,  -60px)  scale(0.92); }
+    75%  { transform: translate(-50%, -50%) translate(85px,   75px)  scale(1.06); }
+    100% { transform: translate(-50%, -50%) translate(0px,    0px)   scale(1);    }
+}
+/* Layer 2: medium circle, counter-clockwise, offset start */
+@keyframes sn-orbit-2 {
+    0%   { transform: translate(-50%, -50%) translate(60px,   50px)  scale(1);    }
+    33%  { transform: translate(-50%, -50%) translate(-80px, -55px)  scale(1.12); }
+    66%  { transform: translate(-50%, -50%) translate(20px,  -85px)  scale(0.88); }
+    100% { transform: translate(-50%, -50%) translate(60px,   50px)  scale(1);    }
+}
+/* Layer 3: accent circle, fast wobble */
+@keyframes sn-orbit-3 {
+    0%   { transform: translate(-50%, -50%) translate(-55px, -60px)  scale(1);    }
+    50%  { transform: translate(-50%, -50%) translate(75px,   55px)  scale(1.15); }
+    100% { transform: translate(-50%, -50%) translate(-55px, -60px)  scale(1);    }
+}
+
+#sn-blob {
+    position: fixed;
+    /* -1 puts blob above the white canvas (body background) but below all
+       non-positioned page content and all positive-z-index UI elements */
+    z-index: -1;
+    left: 50%;
+    top: 40%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    /* multiply = visible on white canvas, invisible on dark sections */
+    mix-blend-mode: multiply;
+}
+
+.sn-blob-layer {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(239,255,16,1) 0%, rgba(239,255,16,0) 68%);
+    transform: translate(-50%, -50%);
+    will-change: transform;
+}
+.sn-blob-l1 {
+    width: 65rem;
+    height: 65rem;
+    opacity: 0.75;
+    animation: sn-orbit-1 9s ease-in-out infinite;
+}
+.sn-blob-l2 {
+    width: 50rem;
+    height: 50rem;
+    opacity: 0.6;
+    animation: sn-orbit-2 7s ease-in-out infinite;
+}
+.sn-blob-l3 {
+    width: 35rem;
+    height: 35rem;
+    opacity: 0.5;
+    animation: sn-orbit-3 5s ease-in-out infinite;
+}
+
+/* Features section — tall scroll container */
+[data-features] {
+    height: 400vh;
+}

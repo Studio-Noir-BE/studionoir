@@ -1,0 +1,61 @@
+{% extends 'figma/_layout.twig' %}
+
+{% block content %}
+
+    {# Split hero: dark text panel + portrait #}
+    <section class="relative grid min-h-[78vh] lg:grid-cols-2">
+        <div class="relative flex items-end overflow-hidden bg-secondary">
+            <div class="pointer-events-none absolute -left-24 top-10 h-[26rem] w-[26rem] glow-lime opacity-20"></div>
+            <div class="relative z-10 px-6 pb-12 pt-40 sm:px-10 lg:pb-16 lg:pl-12">
+                <p class="eyebrow mb-4 text-primary">Over ons</p>
+                <h1 class="h-hero text-white text-balance">Over<br>Studio Noir</h1>
+            </div>
+        </div>
+        <div class="relative min-h-[42vh] lg:min-h-full">
+            <img src="{{ assetBase }}img/figma/portrait.jpg" alt="De oprichter van Studio Noir"
+                 class="absolute inset-0 h-full w-full object-cover object-center">
+        </div>
+    </section>
+
+    {# Statement #}
+    <section class="shell py-16 lg:py-28">
+        <div class="max-w-4xl" data-reveal>
+            <h2 class="h-section text-secondary text-balance">Een studio voor websites die werken.</h2>
+            <p class="mt-8 text-xl leading-relaxed text-muted">
+                Studio Noir is een onafhankelijke webstudio uit Brugge. We bouwen websites met
+                karakter — snel, veilig en volledig op maat. Geen sjablonen, geen ruis: enkel
+                doordacht design en propere code.
+            </p>
+            <p class="mt-5 text-xl leading-relaxed text-muted">
+                Of het nu gaat om een compacte infosite of een volledig maatwerk platform in Craft CMS,
+                we denken met je mee en leveren werk waar je trots op mag zijn.
+            </p>
+        </div>
+
+        {# Quick facts #}
+        <div class="mt-14 grid gap-5 sm:grid-cols-3">
+            {% for f in [
+                { k: 'Gevestigd in', v: 'Brugge' },
+                { k: 'Gebouwd met', v: 'Craft CMS' },
+                { k: 'Antwoord binnen', v: '1 werkdag' }
+            ] %}
+                <div class="rounded-3xl border border-secondary/10 bg-tertiary p-7" data-reveal>
+                    <p class="text-sm uppercase tracking-wider text-muted">{{ f.k }}</p>
+                    <p class="mt-2 font-display text-2xl font-bold text-secondary">{{ f.v }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    {% include 'figma/_partials/services-grid.twig' %}
+
+    {% include 'figma/_partials/services-cta.twig' with {
+        heading: 'Interesse in één van onze diensten?',
+        sub: 'Of heeft u een andere vraag?'
+    } %}
+
+    {% include 'figma/_partials/faq.twig' %}
+    {% include 'figma/_partials/cta-banner.twig' %}
+    {% include 'figma/_partials/contact-card.twig' %}
+
+{% endblock %}
