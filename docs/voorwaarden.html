@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-            <link rel="stylesheet" href="assets/site-k17o8wvo.css">
+            <link rel="stylesheet" href="assets/site-ClEZSVAw.css">
     
     <style>
         /* Prevent FOUC — fade body in once JS marks it ready */
@@ -46,6 +46,8 @@
     </script>
 </head>
 <body class="min-h-screen bg-background text-secondary ">
+
+        <div id="sn-blob" aria-hidden="true"></div>
 
     
 <header data-header class="site-header text-secondary">
@@ -143,6 +145,20 @@
     <div class="h-2.5 w-full bg-[#444444]"></div>
 </footer>
 
-            <script type="module" src="assets/site-a24HEsOG.js"></script>
-    </body>
+        <div id="sn-fixed-ui" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:0.75rem;">
+                <button type="button" id="sn-chat-btn" class="sn-chat-btn" aria-label="Chat openen">
+            <img src="img/figma/avatar.jpg" alt="">
+        </button>
+    </div>
+
+            <script type="module" src="assets/site-CEL4RzsA.js"></script>
+    
+        <script type="text/javascript">
+        window.$crisp=[];window.CRISP_WEBSITE_ID="37df2615-0b0e-4e66-9bf3-8e41c9d3b028";
+        (function(){var d=document,s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+        document.getElementById("sn-chat-btn").addEventListener("click",function(){
+            if(window.$crisp){window.$crisp.push(["do","chat:open"]);}
+        });
+    </script>
+</body>
 </html>

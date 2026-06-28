@@ -163,17 +163,11 @@ function initBlob() {
 }
 
 /* ----------------------------------------------------------------------------
- * Features section — GSAP scroll-driven card activation
+ * Features section — scroll-driven card activation (vanilla, no GSAP needed)
  * ------------------------------------------------------------------------- */
-async function initFeatures() {
+function initFeatures() {
     const section = document.getElementById("features-section");
     if (!section) return;
-
-    const [{ gsap }, { ScrollTrigger }] = await Promise.all([
-        import("gsap"),
-        import("gsap/ScrollTrigger"),
-    ]);
-    gsap.registerPlugin(ScrollTrigger);
 
     const cards = section.querySelectorAll(".feature-card");
     if (!cards.length) return;
@@ -183,26 +177,31 @@ async function initFeatures() {
     };
     activateCard(0);
 
-    // Drive card state from scroll progress
-    ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: "bottom bottom",
-        onUpdate: (self) => {
-            activateCard(Math.min(Math.floor(self.progress * cards.length), cards.length - 1));
-        },
-    });
+    // Drive card state from scroll progress through the tall sticky section
+    const onScroll = () => {
+        const rect = section.getBoundingClientRect();
+        const scrolled  = -rect.top;                          // px scrolled past section top
+        const scrollable = rect.height - window.innerHeight;  // total scrollable distance
+        const progress  = Math.max(0, Math.min(1, scrolled / scrollable));
+        activateCard(Math.min(Math.floor(progress * cards.length), cards.length - 1));
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
 
-    // Snap global blob to left quarter of screen while this section is in view
-    ScrollTrigger.create({
-        trigger: section,
-        start: "top 85%",
-        end: "bottom 15%",
-        onEnter:      () => window.__snBlob?.snap(window.innerWidth * 0.25, window.innerHeight * 0.5),
-        onLeave:      () => window.__snBlob?.free(),
-        onEnterBack:  () => window.__snBlob?.snap(window.innerWidth * 0.25, window.innerHeight * 0.5),
-        onLeaveBack:  () => window.__snBlob?.free(),
-    });
+    // Snap global blob to left quarter of screen while section is visible
+    const blobObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    window.__snBlob?.snap(window.innerWidth * 0.25, window.innerHeight * 0.5);
+                } else {
+                    window.__snBlob?.free();
+                }
+            });
+        },
+        { threshold: 0, rootMargin: "-15% 0px -15% 0px" }
+    );
+    blobObserver.observe(section);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
