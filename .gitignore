@@ -29,6 +29,8 @@ web/cpresources/*/craft/storage/*
 # BUILD FILES
 /node_modules
 /yarn-error.log
+/web/dist-site
+/tools/vendor
 
 # MISC FILES
 .cache

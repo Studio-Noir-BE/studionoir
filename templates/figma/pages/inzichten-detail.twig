@@ -1,0 +1,62 @@
+{% extends 'figma/_layout.twig' %}
+
+{% block content %}
+
+    {% include 'figma/_partials/page-hero.twig' with {
+        title: 'Waarom een website op maat?',
+        image: 'img/figma/inzicht-1.jpg',
+        kicker: 'Inzicht · Maatwerk',
+        theme: 'light'
+    } %}
+
+    <article class="shell max-w-3xl py-16 lg:py-24">
+
+        {# Meta #}
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-secondary/10 pb-6 text-sm text-muted" data-reveal>
+            <span>27 juni 2026</span><span class="opacity-40">·</span>
+            <span>4 min leestijd</span><span class="opacity-40">·</span>
+            <span>Studio Noir</span>
+        </div>
+
+        <div class="mt-10 space-y-6 text-[17px] leading-relaxed text-secondary" data-reveal>
+            <p class="text-xl text-muted">
+                Een maatwerk website is volledig op jouw maat gebouwd — geen kant-en-klare sjablonen,
+                maar een uniek ontwerp en structuur die perfect aansluiten bij jouw merk, doelen en doelgroep.
+            </p>
+
+            <h2 class="h-card pt-6 text-secondary">Geen template, maar een merk</h2>
+            <p class="text-muted">
+                Bij een maatwerk website heeft geen enkel ander bedrijf dezelfde site. Alles — van de
+                lay-out tot de kleuren en typografie — wordt afgestemd op jouw huisstijl. De pagina's,
+                secties en inhoud worden opgebouwd zoals jij dat nodig hebt, niet zoals een template
+                dat voorschrijft.
+            </p>
+
+            <h2 class="h-card pt-6 text-secondary">Toekomstgericht en snel</h2>
+            <p class="text-muted">
+                Een maatwerk website groeit mee met je bedrijf. Extra pagina's, functionaliteiten of
+                integraties toevoegen is altijd mogelijk. En omdat er geen overbodige code of onnodige
+                plugins meegeleverd worden, blijft de website razendsnel en veilig.
+            </p>
+
+            <blockquote class="my-8 rounded-3xl bg-primary p-8 font-display text-2xl font-bold leading-snug text-secondary">
+                "Enkel wat jouw website nodig heeft — dat komt de snelheid én de veiligheid ten goede."
+            </blockquote>
+
+            <h2 class="h-card pt-2 text-secondary">Beheerd via Craft CMS</h2>
+            <p class="text-muted">
+                Voor het beheer maken we gebruik van Craft CMS, een krachtig en professioneel
+                contentbeheersysteem dat speciaal is ontworpen voor maatwerk projecten. Je beheert zelf
+                eenvoudig teksten, afbeeldingen en pagina's — zonder technische kennis.
+            </p>
+        </div>
+
+        <a href="{{ assetBase }}inzichten.html" class="arrow-link mt-12 text-secondary hover:text-primary" data-reveal>
+            <span>←</span> Terug naar inzichten
+        </a>
+    </article>
+
+    {% include 'figma/_partials/cta-banner.twig' %}
+    {% include 'figma/_partials/contact-card.twig' %}
+
+{% endblock %}

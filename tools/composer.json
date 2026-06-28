@@ -1,0 +1,10 @@
+{
+    "name": "studionoir/static-renderer",
+    "description": "Standalone Twig renderer that builds the static GitHub Pages preview of the Studio Noir website.",
+    "require": {
+        "twig/twig": "^3.27"
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

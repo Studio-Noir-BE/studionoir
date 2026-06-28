@@ -1,0 +1,67 @@
+{% extends 'figma/_layout.twig' %}
+
+{# Availability pill fixed bottom-right — home page only #}
+{% block fixed_ui %}
+<a href="{{ assetBase }}contact.html" class="sn-avail-pill">
+    <span class="inline-block h-2 w-2 rounded-full bg-primary shrink-0"></span>
+    beschikbaar voor nieuwe projecten
+</a>
+{% endblock %}
+
+{% block content %}
+
+    {# ===== Hero ===== #}
+    <section class="relative flex min-h-[100svh] items-end overflow-hidden bg-secondary">
+        <img src="{{ assetBase }}img/figma/hero-home.jpg" alt=""
+             class="absolute inset-0 h-full w-full object-cover opacity-90">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30"></div>
+
+        <div class="shell-wide relative z-10 pb-16 pt-40 lg:pb-24">
+            <h1 class="h-hero text-white text-balance">
+                Websites<br>met karakter.
+            </h1>
+        </div>
+    </section>
+
+    {# ===== Features scroll section ===== #}
+    <section id="features-section" class="relative bg-secondary" data-features>
+        <div class="sticky top-0 flex h-screen">
+
+            {# Left half — the global blob drifts here via ScrollTrigger; intentionally empty #}
+            <div class="hidden w-1/2 lg:block" aria-hidden="true"></div>
+
+            {# Right half — cards activate one by one as the user scrolls #}
+            <div class="flex w-full flex-col items-start justify-center gap-5 px-6 py-16 sm:px-10 lg:w-1/2 lg:px-16">
+                <div class="feature-card is-active" data-fi="0">
+                    <span class="feature-num">01.</span>
+                    <span class="feature-title">Op maat of compact</span>
+                </div>
+                <div class="feature-card" data-fi="1">
+                    <span class="feature-num">02.</span>
+                    <span class="feature-title">SEO &amp; GEO inbegrepen</span>
+                </div>
+                <div class="feature-card" data-fi="2">
+                    <span class="feature-num">03.</span>
+                    <span class="feature-title">Van A tot Z</span>
+                </div>
+                <div class="feature-card" data-fi="3">
+                    <span class="feature-num">04.</span>
+                    <span class="feature-title">Eerlijke prijzen</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ===== Services ===== #}
+    {% include 'figma/_partials/services-grid.twig' %}
+
+    {# ===== FAQ ===== #}
+    {% include 'figma/_partials/faq.twig' %}
+
+    {# ===== CTA — full-width, flush against FAQ ===== #}
+    {% include 'figma/_partials/cta-banner.twig' %}
+
+    {# ===== Contact ===== #}
+    {% include 'figma/_partials/contact-card.twig' %}
+
+{% endblock %}

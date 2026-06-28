@@ -1,0 +1,85 @@
+name: Deploy website to GitHub Pages
+
+# Builds the static preview of the Studio Noir website (Vite + Tailwind +
+# standalone Twig renderer) and publishes it to GitHub Pages.
+
+on:
+  push:
+    branches:
+      - claude/figma-website-build-z740ee
+      - claude/studionoir-site-feedback-27hnlz
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      # The boilerplate depends on private/native packages (GSAP business, sharp,
+      # puppeteer) that the static site build does not need. Drop them so the
+      # install never requires a private token or a native binary download.
+      - name: Trim build-only dependencies
+        run: |
+          npm pkg delete dependencies.gsap
+          npm pkg delete dependencies.vite-plugin-favicon2
+          npm pkg delete devDependencies.rollup-plugin-critical
+
+      - name: Install npm dependencies
+        run: npm install --no-audit --no-fund
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "true"
+
+      - name: Build CSS/JS (Vite)
+        run: npx vite build --config vite.site.config.js
+
+      - name: Install Twig (renderer)
+        run: composer install --no-interaction --no-progress
+        working-directory: tools
+
+      - name: Render static pages
+        run: php tools/render.php
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # Only deploy from main or a manual run. Pages must be enabled once in the
+    # repo (Settings → Pages → Source: GitHub Actions) — the workflow token
+    # cannot enable it automatically. On feature branches we only validate the
+    # build above, so the PR isn't blocked by a deploy that needs that one-time
+    # setting. The committed docs/ folder can also be served via
+    # Settings → Pages → Deploy from a branch → /docs.
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/claude/studionoir-site-feedback-27hnlz'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
