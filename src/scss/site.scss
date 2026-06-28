@@ -190,12 +190,9 @@
         transition: filter 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.7s cubic-bezier(0.4,0,0.2,1);
     }
 
-    /* Service cards — 3D tilt on hover */
+    /* Service cards — transition base (hover handled in utilities layer) */
     .service-card {
         transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .service-card:hover {
-        transform: perspective(900px) rotateY(-4deg) translateY(-8px);
     }
     .feature-card-num {
         @apply font-display text-sm font-medium text-secondary/50;
@@ -251,6 +248,11 @@
     [data-reveal].is-visible {
         opacity: 1;
         transform: translateY(0);
+    }
+
+    /* 3D tilt on hover — declared after data-reveal so source-order wins */
+    .service-card:hover {
+        transform: perspective(900px) rotateY(-4deg) translateY(-8px);
     }
 }
 
