@@ -33,9 +33,9 @@
             </a>
         </nav>
 
-        {# Mobile toggle #}
+        {# Mobile toggle — always brand yellow so it stays visible on dark heroes #}
         <button data-nav-toggle type="button"
-                class="nav-burger relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden {{ restText }}"
+                class="nav-burger relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden text-primary"
                 aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
@@ -44,9 +44,6 @@
 
 {# Mobile menu panel #}
 <div data-nav-menu class="nav-panel">
-    <a href="{{ assetBase }}index.html" class="mb-6 h-12 w-max" aria-label="Studio Noir — home">
-        {% include 'figma/_partials/logo.twig' %}
-    </a>
     {% for item in site.nav %}
         <a href="{{ assetBase }}{{ item.url }}"
            class="font-display text-3xl font-medium {{ navActive == item.key ? 'text-primary' : 'text-white' }}">
