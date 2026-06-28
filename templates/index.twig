@@ -1,15 +1,89 @@
 {% extends '_layouts/site' %}
 
-{% block main %}
-	<div class="container space-y-6 u-block grid-p">		
-		<h1 class="">{{ systemName }}</h1>
-		<h2 class="h4">With Vite & Tailwind</h2>
-		{% include "_macros/button/button" with { 
-			url: '/stylesheet',
-			text: 'Stylesheet',
-		} %}
-	</div>
+{#
+   Studio Noir — homepage (Figma design) rendered through the real Craft
+   `home` single section. Content fields stay static for now: the `site` map
+   below feeds the shared Figma section partials (services / FAQ / contact).
+   `assetBase`, `snNav`, `snSocials` come from _layouts/base.twig.
+#}
+{% set headerTheme = 'light' %}
+{% set site = {
+    socials: snSocials,
+    services: [
+        { title: 'Maatwerk website',          desc: 'Volledig op maat gebouwd in Craft CMS. Uniek design, flexibele structuur en toekomstgericht.', price: 'Vanaf €899', url: 'diensten-detail.html' },
+        { title: 'Compacte infosite',         desc: 'Snel online, professioneel en betaalbaar. Ideaal voor starters en kleine ondernemingen.',        price: 'Vanaf €299', url: 'diensten.html' },
+        { title: 'SEO & GEO optimalisatie',   desc: 'Inbegrepen bij elke website. Technische SEO, meta-tags en meer.',                                  badge: 'Inbegrepen', url: 'diensten.html' },
+        { title: 'Hosting & onderhoud',       desc: 'Snelle, veilige hosting met SSL en maandelijks onderhoud.',                                        url: 'diensten.html' }
+    ],
+    faq: [
+        { q: 'Wat kost een website laten maken bij Studio NOIR?',        a: 'Een compacte infosite start vanaf €299, een maatwerk website vanaf €899. De exacte prijs hangt af van je wensen — vraag vrijblijvend een offerte aan.' },
+        { q: 'Hoe lang duurt het om een website te laten maken?',        a: 'Een compacte infosite leveren we doorgaans binnen 1 à 2 weken op. Voor maatwerk rekenen we, afhankelijk van de omvang, op enkele weken.' },
+        { q: 'Wat is het verschil tussen een infosite en maatwerk?',     a: 'Een compacte infosite is sneller en kostenefficiënter — ideaal voor starters die professioneel online willen staan. Maatwerk biedt een uniek design en een volledig flexibele structuur.' },
+        { q: 'Doet Studio NOIR ook SEO?',                                a: 'Ja. Bij elke website is een basis SEO- en GEO-optimalisatie inbegrepen: technisch, inhoudelijk én gericht op AI-zoekmachines. Meer diepgaande optimalisatie kan op aanvraag.' },
+        { q: 'Kan ik mijn website zelf beheren na oplevering?',          a: 'Zeker. Maatwerk websites worden gebouwd in Craft CMS, waarmee je zelf eenvoudig teksten, afbeeldingen en pagina\'s beheert — zonder technische kennis.' },
+        { q: 'Neemt Studio NOIR ook hosting en onderhoud op zich?',      a: 'Ja, we voorzien snelle en veilige hosting met SSL en bieden maandelijkse onderhoudscontracten aan, zodat jij je geen zorgen hoeft te maken.' },
+        { q: 'Hoe begin ik met een website bij Studio NOIR?',            a: 'Stuur ons een berichtje of vraag een offerte aan. We bekijken samen je wensen en bezorgen je vrijblijvend een voorstel.' }
+    ]
+} %}
 
-	{% include "_content/index" %}
+{# Availability pill fixed bottom-right — home only #}
+{% block fixed_ui %}
+    <a href="{{ assetBase }}contact.html" class="sn-avail-pill">
+        <span class="inline-block h-2 w-2 rounded-full bg-primary shrink-0"></span>
+        beschikbaar voor nieuwe projecten
+    </a>
+{% endblock %}
+
+{% block main %}
+
+    {# ===== Hero ===== #}
+    <section class="relative flex min-h-[100svh] items-end overflow-hidden bg-secondary">
+        <img src="{{ assetBase }}img/figma/hero-home.jpg" alt=""
+             class="absolute inset-0 h-full w-full object-cover opacity-90">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30"></div>
+
+        <div class="shell-wide relative z-10 pb-16 pt-40 lg:pb-24">
+            <h1 class="h-hero text-white text-balance">
+                Websites<br>met karakter.
+            </h1>
+        </div>
+    </section>
+
+    {# ===== Features scroll section ===== #}
+    <section id="features-section" class="relative" data-features>
+        <div class="sticky top-0 flex h-screen">
+            <div class="hidden w-1/2 lg:block" aria-hidden="true"></div>
+            <div class="relative flex w-full flex-col overflow-hidden px-6 py-16 sm:px-10 lg:w-1/2 lg:px-16" id="feature-viewport">
+                <div id="feature-track" class="flex w-full max-w-lg flex-col gap-5 self-center" style="transition: transform 0.7s cubic-bezier(0.4,0,0.2,1)">
+                    <div class="feature-card is-active" data-fi="0">
+                        <p class="feature-card-num">01</p>
+                        <h3 class="feature-card-title">Op maat of compact</h3>
+                        <p class="feature-card-desc">Of je nu een volledige maatwerk website of een compacte infosite nodig hebt — we bouwen wat bij jou past, niet wat bij ons past.</p>
+                    </div>
+                    <div class="feature-card" data-fi="1">
+                        <p class="feature-card-num">02</p>
+                        <h3 class="feature-card-title">SEO &amp; GEO inbegrepen</h3>
+                        <p class="feature-card-desc">Elke website die we bouwen is geoptimaliseerd voor zoekmachines én voor de nieuwste AI-zoekresultaten. Gevonden worden zit standaard ingebakken.</p>
+                    </div>
+                    <div class="feature-card" data-fi="2">
+                        <p class="feature-card-num">03</p>
+                        <h3 class="feature-card-title">Van A tot Z</h3>
+                        <p class="feature-card-desc">Design, development, hosting, onderhoud — wij nemen alles uit handen. Jij focust op je zaak, wij zorgen voor je digitale aanwezigheid.</p>
+                    </div>
+                    <div class="feature-card" data-fi="3">
+                        <p class="feature-card-num">04</p>
+                        <h3 class="feature-card-title">Eerlijke prijzen</h3>
+                        <p class="feature-card-desc">Geen verborgen kosten, geen verrassingen. Transparante prijzen die kloppen bij het geleverde werk — punt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ===== Services / FAQ / CTA / Contact — shared Figma section partials ===== #}
+    {% include 'figma/_partials/services-grid.twig' %}
+    {% include 'figma/_partials/faq.twig' %}
+    {% include 'figma/_partials/cta-banner.twig' %}
+    {% include 'figma/_partials/contact-card.twig' %}
 
 {% endblock %}

@@ -1,44 +1,61 @@
-{% set primaryNav = globalHeader.primaryNav.all() ?? null %}
-{% set toggleNav = globalHeader.toggleNav.all() ?? null %}
-{% set topNav = globalHeader.topNav.all() ?? null %}
+{#
+   Studio Noir — site header (Figma design), ported into the Craft layout.
+   Fixed, transparent over the hero, solid dark once scrolled. Hides on scroll
+   down / reveals on scroll up (handled in src/js/base/figma.js).
 
-{% if primaryNav or toggleNav or topNav %}
-	<header id="Header" class="js-header Header">
-		{% if topNav %}
-			<div class="js-header--top Header-top">
-				{% include "_macros/navigation" with {
-					navName: 'TopNav',
-					navItems: topNav,
-					navClasses: 'grid-p container',
-					navLinkClasses: 'Is-link--reversed'
-				} %}
-			</div>
-		{% endif %}
+   Data comes from base.twig scope (static for now):
+     - snNav      : primary navigation items
+     - assetBase  : base path for the static export pages/images
+     - navActive  : optional active nav key
+     - headerTheme: 'light' (white text) | 'dark' (near-black text)
+#}
+{% set theme = headerTheme|default('light') %}
+{% set restText = theme == 'light' ? 'text-white' : 'text-secondary' %}
 
-		<div class="container Header-wrapper grid-p">
-			<a class="Link" href="{{ siteUrl }}" title="{{ siteName ~ ' ' ~ 'homepage'|t }}">
-				{{ svg(include('_partials/icons/logo.svg'))|attr({class: 'w-full h-auto max-w-[150px] pointer-events-all'}) }}
-			</a>
+<header data-header class="site-header {{ restText }}">
+    {% if theme == 'light' %}
+        {# Subtle scrim so white nav stays legible over lighter parts of the hero #}
+        <div class="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/55 to-transparent [.is-scrolled_&]:opacity-0 transition-opacity duration-300"></div>
+    {% endif %}
+    <div class="shell-wide relative flex items-center justify-between py-5 lg:py-7">
 
-			<div class="Header-content">
-				{% if primaryNav %}
-					<div class="js-header--primary Header-main">
-						{% include "_macros/navigation" with {
-							navName: 'MainNav',
-							navItems: primaryNav,
-							navLinkClasses: 'Is-link--reversed'
-						} %}
-					</div>
-				{% endif %}
+        {# Logo — links to the Craft home route #}
+        <a href="{{ siteUrl }}" class="block h-11 sm:h-12 lg:h-14 shrink-0" aria-label="Studio Noir — home" data-header-logo>
+            {% include 'figma/_partials/logo.twig' with { class: 'h-full w-auto' } %}
+        </a>
 
-				{% if primaryNav or toggleNav %}
-					<div class="js-toggle Toggle resp:hidden Toggle-{{ toggleNav ? 'toggleNavItems' :  'primaryNavItems' }}">
-						<span class="Toggle-line Toggle-line--1"></span>
-						<span class="Toggle-line Toggle-line--2"></span>
-						<span class="Toggle-line Toggle-line--3"></span>
-					</div>
-				{% endif %}
-			</div>
-		</div>
-	</header>
-{% endif %}
+        {# Desktop nav #}
+        <nav class="hidden items-center gap-8 lg:gap-10 md:flex">
+            {% for item in snNav %}
+                <a href="{{ assetBase }}{{ item.url }}"
+                   class="nav-link {{ navActive is defined and navActive == item.key ? 'is-active text-primary' : '' }}">
+                    {{ item.label }}
+                </a>
+            {% endfor %}
+            <a href="{{ assetBase }}contact.html" class="btn-primary !px-5 !py-2.5 !text-sm">
+                Offerte aanvragen
+            </a>
+        </nav>
+
+        {# Mobile toggle #}
+        <button data-nav-toggle type="button"
+                class="nav-burger relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden {{ restText }}"
+                aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+{# Mobile menu panel #}
+<div data-nav-menu class="nav-panel">
+    <a href="{{ siteUrl }}" class="mb-6 h-12 w-max" aria-label="Studio Noir — home">
+        {% include 'figma/_partials/logo.twig' with { class: 'h-full w-auto' } %}
+    </a>
+    {% for item in snNav %}
+        <a href="{{ assetBase }}{{ item.url }}"
+           class="font-display text-3xl font-medium {{ navActive is defined and navActive == item.key ? 'text-primary' : 'text-white' }}">
+            {{ item.label }}
+        </a>
+    {% endfor %}
+    <a href="{{ assetBase }}contact.html" class="btn-primary mt-6 w-max">Offerte aanvragen</a>
+</div>

@@ -11,6 +11,10 @@ import "@js/base/design-grid";
 import { pageNavigation } from "@js/base/pageNavigation";
 window.addEventListener('DOMContentLoaded', pageNavigation);
 
+// Studio Noir — Figma design behaviour (glow blob, Lenis, FAQ, nav, features…)
+import { figmaSite } from "@js/base/figma";
+window.addEventListener('DOMContentLoaded', figmaSite);
+
 // Conditional modules — only loaded when matching elements are present
 window.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.js-dialog')) {
