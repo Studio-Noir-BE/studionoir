@@ -2,29 +2,10 @@
 
 {#
    Studio Noir — homepage (Figma design) rendered through the real Craft
-   `home` single section. Content fields stay static for now: the `site` map
-   below feeds the shared Figma section partials (services / FAQ / contact).
-   `assetBase`, `snNav`, `snSocials` come from _layouts/base.twig.
+   `home` single section. Content stays static for now and is shared from
+   _layouts/base.twig (assetBase, snNav, snSocials, site.services, site.faq).
 #}
 {% set headerTheme = 'light' %}
-{% set site = {
-    socials: snSocials,
-    services: [
-        { title: 'Maatwerk website',          desc: 'Volledig op maat gebouwd in Craft CMS. Uniek design, flexibele structuur en toekomstgericht.', price: 'Vanaf €899', url: 'diensten-detail.html' },
-        { title: 'Compacte infosite',         desc: 'Snel online, professioneel en betaalbaar. Ideaal voor starters en kleine ondernemingen.',        price: 'Vanaf €299', url: 'diensten.html' },
-        { title: 'SEO & GEO optimalisatie',   desc: 'Inbegrepen bij elke website. Technische SEO, meta-tags en meer.',                                  badge: 'Inbegrepen', url: 'diensten.html' },
-        { title: 'Hosting & onderhoud',       desc: 'Snelle, veilige hosting met SSL en maandelijks onderhoud.',                                        url: 'diensten.html' }
-    ],
-    faq: [
-        { q: 'Wat kost een website laten maken bij Studio NOIR?',        a: 'Een compacte infosite start vanaf €299, een maatwerk website vanaf €899. De exacte prijs hangt af van je wensen — vraag vrijblijvend een offerte aan.' },
-        { q: 'Hoe lang duurt het om een website te laten maken?',        a: 'Een compacte infosite leveren we doorgaans binnen 1 à 2 weken op. Voor maatwerk rekenen we, afhankelijk van de omvang, op enkele weken.' },
-        { q: 'Wat is het verschil tussen een infosite en maatwerk?',     a: 'Een compacte infosite is sneller en kostenefficiënter — ideaal voor starters die professioneel online willen staan. Maatwerk biedt een uniek design en een volledig flexibele structuur.' },
-        { q: 'Doet Studio NOIR ook SEO?',                                a: 'Ja. Bij elke website is een basis SEO- en GEO-optimalisatie inbegrepen: technisch, inhoudelijk én gericht op AI-zoekmachines. Meer diepgaande optimalisatie kan op aanvraag.' },
-        { q: 'Kan ik mijn website zelf beheren na oplevering?',          a: 'Zeker. Maatwerk websites worden gebouwd in Craft CMS, waarmee je zelf eenvoudig teksten, afbeeldingen en pagina\'s beheert — zonder technische kennis.' },
-        { q: 'Neemt Studio NOIR ook hosting en onderhoud op zich?',      a: 'Ja, we voorzien snelle en veilige hosting met SSL en bieden maandelijkse onderhoudscontracten aan, zodat jij je geen zorgen hoeft te maken.' },
-        { q: 'Hoe begin ik met een website bij Studio NOIR?',            a: 'Stuur ons een berichtje of vraag een offerte aan. We bekijken samen je wensen en bezorgen je vrijblijvend een voorstel.' }
-    ]
-} %}
 
 {# Availability pill fixed bottom-right — home only #}
 {% block fixed_ui %}
