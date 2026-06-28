@@ -13,7 +13,10 @@
                     <div class="faq-item {{ loop.first ? 'is-open' : '' }}">
                         <button type="button" class="faq-trigger" aria-expanded="{{ loop.first ? 'true' : 'false' }}">
                             <span>{{ item.q }}</span>
-                            <span class="faq-icon" aria-hidden="true">+</span>
+                            <span class="faq-icon" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                            </span>
                         </button>
                         <div class="faq-panel">
                             <div>

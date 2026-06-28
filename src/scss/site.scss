@@ -152,7 +152,25 @@
                font-display text-base font-bold text-ink;
     }
     .faq-icon {
-        @apply shrink-0 text-2xl leading-none text-sand transition-transform duration-300;
+        @apply relative shrink-0 h-[18px] w-[18px] text-sand;
+    }
+    .faq-icon span {
+        position: absolute;
+        inset-inline: 0;
+        top: 50%;
+        height: 2px;
+        border-radius: 9999px;
+        background: currentColor;
+        transform: translateY(-50%);
+        transform-origin: center;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .faq-icon span:nth-child(2) {
+        transform: translateY(-50%) rotate(90deg);
+    }
+    .faq-item.is-open .faq-icon span:nth-child(2) {
+        opacity: 0;
+        transform: translateY(-50%) rotate(0deg) scaleX(0);
     }
     .faq-panel {
         @apply grid grid-rows-[0fr] transition-all duration-300 ease-out;
@@ -160,11 +178,54 @@
     .faq-item.is-open .faq-panel {
         @apply grid-rows-[1fr] pb-5;
     }
-    .faq-item.is-open .faq-icon {
-        @apply rotate-45;
-    }
     .faq-panel > div {
         @apply overflow-hidden;
+    }
+
+    /* Feature cards — scroll-activated with blur */
+    .feature-card {
+        display: flex;
+        align-items: baseline;
+        gap: 1.25rem;
+        cursor: default;
+        filter: blur(10px);
+        opacity: 0.18;
+        transition: filter 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .feature-card.is-active {
+        filter: blur(0);
+        opacity: 1;
+    }
+    .feature-num {
+        @apply shrink-0 font-display font-medium text-primary;
+        font-size: clamp(1rem, 1.8vw, 1.5rem);
+    }
+    .feature-title {
+        @apply font-display font-bold text-white leading-[0.95];
+        font-size: clamp(2rem, 5.5vw, 5.5rem);
+    }
+
+    /* Fixed UI — availability pill + chat button */
+    .sn-avail-pill {
+        @apply flex items-center gap-2.5 rounded-full bg-secondary/90 px-4 py-2.5 backdrop-blur-md shadow-lg;
+        @apply font-display text-sm font-medium text-white no-underline;
+        transition: background-color 0.3s;
+    }
+    .sn-avail-pill:hover {
+        @apply bg-secondary;
+    }
+    .sn-chat-btn {
+        @apply h-14 w-14 overflow-hidden rounded-full shadow-xl cursor-pointer;
+        border: none;
+        background: none;
+        padding: 0;
+        transition: transform 0.3s ease;
+    }
+    .sn-chat-btn:hover {
+        transform: scale(1.08);
+    }
+    .sn-chat-btn img {
+        @apply h-full w-full object-cover block;
     }
 }
 
@@ -184,4 +245,31 @@
     [data-reveal].is-visible {
         @apply translate-y-0 opacity-100;
     }
+}
+
+/* ── Global glow blob ──────────────────────────────────────── */
+@keyframes sn-blob-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50%       { transform: translate(-50%, -50%) scale(1.08); }
+}
+#sn-blob {
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    top: 40%;
+    width: 38rem;
+    height: 38rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(239,255,16,0.78) 0%, rgba(239,255,16,0) 70%);
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+    opacity: 0.24;
+    will-change: left, top;
+    animation: sn-blob-pulse 4s ease-in-out infinite;
+}
+
+/* Features section — tall scroll container */
+[data-features] {
+    height: 400vh;
 }

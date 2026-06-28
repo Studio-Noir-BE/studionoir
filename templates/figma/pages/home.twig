@@ -1,5 +1,13 @@
 {% extends 'figma/_layout.twig' %}
 
+{# Availability pill fixed bottom-right — home page only #}
+{% block fixed_ui %}
+<a href="{{ assetBase }}contact.html" class="sn-avail-pill">
+    <span class="inline-block h-2 w-2 rounded-full bg-primary shrink-0"></span>
+    beschikbaar voor nieuwe projecten
+</a>
+{% endblock %}
+
 {% block content %}
 
     {# ===== Hero ===== #}
@@ -7,33 +15,38 @@
         <img src="{{ assetBase }}img/figma/hero-home.jpg" alt=""
              class="absolute inset-0 h-full w-full object-cover opacity-90">
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30"></div>
-        <div class="pointer-events-none absolute -left-32 top-1/4 h-[34rem] w-[34rem] glow-lime opacity-25"></div>
-
-        {# Status pill #}
-        <div class="absolute right-5 top-28 hidden items-center gap-3 rounded-full bg-white/10 px-4 py-2 backdrop-blur-md sm:flex lg:right-12">
-            <img src="{{ assetBase }}img/figma/avatar.jpg" alt="" class="h-8 w-8 rounded-full object-cover">
-            <span class="flex items-center gap-2 text-sm text-white">
-                <span class="h-2 w-2 rounded-full bg-primary"></span>
-                beschikbaar voor nieuwe projecten
-            </span>
-        </div>
 
         <div class="shell-wide relative z-10 pb-16 pt-40 lg:pb-24">
-            <div class="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr]">
-                <h1 class="h-hero text-white text-balance">
-                    Websites<br>met karakter.
-                </h1>
+            <h1 class="h-hero text-white text-balance">
+                Websites<br>met karakter.
+            </h1>
+        </div>
+    </section>
 
-                {# Highlight card #}
-                <div class="max-w-md rounded-3xl bg-white/95 p-7 backdrop-blur lg:justify-self-end" data-reveal>
-                    <span class="font-display text-3xl font-medium text-secondary">01</span>
-                    <h2 class="mt-2 font-display text-2xl font-bold text-secondary">Op maat of compact</h2>
-                    <p class="mt-2 text-[15px] leading-relaxed text-muted">
-                        Infosite of volledig maatwerk. Jij kiest, wij leveren kwaliteit.
-                    </p>
-                    <a href="{{ assetBase }}diensten.html" class="arrow-link mt-5 text-secondary hover:text-primary">
-                        Bekijk onze diensten <span>→</span>
-                    </a>
+    {# ===== Features scroll section ===== #}
+    <section id="features-section" class="relative bg-secondary" data-features>
+        <div class="sticky top-0 flex h-screen">
+
+            {# Left half — the global blob drifts here via ScrollTrigger; intentionally empty #}
+            <div class="hidden w-1/2 lg:block" aria-hidden="true"></div>
+
+            {# Right half — cards activate one by one as the user scrolls #}
+            <div class="flex w-full flex-col items-start justify-center gap-5 px-6 py-16 sm:px-10 lg:w-1/2 lg:px-16">
+                <div class="feature-card is-active" data-fi="0">
+                    <span class="feature-num">01.</span>
+                    <span class="feature-title">Op maat of compact</span>
+                </div>
+                <div class="feature-card" data-fi="1">
+                    <span class="feature-num">02.</span>
+                    <span class="feature-title">SEO &amp; GEO inbegrepen</span>
+                </div>
+                <div class="feature-card" data-fi="2">
+                    <span class="feature-num">03.</span>
+                    <span class="feature-title">Van A tot Z</span>
+                </div>
+                <div class="feature-card" data-fi="3">
+                    <span class="feature-num">04.</span>
+                    <span class="feature-title">Eerlijke prijzen</span>
                 </div>
             </div>
         </div>
@@ -45,8 +58,10 @@
     {# ===== FAQ ===== #}
     {% include 'figma/_partials/faq.twig' %}
 
-    {# ===== Pre-footer ===== #}
+    {# ===== CTA — full-width, flush against FAQ ===== #}
     {% include 'figma/_partials/cta-banner.twig' %}
+
+    {# ===== Contact ===== #}
     {% include 'figma/_partials/contact-card.twig' %}
 
 {% endblock %}

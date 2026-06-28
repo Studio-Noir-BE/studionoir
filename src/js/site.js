@@ -121,6 +121,90 @@ function initReveal() {
     window.addEventListener("load", () => setTimeout(revealAll, 1200));
 }
 
+/* ----------------------------------------------------------------------------
+ * Global glow blob — subtle mouse-following, snaps to positions on scroll
+ * ------------------------------------------------------------------------- */
+function initBlob() {
+    const blob = document.getElementById("sn-blob");
+    if (!blob) return;
+
+    let blobX = window.innerWidth * 0.5;
+    let blobY = window.innerHeight * 0.4;
+    let targetX = blobX;
+    let targetY = blobY;
+    let fixedMode = false;
+    let fixedBaseX = blobX;
+    let fixedBaseY = blobY;
+
+    document.addEventListener("mousemove", (e) => {
+        if (fixedMode) {
+            // Subtle influence: 12% drift toward cursor from the fixed anchor
+            targetX = fixedBaseX + (e.clientX - fixedBaseX) * 0.12;
+            targetY = fixedBaseY + (e.clientY - fixedBaseY) * 0.12;
+        } else {
+            targetX = e.clientX;
+            targetY = e.clientY;
+        }
+    }, { passive: true });
+
+    (function tick() {
+        blobX += (targetX - blobX) * 0.07;
+        blobY += (targetY - blobY) * 0.07;
+        blob.style.left = blobX + "px";
+        blob.style.top  = blobY + "px";
+        requestAnimationFrame(tick);
+    })();
+
+    // Public API for ScrollTrigger callbacks
+    window.__snBlob = {
+        snap: (x, y) => { fixedMode = true;  fixedBaseX = x; fixedBaseY = y; targetX = x; targetY = y; },
+        free: ()       => { fixedMode = false; },
+    };
+}
+
+/* ----------------------------------------------------------------------------
+ * Features section — GSAP scroll-driven card activation
+ * ------------------------------------------------------------------------- */
+async function initFeatures() {
+    const section = document.getElementById("features-section");
+    if (!section) return;
+
+    const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+    ]);
+    gsap.registerPlugin(ScrollTrigger);
+
+    const cards = section.querySelectorAll(".feature-card");
+    if (!cards.length) return;
+
+    const activateCard = (index) => {
+        cards.forEach((card, i) => card.classList.toggle("is-active", i === index));
+    };
+    activateCard(0);
+
+    // Drive card state from scroll progress
+    ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "bottom bottom",
+        onUpdate: (self) => {
+            activateCard(Math.min(Math.floor(self.progress * cards.length), cards.length - 1));
+        },
+    });
+
+    // Snap global blob to left quarter of screen while this section is in view
+    ScrollTrigger.create({
+        trigger: section,
+        start: "top 85%",
+        end: "bottom 15%",
+        onEnter:      () => window.__snBlob?.snap(window.innerWidth * 0.25, window.innerHeight * 0.5),
+        onLeave:      () => window.__snBlob?.free(),
+        onEnterBack:  () => window.__snBlob?.snap(window.innerWidth * 0.25, window.innerHeight * 0.5),
+        onLeaveBack:  () => window.__snBlob?.free(),
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     window.__snReady = true;
     initFaq();
@@ -128,5 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initHeaderScroll();
     initForms();
     initReveal();
+    initBlob();
+    initFeatures();
     document.body.classList.add("is-ready");
 });
