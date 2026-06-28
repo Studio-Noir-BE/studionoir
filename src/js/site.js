@@ -173,7 +173,12 @@ function initFeatures() {
     if (!cards.length) return;
 
     const activateCard = (index) => {
-        cards.forEach((card, i) => card.classList.toggle("is-active", i === index));
+        cards.forEach((card, i) => {
+            const dist = Math.abs(i - index);
+            card.classList.toggle("is-active", dist === 0);
+            card.style.opacity = Math.pow(0.5, dist);
+            card.style.filter = dist === 0 ? "blur(0px)" : `blur(${4 + dist * 5}px)`;
+        });
     };
     activateCard(0);
 

@@ -187,13 +187,7 @@
         @apply w-full rounded-3xl bg-primary p-7 sm:p-9;
         grid-area: 1 / 1;
         cursor: default;
-        filter: blur(22px);
-        opacity: 0.08;
         transition: filter 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.7s cubic-bezier(0.4,0,0.2,1);
-    }
-    .feature-card.is-active {
-        filter: blur(0);
-        opacity: 1;
     }
     .feature-card-num {
         @apply font-display text-sm font-medium text-secondary/50;
@@ -256,24 +250,24 @@
 
 /* Layer 1: large base circle, slow clockwise drift */
 @keyframes sn-orbit-1 {
-    0%   { transform: translate(-50%, -50%) translate(0px,   0px)   scale(1);    }
-    25%  { transform: translate(-50%, -50%) translate(-40px, -50px) scale(1.06); }
-    50%  { transform: translate(-50%, -50%) translate(30px,  -30px) scale(0.96); }
-    75%  { transform: translate(-50%, -50%) translate(45px,  40px)  scale(1.03); }
-    100% { transform: translate(-50%, -50%) translate(0px,   0px)   scale(1);    }
+    0%   { transform: translate(-50%, -50%) translate(0px,    0px)   scale(1);    }
+    25%  { transform: translate(-50%, -50%) translate(-90px, -80px)  scale(1.1);  }
+    50%  { transform: translate(-50%, -50%) translate(70px,  -60px)  scale(0.92); }
+    75%  { transform: translate(-50%, -50%) translate(85px,   75px)  scale(1.06); }
+    100% { transform: translate(-50%, -50%) translate(0px,    0px)   scale(1);    }
 }
 /* Layer 2: medium circle, counter-clockwise, offset start */
 @keyframes sn-orbit-2 {
-    0%   { transform: translate(-50%, -50%) translate(30px,  20px)  scale(1);    }
-    33%  { transform: translate(-50%, -50%) translate(-35px, -20px) scale(1.08); }
-    66%  { transform: translate(-50%, -50%) translate(10px,  -45px) scale(0.93); }
-    100% { transform: translate(-50%, -50%) translate(30px,  20px)  scale(1);    }
+    0%   { transform: translate(-50%, -50%) translate(60px,   50px)  scale(1);    }
+    33%  { transform: translate(-50%, -50%) translate(-80px, -55px)  scale(1.12); }
+    66%  { transform: translate(-50%, -50%) translate(20px,  -85px)  scale(0.88); }
+    100% { transform: translate(-50%, -50%) translate(60px,   50px)  scale(1);    }
 }
-/* Layer 3: small accent circle, fast wobble */
+/* Layer 3: accent circle, fast wobble */
 @keyframes sn-orbit-3 {
-    0%   { transform: translate(-50%, -50%) translate(-20px, -25px) scale(1);    }
-    50%  { transform: translate(-50%, -50%) translate(35px,  20px)  scale(1.1);  }
-    100% { transform: translate(-50%, -50%) translate(-20px, -25px) scale(1);    }
+    0%   { transform: translate(-50%, -50%) translate(-55px, -60px)  scale(1);    }
+    50%  { transform: translate(-50%, -50%) translate(75px,   55px)  scale(1.15); }
+    100% { transform: translate(-50%, -50%) translate(-55px, -60px)  scale(1);    }
 }
 
 #sn-blob {
@@ -298,20 +292,20 @@
     will-change: transform;
 }
 .sn-blob-l1 {
-    width: 42rem;
-    height: 42rem;
+    width: 65rem;
+    height: 65rem;
     opacity: 0.75;
     animation: sn-orbit-1 9s ease-in-out infinite;
 }
 .sn-blob-l2 {
-    width: 30rem;
-    height: 30rem;
+    width: 50rem;
+    height: 50rem;
     opacity: 0.6;
     animation: sn-orbit-2 7s ease-in-out infinite;
 }
 .sn-blob-l3 {
-    width: 20rem;
-    height: 20rem;
+    width: 35rem;
+    height: 35rem;
     opacity: 0.5;
     animation: sn-orbit-3 5s ease-in-out infinite;
 }
