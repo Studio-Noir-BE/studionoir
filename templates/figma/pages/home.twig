@@ -2,6 +2,15 @@
 
 {% block content %}
 
+    {# Fixed availability pill — bottom-right, always visible during scroll #}
+    <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-secondary/90 px-4 py-2 shadow-lg backdrop-blur-md ring-1 ring-white/10">
+        <img src="{{ assetBase }}img/figma/avatar.jpg" alt="" class="h-8 w-8 rounded-full object-cover">
+        <span class="flex items-center gap-2 text-sm text-white">
+            <span class="h-2 w-2 rounded-full bg-primary"></span>
+            beschikbaar voor nieuwe projecten
+        </span>
+    </div>
+
     {# ===== Hero ===== #}
     <section class="relative flex min-h-[100svh] items-end overflow-hidden bg-secondary">
         <img src="{{ assetBase }}img/figma/hero-home.jpg" alt=""
@@ -9,33 +18,10 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30"></div>
         <div class="pointer-events-none absolute -left-32 top-1/4 h-[34rem] w-[34rem] glow-lime opacity-25"></div>
 
-        {# Status pill #}
-        <div class="absolute right-5 top-28 hidden items-center gap-3 rounded-full bg-white/10 px-4 py-2 backdrop-blur-md sm:flex lg:right-12">
-            <img src="{{ assetBase }}img/figma/avatar.jpg" alt="" class="h-8 w-8 rounded-full object-cover">
-            <span class="flex items-center gap-2 text-sm text-white">
-                <span class="h-2 w-2 rounded-full bg-primary"></span>
-                beschikbaar voor nieuwe projecten
-            </span>
-        </div>
-
         <div class="shell-wide relative z-10 pb-16 pt-40 lg:pb-24">
-            <div class="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr]">
-                <h1 class="h-hero text-white text-balance">
-                    Websites<br>met karakter.
-                </h1>
-
-                {# Highlight card #}
-                <div class="max-w-md rounded-3xl bg-white/95 p-7 backdrop-blur lg:justify-self-end" data-reveal>
-                    <span class="font-display text-3xl font-medium text-secondary">01</span>
-                    <h2 class="mt-2 font-display text-2xl font-bold text-secondary">Op maat of compact</h2>
-                    <p class="mt-2 text-[15px] leading-relaxed text-muted">
-                        Infosite of volledig maatwerk. Jij kiest, wij leveren kwaliteit.
-                    </p>
-                    <a href="{{ assetBase }}diensten.html" class="arrow-link mt-5 text-secondary hover:text-primary">
-                        Bekijk onze diensten <span>→</span>
-                    </a>
-                </div>
-            </div>
+            <h1 class="h-hero text-white text-balance">
+                Websites<br>met karakter.
+            </h1>
         </div>
     </section>
 
