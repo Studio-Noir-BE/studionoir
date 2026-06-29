@@ -1,15 +1,70 @@
 {% extends '_layouts/site' %}
 
-{% block main %}
-	<div class="container space-y-6 u-block grid-p">		
-		<h1 class="">{{ systemName }}</h1>
-		<h2 class="h4">With Vite & Tailwind</h2>
-		{% include "_macros/button/button" with { 
-			url: '/stylesheet',
-			text: 'Stylesheet',
-		} %}
-	</div>
+{#
+   Studio Noir — homepage (Figma design) rendered through the real Craft
+   `home` single section. Content stays static for now and is shared from
+   _layouts/base.twig (assetBase, snNav, snSocials, site.services, site.faq).
+#}
+{% set headerTheme = 'light' %}
 
-	{% include "_content/index" %}
+{# Availability pill fixed bottom-right — home only #}
+{% block fixed_ui %}
+    <a href="{{ assetBase }}contact.html" class="sn-avail-pill">
+        <span class="inline-block h-2 w-2 rounded-full bg-primary shrink-0"></span>
+        beschikbaar voor nieuwe projecten
+    </a>
+{% endblock %}
+
+{% block main %}
+
+    {# ===== Hero ===== #}
+    <section class="relative flex min-h-[100svh] items-end overflow-hidden bg-secondary">
+        <img src="{{ assetBase }}img/figma/hero-home.jpg" alt=""
+             class="absolute inset-0 h-full w-full object-cover opacity-90">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30"></div>
+
+        <div class="shell-wide relative z-10 pb-16 pt-40 lg:pb-24">
+            <h1 class="h-hero text-white text-balance">
+                Websites<br>met karakter.
+            </h1>
+        </div>
+    </section>
+
+    {# ===== Features scroll section ===== #}
+    <section id="features-section" class="relative" data-features>
+        <div class="sticky top-0 flex h-screen">
+            <div class="hidden w-1/2 lg:block" aria-hidden="true"></div>
+            <div class="relative flex w-full flex-col overflow-hidden px-6 py-16 sm:px-10 lg:w-1/2 lg:px-16" id="feature-viewport">
+                <div id="feature-track" class="flex w-full max-w-lg flex-col gap-5 self-center" style="transition: transform 0.7s cubic-bezier(0.4,0,0.2,1)">
+                    <div class="feature-card is-active" data-fi="0">
+                        <p class="feature-card-num">01</p>
+                        <h3 class="feature-card-title">Op maat of compact</h3>
+                        <p class="feature-card-desc">Of je nu een volledige maatwerk website of een compacte infosite nodig hebt — we bouwen wat bij jou past, niet wat bij ons past.</p>
+                    </div>
+                    <div class="feature-card" data-fi="1">
+                        <p class="feature-card-num">02</p>
+                        <h3 class="feature-card-title">SEO &amp; GEO inbegrepen</h3>
+                        <p class="feature-card-desc">Elke website die we bouwen is geoptimaliseerd voor zoekmachines én voor de nieuwste AI-zoekresultaten. Gevonden worden zit standaard ingebakken.</p>
+                    </div>
+                    <div class="feature-card" data-fi="2">
+                        <p class="feature-card-num">03</p>
+                        <h3 class="feature-card-title">Van A tot Z</h3>
+                        <p class="feature-card-desc">Design, development, hosting, onderhoud — wij nemen alles uit handen. Jij focust op je zaak, wij zorgen voor je digitale aanwezigheid.</p>
+                    </div>
+                    <div class="feature-card" data-fi="3">
+                        <p class="feature-card-num">04</p>
+                        <h3 class="feature-card-title">Eerlijke prijzen</h3>
+                        <p class="feature-card-desc">Geen verborgen kosten, geen verrassingen. Transparante prijzen die kloppen bij het geleverde werk — punt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ===== Services / FAQ / CTA / Contact — shared Figma section partials ===== #}
+    {% include 'figma/_partials/services-grid.twig' %}
+    {% include 'figma/_partials/faq.twig' %}
+    {% include 'figma/_partials/cta-banner.twig' %}
+    {% include 'figma/_partials/contact-card.twig' %}
 
 {% endblock %}

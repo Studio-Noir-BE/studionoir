@@ -1,6 +1,47 @@
 {% set baseUrl = alias('@web') ~ '/' %}
 {% set notchColor = '#000000' %}
 
+{#
+   Studio Noir — static site data (Figma design).
+   The CMS fields stay static for now: nav + socials live here so _pageHeader /
+   _pageFooter and the page templates can share them. `assetBase` is root: the
+   design's images live in web/img/figma (served by the web server at
+   /img/figma/...) so they resolve in a fresh checkout without a build step.
+   Sibling .html nav links (e.g. /diensten.html) still point at the not-yet-
+   wired pages. Parent-template vars are in scope for child blocks + includes.
+#}
+{% set assetBase = '/' %}
+{% set snNav = [
+    { label: 'diensten',         url: 'diensten.html',  key: 'diensten'  },
+    { label: 'over Studio Noir', url: 'over.html',       key: 'over'      },
+    { label: 'inzichten',        url: 'inzichten.html',  key: 'inzichten' },
+    { label: 'contact',          url: 'contact.html',    key: 'contact'   }
+] %}
+{% set snSocials = [
+    { label: 'LinkedIn',  url: 'https://www.linkedin.com/' },
+    { label: 'Instagram', url: 'https://www.instagram.com/' },
+    { label: 'Facebook',  url: 'https://www.facebook.com/' }
+] %}
+{# Every service carries all keys (badge/price = null when absent) so the shared
+   partials stay safe under Twig strict_variables. #}
+{% set snServices = [
+    { title: 'Maatwerk website',        desc: 'Volledig op maat gebouwd in Craft CMS. Uniek design, flexibele structuur en toekomstgericht.', price: 'Vanaf €899', badge: null,         url: 'diensten-detail.html' },
+    { title: 'Compacte infosite',       desc: 'Snel online, professioneel en betaalbaar. Ideaal voor starters en kleine ondernemingen.',        price: 'Vanaf €299', badge: null,         url: 'diensten.html' },
+    { title: 'SEO & GEO optimalisatie', desc: 'Inbegrepen bij elke website. Technische SEO, meta-tags en meer.',                                  price: null,         badge: 'Inbegrepen', url: 'diensten.html' },
+    { title: 'Hosting & onderhoud',     desc: 'Snelle, veilige hosting met SSL en maandelijks onderhoud.',                                        price: null,         badge: null,         url: 'diensten.html' }
+] %}
+{% set snFaq = [
+    { q: 'Wat kost een website laten maken bij Studio NOIR?',    a: 'Een compacte infosite start vanaf €299, een maatwerk website vanaf €899. De exacte prijs hangt af van je wensen — vraag vrijblijvend een offerte aan.' },
+    { q: 'Hoe lang duurt het om een website te laten maken?',    a: 'Een compacte infosite leveren we doorgaans binnen 1 à 2 weken op. Voor maatwerk rekenen we, afhankelijk van de omvang, op enkele weken.' },
+    { q: 'Wat is het verschil tussen een infosite en maatwerk?', a: 'Een compacte infosite is sneller en kostenefficiënter — ideaal voor starters die professioneel online willen staan. Maatwerk biedt een uniek design en een volledig flexibele structuur.' },
+    { q: 'Doet Studio NOIR ook SEO?',                            a: 'Ja. Bij elke website is een basis SEO- en GEO-optimalisatie inbegrepen: technisch, inhoudelijk én gericht op AI-zoekmachines. Meer diepgaande optimalisatie kan op aanvraag.' },
+    { q: 'Kan ik mijn website zelf beheren na oplevering?',      a: 'Zeker. Maatwerk websites worden gebouwd in Craft CMS, waarmee je zelf eenvoudig teksten, afbeeldingen en pagina\'s beheert — zonder technische kennis.' },
+    { q: 'Neemt Studio NOIR ook hosting en onderhoud op zich?', a: 'Ja, we voorzien snelle en veilige hosting met SSL en bieden maandelijkse onderhoudscontracten aan, zodat jij je geen zorgen hoeft te maken.' },
+    { q: 'Hoe begin ik met een website bij Studio NOIR?',        a: 'Stuur ons een berichtje of vraag een offerte aan. We bekijken samen je wensen en bezorgen je vrijblijvend een voorstel.' }
+] %}
+{# Shared bag the Figma section partials read from (CMS fields stay static). #}
+{% set site = { nav: snNav, socials: snSocials, services: snServices, faq: snFaq } %}
+
 <!doctype html>
 <html lang="{{ craft.app.language }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 	<head>
@@ -26,6 +67,10 @@
 		{%- minify -%}
 		{# Site fonts #}
 		{% include "_inlinecss/_site_fonts.twig" ignore missing %}
+		{# Figma design fonts: Space Grotesk (display) + Onest (body) #}
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		{%- endminify -%}
 
 		{%- minify -%}
@@ -49,6 +94,14 @@
 			@keyframes page-reveal { to { opacity: 1; } }
 		</style>
 
+		{# Failsafe: never leave scroll-reveal sections hidden if JS fails. #}
+		<noscript>
+			<style>
+				body { opacity: 1 !important; }
+				[data-reveal] { opacity: 1 !important; transform: none !important; }
+			</style>
+		</noscript>
+
 
 		{# Child templates can inject <link rel="preload"> for the LCP image here #}
 		{% block preload %}{% endblock %}
@@ -66,7 +119,14 @@
 
 	{# HTML Body #}
 	<body {% if bodyClass is defined %} class="{{ bodyClass }}" {% endif %}>
-	
+
+		{# Global glow blob — multi-layer, follows mouse, visible only on white #}
+		<div id="sn-blob" aria-hidden="true">
+			<div class="sn-blob-layer sn-blob-l1"></div>
+			<div class="sn-blob-layer sn-blob-l2"></div>
+			<div class="sn-blob-layer sn-blob-l3"></div>
+		</div>
+
 		{% block body %}{% endblock %}
 
 		{# Page naviation #}
@@ -75,9 +135,21 @@
 		{# Scripts #}
 		{% include "_partials/_scripts.twig" %}
 
+		{# Fixed bottom-right UI: page-specific slot (e.g. availability pill).
+		   Raised above the Crisp launcher so it never overlaps the chat bubble. #}
+		<div id="sn-fixed-ui" style="position:fixed;bottom:5.5rem;right:1.5rem;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:0.75rem;">
+			{% block fixed_ui %}{% endblock %}
+		</div>
+
 		{# Inline JS #}
 		{% block _inline_js %}{% endblock %}
-		
+
 		{%- endminify -%}
+
+		{# Crisp Chat — standard embed (chatbox styled in the Crisp dashboard) #}
+		<script type="text/javascript">
+			window.$crisp=[];window.CRISP_WEBSITE_ID="37df2615-0b0e-4e66-9bf3-8e41c9d3b028";
+			(function(){var d=document,s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+		</script>
 	</body>
 </html>

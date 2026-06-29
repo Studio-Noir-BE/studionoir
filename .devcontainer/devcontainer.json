@@ -1,0 +1,40 @@
+{
+    "name": "Studio Noir — Craft + DDEV",
+
+    // Codespaces "universal" base image (includes PHP/Node tooling). DDEV itself
+    // runs the real services (PHP, MySQL, nginx) inside Docker.
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+
+    // DDEV requires Docker. The .ddev/ folder only holds project config — the
+    // `ddev` binary + Docker must be provided by the devcontainer, which is why a
+    // plain Codespace reports "ddev: command not found".
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+
+    "containerEnv": {
+        "DDEV_NONINTERACTIVE": "true"
+    },
+
+    // One-time, after the container is created: install DDEV, bring the project
+    // up and install PHP + Node dependencies.
+    "onCreateCommand": "curl -fsSL https://ddev.com/install.sh | bash",
+    "postCreateCommand": "ddev start -y && ddev composer install && ddev npm install",
+
+    // Every time the Codespace resumes from sleep.
+    "postStartCommand": "ddev start -y",
+
+    // DDEV ≥ v1.22 auto-detects Codespaces and exposes the site on the forwarded
+    // port; no fixed ports are pinned here so DDEV can manage them.
+    "forwardPorts": [],
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bmewburn.vscode-intelephense-client",
+                "esbenp.prettier-vscode",
+                "bradlc.vscode-tailwindcss"
+            ]
+        }
+    }
+}

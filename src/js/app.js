@@ -7,9 +7,12 @@ import('@js/base/cookie-banner');
 // Design grid — dev only helper
 import "@js/base/design-grid";
 
-// Page navigation — always needed (controls header height + page reveal)
-import { pageNavigation } from "@js/base/pageNavigation";
-window.addEventListener('DOMContentLoaded', pageNavigation);
+// Studio Noir — Figma design behaviour (glow blob, Lenis, FAQ, mobile nav,
+// header scroll state + page reveal, scroll reveal, features track). This
+// replaces the boilerplate's gsap-based pageNavigation, so no paid GreenSock
+// dependency is needed to install/build the site.
+import { figmaSite } from "@js/base/figma";
+window.addEventListener('DOMContentLoaded', figmaSite);
 
 // Conditional modules — only loaded when matching elements are present
 window.addEventListener('DOMContentLoaded', () => {
@@ -19,10 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (document.querySelector('.fui-form')) {
         import('@js/base/forms').then(({ formieForm }) => formieForm());
-    }
-
-    if (document.querySelector('.accordion-container')) {
-        import('@js/base/accordion').then(({ initAccordions }) => initAccordions());
     }
 
     if (document.querySelector('.clicktrough')) {
