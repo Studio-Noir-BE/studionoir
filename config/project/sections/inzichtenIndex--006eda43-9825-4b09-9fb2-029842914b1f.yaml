@@ -1,0 +1,28 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 1d767e84-2dcb-4aad-98ca-f2e516a5baab # Inzichten overzicht
+handle: inzichtenIndex
+maxAuthors: 1
+name: Inzichten (overzicht)
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primaire invoer-pagina'
+      -
+        - refresh
+        - '1'
+      -
+        - urlFormat
+        - '{url}'
+propagationMethod: all
+siteSettings:
+  c3ffcf57-ea2c-4a07-a6bd-3768cfb8b05d: # [NL] Boilerplate
+    enabledByDefault: true
+    hasUrls: true
+    template: inzichten/index
+    uriFormat: inzichten
+type: single

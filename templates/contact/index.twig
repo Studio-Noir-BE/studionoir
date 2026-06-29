@@ -1,0 +1,27 @@
+{% extends '_layouts/site' %}
+
+{# Contact (single `contact`). Editable: title, intro. #}
+{% set headerTheme = 'dark' %}
+
+{% block main %}
+
+    <section class="relative overflow-hidden pt-32 lg:pt-40">
+        <div class="pointer-events-none absolute -right-20 top-20 h-[34rem] w-[34rem] glow-lime opacity-60"></div>
+        <div class="pointer-events-none absolute left-1/4 top-40 h-[24rem] w-[24rem] glow-lime opacity-40"></div>
+
+        <div class="shell relative pt-8 text-center">
+            <p class="eyebrow text-secondary" data-reveal>Contact</p>
+            <h1 class="h-hero mx-auto mt-4 max-w-3xl text-secondary text-balance" data-reveal>{{ entry.title|default('Laten we samenwerken.') }}</h1>
+            <div class="sn-richtext mx-auto mt-6 max-w-xl text-lg text-muted" data-reveal>
+                {% if entry.fieldIntro|striptags|trim is not empty %}
+                    {{ entry.fieldIntro }}
+                {% else %}
+                    <p>Vraag vrijblijvend een offerte aan of stuur ons een berichtje — we antwoorden binnen 1 werkdag.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        {% include 'figma/_partials/contact-card.twig' with { submitLabel: 'Verstuur bericht', showLogo: false } %}
+    </section>
+
+{% endblock %}

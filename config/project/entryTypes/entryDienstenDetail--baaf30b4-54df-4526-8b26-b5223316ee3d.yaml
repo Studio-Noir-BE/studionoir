@@ -1,0 +1,117 @@
+color: null
+fieldLayouts:
+    13a89167-a2f1-4efe-8786-b72af6010a1b:
+      tabs:
+        -
+          elementCondition: null
+          elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-06-29T12:00:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 1c5b5125-2842-40dd-b29f-0da203448338
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-06-29T12:00:00+00:00'
+            elementCondition: null
+            fieldUid: 89087def-1f89-42c4-922f-14e6561ec88c # Intro
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bc3924d1-bdad-485c-8487-c854f0560534
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-06-29T12:00:00+00:00'
+            elementCondition: null
+            fieldUid: 8a61e928-0305-4d8c-a622-f299bda42831 # Afbeelding
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2837466f-ad56-42dd-8976-ad1f0180bd37
+            userCondition: null
+            warning: null
+            width: 100
+          name: Content
+          uid: 442e1f7f-e3b2-458e-a7c1-3a0dca17f2ea
+          userCondition: null
+        -
+          elementCondition: null
+          elements:
+          -
+            dateAdded: '2026-06-29T12:00:00+00:00'
+            elementCondition: null
+            fieldUid: 395a26e7-da38-4831-bd81-cf24b0965f3d # Inhoud
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 77085b66-9359-4cd1-9054-c30453d50ecf
+            userCondition: null
+            warning: null
+            width: 100
+          name: Inhoud
+          uid: ed64de29-42d1-4ff2-8394-7f4bc1ea85b0
+          userCondition: null
+        -
+          elementCondition: null
+          elements:
+          -
+            dateAdded: '2026-06-29T12:00:00+00:00'
+            elementCondition: null
+            fieldUid: 73a7a1bf-bcef-4bc3-bdb4-6a947c3d1688 # SEO
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 36044ea0-199d-4834-9500-6236420942bb
+            userCondition: null
+            warning: null
+            width: 100
+          name: SEO
+          uid: 046165a8-fa55-4b18-9b43-cbe30e9a88b2
+          userCondition: null
+handle: entryDienstenDetail
+hasTitleField: true
+icon: null
+name: Diensten detail
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

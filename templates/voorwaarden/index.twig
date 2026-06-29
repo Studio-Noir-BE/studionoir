@@ -1,0 +1,24 @@
+{% extends '_layouts/site' %}
+
+{# Voorwaarden (single `voorwaarden`). Editable: title, intro/body. #}
+{% set headerTheme = 'dark' %}
+
+{% block main %}
+    <section class="shell max-w-3xl py-32 lg:py-40">
+        <p class="eyebrow text-secondary">Juridisch</p>
+        <h1 class="h-section mt-3 text-secondary">{{ entry.title|default('Algemene voorwaarden') }}</h1>
+        <div class="sn-richtext mt-8 space-y-5 text-[17px] leading-relaxed text-muted">
+            {% if entry.fieldIntro|striptags|trim is not empty %}
+                {{ entry.fieldIntro }}
+            {% else %}
+                <p>Dit is een placeholder voor de algemene voorwaarden van Studio Noir. De definitieve
+                   tekst wordt later toegevoegd en beheerd via Craft CMS.</p>
+            {% endif %}
+
+            {% set blocks = entry.fieldContent.all() ?? [] %}
+            {% for block in blocks %}
+                {% include "_content/blocks/#{block.type.handle}" ignore missing with { contentIndex: loop.index } %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

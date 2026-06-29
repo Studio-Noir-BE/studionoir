@@ -1,0 +1,117 @@
+{% extends '_layouts/site' %}
+
+{# Diensten detail (single `dienstenDetail`). Editable: title, intro, hero image. #}
+{% set headerTheme = 'light' %}
+{% set heroImg = entry.fieldImage.one() ?? null %}
+
+{% block main %}
+
+    {# Hero #}
+    <section class="relative flex min-h-[62vh] items-end overflow-hidden bg-secondary">
+        <img src="{{ heroImg ? heroImg.url : assetBase ~ 'img/figma/hero-diensten.jpg' }}" alt=""
+             class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20"></div>
+        <div class="shell-wide relative z-10 w-full pb-12 pt-40 lg:pb-16">
+            <div class="flex flex-wrap items-end justify-between gap-6">
+                <div>
+                    <p class="eyebrow mb-4 text-primary">Dienst in detail</p>
+                    <h1 class="h-hero text-white text-balance">{{ entry.title|default('Maatwerk website') }}</h1>
+                </div>
+                <span class="font-display text-2xl font-medium text-white sm:text-3xl">Vanaf €899</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="shell max-w-4xl space-y-16 py-16 lg:py-24">
+
+        {# Intro / waarom op maat #}
+        <section data-reveal>
+            <h2 class="h-section text-secondary">Waarom een website op maat?</h2>
+            <div class="sn-richtext mt-5 text-[17px] leading-relaxed text-muted">
+                {% if entry.fieldIntro|striptags|trim is not empty %}
+                    {{ entry.fieldIntro }}
+                {% else %}
+                    <p>Een maatwerk website is volledig op jouw maat gebouwd — geen kant-en-klare sjablonen,
+                       maar een uniek ontwerp en structuur die perfect aansluiten bij jouw merk, doelen en doelgroep.</p>
+                {% endif %}
+            </div>
+            <ul class="mt-7 space-y-5">
+                {% for f in [
+                    { lead: 'Uniek design', text: 'geen enkel ander bedrijf heeft dezelfde website. Alles, van de lay-out tot de kleuren en typografie, wordt afgestemd op jouw huisstijl.' },
+                    { lead: 'Flexibele structuur', text: 'de pagina\'s, secties en inhoud worden opgebouwd zoals jij dat nodig hebt, niet zoals een template dat voorschrijft.' },
+                    { lead: 'Toekomstgericht', text: 'een maatwerk website groeit mee met je bedrijf. Extra pagina\'s, functionaliteiten of integraties toevoegen is altijd mogelijk.' },
+                    { lead: 'Betere prestaties', text: 'geen overbodige code of onnodige plugins. Enkel wat jouw website nodig heeft, wat de snelheid en veiligheid ten goede komt.' }
+                ] %}
+                    <li class="flex gap-4">
+                        <span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-primary"></span>
+                        <p class="text-[17px] leading-relaxed text-secondary">
+                            <strong class="font-display font-semibold">{{ f.lead }}</strong> — <span class="text-muted">{{ f.text }}</span>
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        {# Craft CMS #}
+        <section class="rounded-[28px] bg-secondary p-8 text-white sm:p-12" data-reveal>
+            <h2 class="h-section">Wat is Craft CMS?</h2>
+            <p class="mt-5 max-w-2xl text-[17px] leading-relaxed text-white/70">
+                Voor het beheer van de website maken we gebruik van Craft CMS — een krachtig en
+                professioneel contentbeheersysteem dat speciaal is ontworpen voor maatwerk projecten.
+            </p>
+            <a href="https://craftcms.com" target="_blank" rel="noopener" class="arrow-link mt-6 text-primary">
+                Meer over Craft CMS <span>→</span>
+            </a>
+        </section>
+
+        {# Waarom Craft #}
+        <section data-reveal>
+            <h2 class="h-section text-secondary">Waarom Craft CMS?</h2>
+            <ul class="mt-7 space-y-5">
+                {% for f in [
+                    { lead: 'Intuïtief beheerpaneel', text: 'je beheert zelf eenvoudig teksten, afbeeldingen en pagina\'s, zonder technische kennis.' },
+                    { lead: 'Volledig op maat', text: 'in tegenstelling tot generieke systemen zoals WordPress, laat Craft CMS toe om de content-structuur volledig aan te passen. Geen compromissen.' },
+                    { lead: 'Veilig en stabiel', text: 'Craft CMS staat bekend om zijn sterke beveiliging en stabiele werking. Minder kwetsbaarheden, minder zorgen.' },
+                    { lead: 'Hoge performantie', text: 'het systeem is lichtgewicht en geoptimaliseerd voor snelheid, wat zorgt voor een vlotte gebruikerservaring.' },
+                    { lead: 'Schaalbaar', text: 'of je nu een eenvoudige website of een complexe webapplicatie nodig hebt, Craft CMS kan het aan.' }
+                ] %}
+                    <li class="flex gap-4">
+                        <span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-primary"></span>
+                        <p class="text-[17px] leading-relaxed text-secondary">
+                            <strong class="font-display font-semibold">{{ f.lead }}</strong> — <span class="text-muted">{{ f.text }}</span>
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        {# Wat krijg je — black cards with yellow text #}
+        <section data-reveal>
+            <h2 class="h-section text-secondary">Wat krijg je?</h2>
+            <ul class="mt-7 grid gap-4 sm:grid-cols-2">
+                {% for item in [
+                    'Een unieke, professioneel gebouwde website',
+                    'Beheerd via Craft CMS — eenvoudig zelf aan te passen',
+                    'Snelle en veilige hosting met SSL',
+                    'Maandelijks onderhoud en updates',
+                    'Persoonlijke ondersteuning'
+                ] %}
+                    <li class="flex items-center gap-3 rounded-2xl bg-secondary px-5 py-4">
+                        <span class="text-primary">✓</span>
+                        <span class="text-[15px] font-medium text-primary">{{ item }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+
+    {% include 'figma/_partials/services-cta.twig' with {
+        heading: 'Interesse in deze dienst?',
+        sub: 'Of heeft u een andere vraag?'
+    } %}
+
+    {% include 'figma/_partials/faq.twig' %}
+    {% include 'figma/_partials/cta-banner.twig' %}
+    {% include 'figma/_partials/contact-card.twig' %}
+
+{% endblock %}

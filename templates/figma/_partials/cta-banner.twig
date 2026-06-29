@@ -7,6 +7,6 @@
         <p class="mx-auto mt-5 max-w-xl text-cream/80">
             Heb je een andere vraag? Stuur ons een berichtje — we antwoorden binnen 1 werkdag.
         </p>
-        <a href="{{ assetBase }}contact.html" class="btn-primary mt-8">Offerte aanvragen →</a>
+        <a href="{{ contactUrl|default(assetBase ~ 'contact.html') }}" class="btn-primary mt-8">Offerte aanvragen →</a>
     </div>
 </section>

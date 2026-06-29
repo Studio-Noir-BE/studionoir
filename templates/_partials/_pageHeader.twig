@@ -1,20 +1,31 @@
 {#
-   Studio Noir — site header (Figma design), ported into the Craft layout.
-   Fixed, transparent over the hero, solid dark once scrolled. Hides on scroll
-   down / reveals on scroll up (handled in src/js/base/figma.js).
+   Studio Noir — site header (Figma design), driven by the Craft globals.
+   Primary nav comes from globalHeader.primaryNav (a Matrix of link blocks).
+   While that global is still empty it falls back to the static snNav so the
+   header is never blank. Manage the items in CP → Globals → Header.
 
-   Data comes from base.twig scope (static for now):
-     - snNav      : primary navigation items
-     - assetBase  : base path for the static export pages/images
-     - navActive  : optional active nav key
-     - headerTheme: 'light' (white text) | 'dark' (near-black text)
+   Scope vars (from _layouts/base.twig): snNav, assetBase, contactUrl, navActive,
+   headerTheme ('light' = white text | 'dark' = near-black text).
 #}
 {% set theme = headerTheme|default('light') %}
 {% set restText = theme == 'light' ? 'text-white' : 'text-secondary' %}
 
+{# Normalise nav items to { url, label } — prefer the CMS globals #}
+{% set globalNav = globalHeader is defined ? (globalHeader.primaryNav.all() ?? []) : [] %}
+{% set navItems = [] %}
+{% if globalNav|length %}
+    {% for item in globalNav %}
+        {% set link = item.fieldLink ?? null %}
+        {% if link %}{% set navItems = navItems|merge([{ url: link.url, label: link.label }]) %}{% endif %}
+    {% endfor %}
+{% else %}
+    {% for item in snNav %}
+        {% set navItems = navItems|merge([{ url: assetBase ~ item.url, label: item.label }]) %}
+    {% endfor %}
+{% endif %}
+
 <header data-header class="site-header {{ restText }}">
     {% if theme == 'light' %}
-        {# Subtle scrim so white nav stays legible over lighter parts of the hero #}
         <div class="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/55 to-transparent [.is-scrolled_&]:opacity-0 transition-opacity duration-300"></div>
     {% endif %}
     <div class="shell-wide relative flex items-center justify-between py-5 lg:py-7">
@@ -26,15 +37,10 @@
 
         {# Desktop nav #}
         <nav class="hidden items-center gap-8 lg:gap-10 md:flex">
-            {% for item in snNav %}
-                <a href="{{ assetBase }}{{ item.url }}"
-                   class="nav-link {{ navActive is defined and navActive == item.key ? 'is-active text-primary' : '' }}">
-                    {{ item.label }}
-                </a>
+            {% for item in navItems %}
+                <a href="{{ item.url }}" class="nav-link">{{ item.label }}</a>
             {% endfor %}
-            <a href="{{ assetBase }}contact.html" class="btn-primary !px-5 !py-2.5 !text-sm">
-                Offerte aanvragen
-            </a>
+            <a href="{{ contactUrl }}" class="btn-primary !px-5 !py-2.5 !text-sm">Offerte aanvragen</a>
         </nav>
 
         {# Mobile toggle — always brand yellow so it stays visible on dark heroes #}
@@ -48,11 +54,8 @@
 
 {# Mobile menu panel #}
 <div data-nav-menu class="nav-panel">
-    {% for item in snNav %}
-        <a href="{{ assetBase }}{{ item.url }}"
-           class="font-display text-3xl font-medium {{ navActive is defined and navActive == item.key ? 'text-primary' : 'text-white' }}">
-            {{ item.label }}
-        </a>
+    {% for item in navItems %}
+        <a href="{{ item.url }}" class="font-display text-3xl font-medium text-white">{{ item.label }}</a>
     {% endfor %}
-    <a href="{{ assetBase }}contact.html" class="btn-primary mt-6 w-max">Offerte aanvragen</a>
+    <a href="{{ contactUrl }}" class="btn-primary mt-6 w-max">Offerte aanvragen</a>
 </div>

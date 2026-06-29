@@ -1,0 +1,103 @@
+color: null
+fieldLayouts:
+    b693b12b-6ced-4763-90e1-765a82e4faf4:
+      tabs:
+        -
+          elementCondition: null
+          elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-06-29T12:00:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: a9f68654-ba63-4a20-9df6-35d7924118c8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-06-29T12:00:00+00:00'
+            elementCondition: null
+            fieldUid: 89087def-1f89-42c4-922f-14e6561ec88c # Intro
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dc0cc557-cdd8-44ac-9e3c-e213f1fda98a
+            userCondition: null
+            warning: null
+            width: 100
+          name: Content
+          uid: 5e4a6365-8369-4c50-8c49-1d14cec58309
+          userCondition: null
+        -
+          elementCondition: null
+          elements:
+          -
+            dateAdded: '2026-06-29T12:00:00+00:00'
+            elementCondition: null
+            fieldUid: 395a26e7-da38-4831-bd81-cf24b0965f3d # Inhoud
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9766f148-759a-49d1-b457-41002c248cc9
+            userCondition: null
+            warning: null
+            width: 100
+          name: Inhoud
+          uid: 6de8e2ba-de3f-4649-b75a-d600fda937be
+          userCondition: null
+        -
+          elementCondition: null
+          elements:
+          -
+            dateAdded: '2026-06-29T12:00:00+00:00'
+            elementCondition: null
+            fieldUid: 73a7a1bf-bcef-4bc3-bdb4-6a947c3d1688 # SEO
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ab95aa6f-13cc-46df-b082-8752137b103b
+            userCondition: null
+            warning: null
+            width: 100
+          name: SEO
+          uid: 84e20841-a099-43dd-89f7-a79e44c3d29c
+          userCondition: null
+handle: entryVoorwaarden
+hasTitleField: true
+icon: null
+name: Voorwaarden
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

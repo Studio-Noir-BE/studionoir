@@ -1,0 +1,83 @@
+{% extends '_layouts/site' %}
+
+{#
+   Diensten (single `diensten`). Editable: title, intro, hero image. The detailed
+   service blocks stay in the template (pragmatic). Optional "Inhoud" matrix renders
+   after the intro.
+#}
+{% set headerTheme = 'light' %}
+{% set heroImg = entry.fieldImage.one() ?? null %}
+
+{% set servicesDetail = [
+    { title: 'Maatwerk website',        price: 'Vanaf €899',  url: '/diensten/maatwerk-website', cta: 'Meer info',      note: null,
+      desc: 'Volledig op jouw maat gebouwd in Craft CMS. Een uniek ontwerp en flexibele structuur die perfect aansluiten bij jouw merk, met snelle en veilige technologie.' },
+    { title: 'Compacte infosite',       price: 'Vanaf €299',  url: '/contact', cta: 'Contacteer ons', note: null,
+      desc: 'Eén strakke, professionele landingspagina met alles wat een bezoeker moet weten. Razendsnel en veilig dankzij statische technologie. Optioneel onderhoudscontract mogelijk.' },
+    { title: 'SEO & GEO optimalisatie', price: 'Inbegrepen*', url: '/contact', cta: 'Contacteer ons',
+      note: '* Basis SEO en GEO focus is inbegrepen. Wil je meer dan alleen basis of heb je vragen hierover? Contacteer ons.',
+      desc: 'Zichtbaar zijn in Google én bij AI-zoekmachines zoals ChatGPT en Gemini. Wij zorgen voor een eenmalige, grondige optimalisatie: technisch, inhoudelijk, lokaal én toekomstgericht.' },
+    { title: 'Hosting & onderhoud',     price: 'Op aanvraag', url: '/contact', cta: 'Contacteer ons', note: null,
+      desc: 'Webhostingprijs op aanvraag (~€150/j). Onderhoud voor compacte infosites via een maandelijks contract. Voor maatwerk beheer je zelf de inhoud via Craft CMS; extra werk wordt in regie aangerekend.' }
+] %}
+
+{% block main %}
+
+    {# Hero #}
+    <section class="relative flex min-h-[62vh] items-end overflow-hidden bg-secondary">
+        <img src="{{ heroImg ? heroImg.url : assetBase ~ 'img/figma/hero-diensten.jpg' }}" alt=""
+             class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20"></div>
+        <div class="shell-wide relative z-10 w-full pb-12 pt-40 lg:pb-16">
+            <p class="eyebrow mb-4 text-primary">Wat we doen</p>
+            <h1 class="h-hero text-white text-balance">{{ entry.title|default('Onze diensten') }}</h1>
+        </div>
+    </section>
+
+    {# Intro #}
+    <section class="shell py-14 lg:py-20">
+        <div class="sn-richtext max-w-3xl text-xl leading-relaxed text-secondary text-balance" data-reveal>
+            {% if entry.fieldIntro|striptags|trim is not empty %}
+                {{ entry.fieldIntro }}
+            {% else %}
+                <p>Van een compacte infosite tot een volledig maatwerk platform — we bouwen elke website
+                   snel, veilig en met oog voor detail. Hieronder vind je wat we doen en wat je mag verwachten.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    {# Detailed service blocks #}
+    <section class="shell space-y-6 pb-8">
+        {% for s in servicesDetail %}
+            <article class="grid gap-6 rounded-[28px] border border-secondary/10 bg-white p-7 sm:p-10 lg:grid-cols-[auto_1fr] lg:items-start lg:gap-10" data-reveal>
+                <span class="font-display text-4xl font-medium text-secondary lg:text-5xl">{{ '%02d'|format(loop.index) }}</span>
+                <div class="max-w-2xl">
+                    <div class="flex flex-wrap items-center gap-4">
+                        <h2 class="h-card text-secondary">{{ s.title }}</h2>
+                        {% if s.price %}
+                            <span class="rounded-full bg-primary px-4 py-1.5 font-display text-sm font-semibold text-secondary">{{ s.price }}</span>
+                        {% endif %}
+                    </div>
+                    <p class="mt-4 whitespace-pre-line text-[17px] leading-relaxed text-muted">{{ s.desc }}</p>
+                    {% if s.note %}
+                        <p class="mt-3 text-sm italic text-muted/80">{{ s.note }}</p>
+                    {% endif %}
+                </div>
+            </article>
+        {% endfor %}
+    </section>
+
+    {# Optional free content (Inhoud matrix) #}
+    {% set blocks = entry.fieldContent.all() ?? [] %}
+    {% if blocks|length %}
+        <section class="shell pb-8" data-reveal>
+            {% for block in blocks %}
+                {% include "_content/blocks/#{block.type.handle}" ignore missing with { contentIndex: loop.index } %}
+            {% endfor %}
+        </section>
+    {% endif %}
+
+    {% include 'figma/_partials/faq.twig' %}
+    {% include 'figma/_partials/cta-banner.twig' %}
+    {% include 'figma/_partials/contact-card.twig' %}
+
+{% endblock %}

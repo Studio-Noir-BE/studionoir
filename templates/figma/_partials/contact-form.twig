@@ -37,7 +37,7 @@
     <div class="sm:col-span-2 flex items-start gap-3">
         <input class="mt-1 h-4 w-4 shrink-0 accent-primary" type="checkbox" id="cf-privacy" name="privacy" required>
         <label class="text-sm text-white/80" for="cf-privacy">
-            Ik ga akkoord met de <a href="{{ assetBase }}privacy.html" class="text-primary underline underline-offset-2">privacy policy</a>
+            Ik ga akkoord met de <a href="{{ privacyUrl|default(assetBase ~ 'privacy.html') }}" class="text-primary underline underline-offset-2">privacy policy</a>
         </label>
     </div>
     <div class="sm:col-span-2 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
