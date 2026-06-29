@@ -4,12 +4,13 @@
 {#
    Studio Noir — static site data (Figma design).
    The CMS fields stay static for now: nav + socials live here so _pageHeader /
-   _pageFooter and the page templates can share them. `assetBase` points at the
-   committed static export (web/dist-site/) so the design's images and the
-   sibling .html pages resolve while the rest of the site is wired into Craft.
-   Parent-template vars are in scope for child blocks + includes.
+   _pageFooter and the page templates can share them. `assetBase` is root: the
+   design's images live in web/img/figma (served by the web server at
+   /img/figma/...) so they resolve in a fresh checkout without a build step.
+   Sibling .html nav links (e.g. /diensten.html) still point at the not-yet-
+   wired pages. Parent-template vars are in scope for child blocks + includes.
 #}
-{% set assetBase = '/dist-site/' %}
+{% set assetBase = '/' %}
 {% set snNav = [
     { label: 'diensten',         url: 'diensten.html',  key: 'diensten'  },
     { label: 'over Studio Noir', url: 'over.html',       key: 'over'      },
