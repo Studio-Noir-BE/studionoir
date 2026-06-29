@@ -7,12 +7,15 @@
 
         {# Lime info column #}
         <div class="flex flex-col bg-primary p-8 sm:p-10 lg:p-12">
-            {# Logo — large, centred in the visual gap above the contact details #}
-            <div class="flex flex-1 min-h-[10rem] items-center justify-center py-6">
-                <div class="w-3/4 max-w-[220px] lg:max-w-[260px]" data-contact-logo>
-                    {% include 'figma/_partials/logo.twig' with { class: 'h-auto w-full' } %}
+            {# Logo — large, centred in the visual gap above the contact details.
+               Hidden on the contact page (passes showLogo: false). #}
+            {% if showLogo ?? true %}
+                <div class="flex flex-1 min-h-[10rem] items-center justify-center py-6">
+                    <div class="w-3/4 max-w-[220px] lg:max-w-[260px]" data-contact-logo>
+                        {% include 'figma/_partials/logo.twig' with { class: 'h-auto w-full' } %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
             <div class="space-y-6">
                 <a href="mailto:hello@studionoir.be"
                    class="block font-display text-2xl font-bold leading-tight text-secondary transition-opacity hover:opacity-70 sm:text-3xl">
