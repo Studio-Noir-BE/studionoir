@@ -1,0 +1,84 @@
+{% extends '_layouts/site' %}
+
+{#
+   Studio Noir — Over (single section `over`).
+   Pragmatic CMS model: title + intro (CKEditor) + portrait image are editable;
+   the bespoke design sections (services grid, FAQ, CTA, contact) stay as shared
+   Figma partials. The optional "Inhoud" matrix renders extra blocks after the
+   statement. Fallbacks keep the page looking right before the fields are filled.
+#}
+{% set headerTheme = 'light' %}
+{% set portrait = entry.fieldImage.one() ?? null %}
+
+{% block main %}
+
+    {# Split hero: dark text panel + portrait #}
+    <section class="relative grid min-h-[78vh] lg:grid-cols-2">
+        <div class="relative flex items-end overflow-hidden bg-secondary">
+            <div class="pointer-events-none absolute -left-24 top-10 h-[26rem] w-[26rem] glow-lime opacity-20"></div>
+            <div class="relative z-10 px-6 pb-12 pt-40 sm:px-10 lg:pb-16 lg:pl-12">
+                <p class="eyebrow mb-4 text-primary">Over ons</p>
+                <h1 class="h-hero text-white text-balance">{{ entry.title|default('Over Studio Noir') }}</h1>
+            </div>
+        </div>
+        <div class="relative min-h-[42vh] lg:min-h-full">
+            <img src="{{ portrait ? portrait.url : assetBase ~ 'img/figma/portrait.jpg' }}"
+                 alt="{{ portrait ? (portrait.alt ?: portrait.title) : 'De oprichter van Studio Noir' }}"
+                 class="absolute inset-0 h-full w-full object-cover object-center">
+        </div>
+    </section>
+
+    {# Statement #}
+    <section class="shell py-16 lg:py-28">
+        <div class="max-w-4xl" data-reveal>
+            <h2 class="h-section text-secondary text-balance">Een studio voor websites die werken.</h2>
+            <div class="sn-richtext mt-8 space-y-5 text-xl leading-relaxed text-muted">
+                {% if entry.fieldIntro|striptags|trim is not empty %}
+                    {{ entry.fieldIntro }}
+                {% else %}
+                    <p>Studio Noir is een onafhankelijke webstudio uit Brugge. We bouwen websites met
+                       karakter — snel, veilig en volledig op maat. Geen sjablonen, geen ruis: enkel
+                       doordacht design en propere code.</p>
+                    <p>Of het nu gaat om een compacte infosite of een volledig maatwerk platform in
+                       Craft CMS, we denken met je mee en leveren werk waar je trots op mag zijn.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        {# Quick facts #}
+        <div class="mt-14 grid gap-5 sm:grid-cols-3">
+            {% for f in [
+                { k: 'Gevestigd in', v: 'Brugge' },
+                { k: 'Gebouwd met', v: 'Craft CMS' },
+                { k: 'Antwoord binnen', v: '1 werkdag' }
+            ] %}
+                <div class="rounded-3xl bg-secondary p-7" data-reveal>
+                    <p class="text-sm uppercase tracking-wider text-primary/70">{{ f.k }}</p>
+                    <p class="mt-2 font-display text-2xl font-bold text-primary">{{ f.v }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    {# Optional free content blocks (Inhoud matrix) #}
+    {% set blocks = entry.fieldContent.all() ?? [] %}
+    {% if blocks|length %}
+        <section class="shell pb-8" data-reveal>
+            {% for block in blocks %}
+                {% include "_content/blocks/#{block.type.handle}" ignore missing with { contentIndex: loop.index } %}
+            {% endfor %}
+        </section>
+    {% endif %}
+
+    {% include 'figma/_partials/services-grid.twig' %}
+
+    {% include 'figma/_partials/services-cta.twig' with {
+        heading: 'Interesse in één van onze diensten?',
+        sub: 'Of heeft u een andere vraag?'
+    } %}
+
+    {% include 'figma/_partials/faq.twig' %}
+    {% include 'figma/_partials/cta-banner.twig' %}
+    {% include 'figma/_partials/contact-card.twig' %}
+
+{% endblock %}
